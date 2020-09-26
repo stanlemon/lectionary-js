@@ -1,5 +1,5 @@
 {
-  "name": "lectionary",
+  "name": "@stanlemon/lectionary",
   "version": "1.0.0",
   "description": "A calculator for the historic lectionary.",
   "main": "index.js",
@@ -20,5 +20,8 @@
     "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.4.2",
     "prettier": "^2.1.2"
+  },
+  "dependencies": {
+    "luxon": "^1.25.0"
   }
 }
