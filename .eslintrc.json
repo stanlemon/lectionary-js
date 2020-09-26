@@ -1,0 +1,24 @@
+{
+    "env": {
+      "es6": true,
+      // For using 'document'
+      "browser": true,
+      // For using 'module'
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:jest/recommended",
+      "plugin:prettier/recommended",
+      "prettier"
+    ],
+    "rules": {
+      // Requires strict equality
+      "eqeqeq": "error",
+      // If functions are too long, break them up into smaller ones
+      "max-lines-per-function": ["error", { "max": 60 }],
+      // Linting shouldn't break on this, but we also want to discourage using console logging
+      "no-console": "warn"
+    }
+  }
+  
