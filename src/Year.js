@@ -9,7 +9,7 @@ class Year {
    * @param {int} year Year to calculate dates for.
    */
   constructor(year) {
-    this.year = year;
+    this.year = parseInt(year);
   }
 
   getAdvent() {
@@ -20,25 +20,11 @@ class Year {
   }
 
   getChristmas() {
-    return DateTime.fromObject({
-      year: this.year,
-      month: 12,
-      day: 25,
-      hour: 0,
-      minute: 0,
-      second: 0,
-    });
+    return DateTime.local(this.year, 12, 25, 0, 0, 0);
   }
 
   getEpiphany() {
-    return DateTime.fromObject({
-      year: this.year,
-      month: 1,
-      day: 6,
-      hour: 0,
-      minute: 0,
-      second: 0,
-    });
+    return DateTime.local(this.year, 1, 6, 0, 0, 0);
   }
 
   getTransfiguration() {
@@ -79,14 +65,7 @@ class Year {
     const month = Math.floor(n / 31);
     const day = (n % 31) + 1;
 
-    return DateTime.fromObject({
-      year,
-      month,
-      day,
-      hour: 0,
-      minute: 0,
-      second: 0,
-    });
+    return DateTime.local(year, month, day, 0, 0, 0);
   }
 
   getTrinity() {
