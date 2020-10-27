@@ -30,7 +30,6 @@ class Week {
     const transfiguration = this.year.getTransfiguration();
     const endOfYear = this.year.getEndOfYear();
     const lastSunday = this.year.getLastSunday();
-
     const sunday = this.getSunday();
 
     // If Christmas is a Sunday
@@ -47,7 +46,7 @@ class Week {
       return 8 - this.getWeekDifference(sunday, epiphany);
     } else if (sunday >= transfiguration && sunday <= endOfYear) {
       // After Transfiguration and before the end of the year (Pentecost)
-      return 11 + this.getWeekDifference(transfiguration, sunday);
+      return 13 + this.getWeekDifference(transfiguration, sunday);
     } else {
       // The end of the Church Year to Last Sunday (eq. Third Last)
       return 58 - this.getWeekDifference(sunday, lastSunday);
@@ -56,7 +55,6 @@ class Week {
 
   getWeekDifference(week1, week2) {
     const { weeks } = week2.diff(week1, ["weeks"]).toObject();
-    console.log(weeks);
     return weeks;
   }
 }

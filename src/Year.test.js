@@ -35,4 +35,15 @@ describe("Year", () => {
       expect(calculator.getEaster()).toEqual(years[year]);
     });
   });
+
+  it("getEndOfYear", () => {
+    const years = {
+      2020: DateTime.local(2020, 11, 8),
+    };
+
+    Object.keys(years).forEach((year) => {
+      const calculator = new Year(year);
+      expect(calculator.getEndOfYear()).toEqual(years[year]);
+    });
+  });
 });
