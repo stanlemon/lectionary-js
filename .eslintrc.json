@@ -1,6 +1,7 @@
 {
+    "parser": "@babel/eslint-parser",
     "env": {
-      "es6": true,
+      "es2020": true,
       // For using 'document'
       "browser": true,
       // For using 'module'

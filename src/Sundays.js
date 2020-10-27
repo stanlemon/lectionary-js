@@ -1,4 +1,4 @@
-module.exports = {
+const Sundays = {
   ADVENT_1: 1,
   ADVENT_2: 2,
   ADVENT_3: 3,
@@ -57,3 +57,5 @@ module.exports = {
   SECOND_LAST_SUNDAY: 56,
   LAST_SUNDAY: 57,
 };
+
+module.exports = Sundays;

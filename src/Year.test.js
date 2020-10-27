@@ -36,6 +36,17 @@ describe("Year", () => {
     });
   });
 
+  it("getTransfiguration", () => {
+    const years = {
+      2021: DateTime.local(2021, 1, 24),
+    };
+
+    Object.keys(years).forEach((year) => {
+      const calculator = new Year(year);
+      expect(calculator.getTransfiguration()).toEqual(years[year]);
+    });
+  });
+
   it("getEndOfYear", () => {
     const years = {
       2020: DateTime.local(2020, 11, 8),

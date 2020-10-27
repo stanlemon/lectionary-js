@@ -27,6 +27,13 @@ class Year {
     return DateTime.local(this.year, 1, 6, 0, 0, 0);
   }
 
+  getEpiphanySunday() {
+    const epiphany = this.getEpiphany();
+    return epiphany.weekday === 7
+      ? epiphany
+      : epiphany.minus({ days: epiphany.weekday });
+  }
+
   getTransfiguration() {
     const easter = this.getEaster();
     const transfiguration = easter.minus({ weeks: 10 });
