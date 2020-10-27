@@ -81,9 +81,15 @@ class Year {
   }
 
   getLastSunday() {
-    const christmas = this.getAdvent();
-    const lastSunday = christmas.minus({ weeks: 1 });
+    const advent = this.getAdvent();
+    const lastSunday = advent.minus({ weeks: 1 });
     return lastSunday;
+  }
+
+  getEndOfYear() {
+    const advent = this.getAdvent();
+    const endOfYear = advent.minus({ weeks: 3 });
+    return endOfYear;
   }
 }
 
