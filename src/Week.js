@@ -12,7 +12,7 @@ class Week {
   #year;
 
   constructor(date) {
-    // If we're not a luxon DateTime, assume a JSDate and convert
+    // If we're not receiving a luxon DateTime, assume a JSDate and convert
     if (!(date instanceof DateTime)) {
       date = DateTime.fromJSDate(date);
     }
@@ -62,7 +62,7 @@ class Week {
     } else if (sunday < epiphany) {
       // Before Epiphany
       return 6 - this.#getWeekDifference(sunday, epiphanySunday);
-    } else if (sunday >= transfiguration && sunday < endOfYear) {
+    } else if (sunday >= transfiguration && sunday <= endOfYear) {
       // After Transfiguration and before the end of the year (Pentecost)
       return 12 + this.#getWeekDifference(transfiguration, sunday);
     } else {
