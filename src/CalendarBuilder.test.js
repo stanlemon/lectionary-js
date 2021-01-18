@@ -3,7 +3,7 @@ const { DateTime } = require("luxon");
 
 describe("CalendarBuilder", () => {
   it("works", () => {
-    const calendarBuilder = new CalendarBuilder(1, 2021);
+    const calendarBuilder = new CalendarBuilder(2021, 1);
     const grid = calendarBuilder.build();
 
     expect(grid).not.toBeNull();

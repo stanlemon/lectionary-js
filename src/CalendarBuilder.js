@@ -16,12 +16,12 @@ class CalendarBuilder {
 
   /**
    *
-   * @param {int} month
    * @param {int} year
+   * @param {int} month
    */
-  constructor(month, year) {
-    this.#month = month;
+  constructor(year, month) {
     this.#year = year;
+    this.#month = month;
   }
 
   /**
@@ -63,7 +63,7 @@ class CalendarBuilder {
             date: current,
             day: col + 1,
             week: weekOfLectionary,
-            pericopes: loader(current, weekOfLectionary),
+            propers: loader(current, weekOfLectionary),
           };
 
           current = current.plus({ days: 1 });
