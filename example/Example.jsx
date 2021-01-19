@@ -37,7 +37,9 @@ class Example extends React.Component {
       .trim()
       .substring(2, window.location.hash.length - 1)
       .split("/")
-      .map((v) => parseInt(v, 0.1));
+      .map((v) => {
+        return v.trim() === "" ? null : parseInt(v, 0.1);
+      });
     return { year, month };
   }
 
@@ -45,9 +47,9 @@ class Example extends React.Component {
     const { year, month } = this.state;
 
     if (month === 12) {
-      return { year: year + 1, month: 1 };
+      return { year: year + 1, month: "01" };
     } else {
-      return { year, month: month + 1 };
+      return { year, month: this.paddNumber(month + 1) };
     }
   }
 
@@ -57,7 +59,15 @@ class Example extends React.Component {
     if (month === 1) {
       return { year: year - 1, month: 12 };
     } else {
-      return { year, month: month - 1 };
+      return { year, month: this.paddNumber(month - 1) };
+    }
+  }
+
+  paddNumber(v) {
+    if (v < 10) {
+      return `0${v}`;
+    } else {
+      return `${v}`;
     }
   }
 
@@ -103,7 +113,7 @@ class Example extends React.Component {
     return (
       <div>
         <h1>
-          {this.state.year}-{this.state.month}
+          {this.state.year}-{this.paddNumber(this.state.month)}
         </h1>
         <a href={`#/${Object.values(this.getLastMonth()).join("/")}/`}>
           Last Month

@@ -50,7 +50,10 @@ class CalendarBuilder {
           grid[row] = new Array(7).fill(null, 0, 7);
         }
 
-        if (started === false && col === current.weekday) {
+        // Luxon makes Sunday as '7', but it's the first day of our week
+        const weekday = current.weekday === 7 ? 0 : current.weekday;
+
+        if (started === false && col === weekday) {
           started = true;
         }
 

@@ -51,4 +51,13 @@ describe("CalendarBuilder", () => {
     expect(grid[5][5]).toBe(null);
     expect(grid[5][6]).toBe(null);
   });
+
+  it("first day is first row first column", () => {
+    const calendarBuilder = new CalendarBuilder(2021, 8);
+    const grid = calendarBuilder.build();
+
+    expect(grid).not.toBeNull();
+
+    // TODO: Add tests
+  });
 });
