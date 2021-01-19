@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { DateTime } from "luxon";
 import { CalendarBuilder } from "../src/CalendarBuilder";
 import { SimpleLoader } from "../src/SimpleLoader";
 
@@ -8,16 +9,60 @@ import daily from "../data/lsb-daily.json";
 
 const loader = new SimpleLoader(oneyear, daily);
 
-/**
- * Example <Counter/> wrapped in PouchDB documents three different ways.
- */
 class Example extends React.Component {
-  state = {
-    grid: [],
-  };
+  constructor(props) {
+    super(props);
+
+    const { year, month } = this.getYearAndMonth();
+
+    this.state = {
+      year: year ?? DateTime.local().year,
+      month: month ?? DateTime.local().month,
+      grid: [],
+    };
+  }
 
   componentDidMount() {
-    const builder = new CalendarBuilder(2021, 1);
+    this.build();
+
+    window.onhashchange = () => {
+      const { year, month } = this.getYearAndMonth();
+      this.setState({ year, month });
+      this.build();
+    };
+  }
+
+  getYearAndMonth() {
+    const [year, month] = window.location.hash
+      .trim()
+      .substring(2, window.location.hash.length - 1)
+      .split("/")
+      .map((v) => parseInt(v, 0.1));
+    return { year, month };
+  }
+
+  getNextMonth() {
+    const { year, month } = this.state;
+
+    if (month === 12) {
+      return { year: year + 1, month: 1 };
+    } else {
+      return { year, month: month + 1 };
+    }
+  }
+
+  getLastMonth() {
+    const { year, month } = this.state;
+
+    if (month === 1) {
+      return { year: year - 1, month: 12 };
+    } else {
+      return { year, month: month - 1 };
+    }
+  }
+
+  build() {
+    const builder = new CalendarBuilder(this.state.year, this.state.month);
     this.setState({
       grid: builder.build(loader.load),
     });
@@ -57,7 +102,15 @@ class Example extends React.Component {
   render() {
     return (
       <div>
-        <h1>Lectionary</h1>
+        <h1>
+          {this.state.year}-{this.state.month}
+        </h1>
+        <a href={`#/${Object.values(this.getLastMonth()).join("/")}/`}>
+          Last Month
+        </a>
+        <a href={`#/${Object.values(this.getNextMonth()).join("/")}/`}>
+          Next Month
+        </a>
         <table width="100%" border="1">
           <tbody>
             {this.state.grid.map((week, row) => (

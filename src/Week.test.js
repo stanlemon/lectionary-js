@@ -3,7 +3,7 @@ const Sundays = require("./Sundays");
 const { Week } = require("./Week");
 
 // This data was generated from the previous PHP version of this library
-const { TEST_SUNDAYS, TEST_DAYS } = require("../test-data.json");
+const { TEST_SUNDAYS, TEST_DAYS } = require("../data/tests.json");
 
 const SUNDAYS_BY_VALUE = {};
 Object.entries(Sundays).forEach(
