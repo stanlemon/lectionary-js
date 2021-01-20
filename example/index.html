@@ -1,11 +1,431 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>App</title>
-  </head>
-  <body>
+	<head>
+		<meta charset="iso-8859-1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>{% if title is defined %}{{title}} &middot; {% endif %}Sanctus.org</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'">
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<style>
+		body {
+			color: #000;
+			margin: 0px;
+			font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+			font-size: 14px;
+		}
+
+		footer {
+			text-align: center;
+			padding: 10px;
+			margin-bottom: 20px;
+			font-size: 13px;
+		}
+
+		ul, ol {
+			padding: 0;
+			margin: 0 0 10px 25px;
+		}
+
+		a, a:link, a:active, a:visited {
+			color: navy;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		a.active {
+			font-weight: bold;
+		}
+
+		h1 {
+			font-size: 20px;
+		}
+
+		h2 {
+			font-size: 31.5px;
+		}
+
+		h3 {
+			font-size: 24.5px;
+		}
+
+		h4 {
+			font-size: 17px;
+		}
+
+		h5 {
+			font-size: 14px;
+		}
+
+		h6 {
+			font-size: 11px;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			margin-top: 3px;
+			margin-bottom: 3px;
+		}
+
+		.propers h1, .propers h2, .propers h3 {
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		hr {
+			margin: 20px 0;
+			border: 0;
+			border-top: 1px solid #eeeeee;
+			border-bottom: 1px solid #ffffff;
+		}
+
+		td, th, .text-center {
+			text-align: center;
+		}
+
+		.text-left {
+			text-align: left;
+		}
+
+		.text-right {
+			text-align: right;
+		}
+
+		table {
+			width: 100%;
+		}
+
+		table, td, th {
+			border: 1px #000 solid;
+			border-spacing: 0px;
+  			border-collapse: collapse;
+		}
+
+		#calendar-navigation, #calendar-navigation td {
+			border: none;
+			vertical-align: bottom;
+		}
+
+		td, th {
+			padding: 10px;
+			vertical-align: top;
+		}
+
+		#calendar {
+			max-width: 1200px;
+			margin-left: auto;
+			margin-right: auto;
+			padding-top: 5px;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
+		.title-bar {
+			padding: 10px;
+			background-color: #000;
+			color: #fff;
+			font-size: 20px;
+			font-weight: 200;
+			text-align: center;
+		}
+
+		.title-bar a, .title-bar a:hover {
+			color: #fff;
+			text-decoration: none;
+		}
+
+		.small { font-size: 85%; }
+		.space { min-height: 15px; height: 15px; }
+		#calendar h1, h2, h3, h4, h5 { line-height: 1em !important; }
+		#calendar td { cursor: pointer; }
+		h3 a:active, h3 a:link, h3 a:visited, h3 a:hover { color: #000 !important; text-decoration: none; }
+
+		#calendar h3 {
+			text-align: center;
+			margin-bottom: 7px;
+		}
+
+		#calendar h4, #calendar h5 {
+			text-align: center;
+		}
+
+		#calendar td {
+			font-size: 85%;
+		}
+
+		#calendar nav {
+			display: flex;
+			align-items: baseline;
+			margin-bottom: 5px;
+		}
+
+		#calendar nav h2 {
+			text-align: center;
+		}
+
+		#calendar nav > * {
+			display: inline-block;
+			flex-grow: 1;
+			flex-shrink: 1;
+		}
+
+		#calendar nav > *:last-child {
+			text-align: right;
+		}
+
+		h5 {
+			margin-bottom: 7px;
+		}
+
+		sup {
+			display: none;
+		}
+
+		.sup {
+			vertical-align: super;
+			font-size: .8em;
+			margin-right: 3px;
+		}
+
+		.footnotes, .hidden {
+			display: none;
+		}
+
+		.ical {
+			text-align: center;
+			padding-top: 10px;
+		}
+
+		.propers {
+			max-width: 800px;
+			margin-left: auto;
+			margin-right: auto;
+			padding-top: 5px;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
+		.chapternum {
+			font-weight: bold;
+			font-size: 1.4em;
+		}
+
+		.versenum {
+			display: inline;
+		}
+		
+		/* Liturgical Colors */
+
+		.highlight-violet {
+			background-color: 		#ee82ee;
+		}
+
+		.violet {
+			color: 					#ee82ee;
+		}
+
+		.highlight-rose {
+			background-color: 		#ff69b4;
+		}
+
+		.rose {
+			color: 					#ff69b4;
+		}
+
+		.highlight-green {
+			background-color: 		#009900;
+		}
+
+		.green {
+			color: 					#009900;
+		}
+
+		.highlight-white {
+			background-color: 		#ffffff;
+		}
+
+		.white {
+			color: 					black;
+			-webkit-text-fill-color: white; /* Will override color (regardless of order) */
+			-webkit-text-stroke-width: 1px;
+			-webkit-text-stroke-color: black;
+		}
+
+		.highlight-red {
+			background-color: 		#FF0000;
+		}
+
+		.red {
+			color: 					#ff0000;
+		}
+		
+		.highlight-black {
+			background-color: #000;
+			color: #ffffff;
+		}
+
+		/* Calendar View for Mobile */
+
+		@media only screen and (min-device-width: 481px) {
+
+			td.today {
+				border: 5px #000 solid;
+			}
+
+			#calendar td {
+				height: 160px;
+				max-height: 210px;
+				width: 14%; 
+			}
+		}
+
+		@media only screen and (max-device-width: 480px) {
+
+			.container {
+				padding-left: 0px;
+				padding-right: 0px;
+			}
+
+			.propers {
+				font-size: 16px;
+			}
+
+			/* Force table to not be like tables anymore */
+			#calendar table, 
+			#calendar thead, 
+			#calendar tbody, 
+			#calendar th, 
+			#calendar td, 
+			#calendar tr { 
+				display: block; 
+			}
+
+			#calendar {
+				border-left: none;
+				border-right: none;
+			}
+ 
+			/* Hide table headers (but not display: none;, for accessibility) */
+			#calendar thead tr { 
+				position: absolute;
+				top: -9999px;
+				left: -9999px;
+			}
+ 
+			#calendar td { 
+				/* Behave  like a "row" */
+				border-top: none;
+				border-left: none;
+				border-right: none;
+				position: relative;
+				white-space: normal;
+				text-align:left;
+				font-size: 18px;
+			}
+
+			#calendar td:before { 
+				/* Now like a table header */
+				position: absolute;
+				/* Top/left values mimic padding */
+				top: 6px;
+				left: 6px;
+				width: 45%; 
+				padding-right: 10px; 
+				white-space: nowrap;
+				text-align:left;
+				font-weight: bold;
+			}
+ 
+			.highlight-none { display: none !important; }
+ 		}
+
+		 @media (prefers-color-scheme: dark) {
+			 body {
+				background-color: #000;
+				color: #fff;
+			 }
+
+			a, a:link, a:active, a:visited {
+				color: #007db5;
+			}
+
+			.title-bar a, .title-bar a:hover {
+				color: #fff;
+			}
+
+			#calendar {
+				color: #000;
+			}
+		 }
+
+		@media only screen and (prefers-color-scheme: dark) and (min-device-width: 481px) {
+
+			 #calendar {
+				outline: 1px #fff solid;
+			 }
+
+			 #calendar th {
+				color: #fff;
+				border-bottom-color: #fff;
+			}
+
+			#calendar td.today {
+				border: 5px #fff solid;
+			}
+		}
+		
+		</style>
+	</head>
+	<body>
+		<header class="title-bar">
+			<a class="brand" href="{{home_url}}">Sanctus.org</a>
+		</header>
+
     <div id="root"></div>
-  </body>
+    
+		<footer>
+			<p class="ical">
+				Want sanctus.org in your calendar app? 
+				Subscribe to the <a href="/ical">Sundays & Festivals</a> calendar and the 
+				<a href="/ical-daily">Daily Readings</a> calendar.
+			</p>
+
+			<p>Source code and application for sanctus.org, the historic Lutheran Lectionary website, Copyright &copy; 2003-{{"now"|date("Y")}} <a target="_blank" href="https://stanlemon.com">Stan Lemon</a>.</p>
+		</footer>
+
+		<script type="text/javascript">
+			var tds = document.getElementsByTagName('td');
+
+			for (td of tds) {
+				if (td.getAttribute('class') === 'highlight-none') {
+					continue;
+				}
+
+				td.addEventListener('click', function(e) {
+					// If we actually clicked the link, no need to do the javascript thing
+					if (e.target.nodeName === 'A') {
+						return;
+					}
+					var url = e.currentTarget.getAttribute('data-url');
+
+					if (url) {
+						window.location.href = url;
+					}
+				});
+			}
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33072694-2']);
+			_gaq.push(['_setDomainName', 'sanctus.org']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</body>
 </html>

@@ -89,10 +89,10 @@ class Example extends React.Component {
       <td key={weekDay}>
         {day && day.date && (
           <div>
-            <h2>{day.date.day}</h2>
+            <h3>{day.date.day}</h3>
             {day.date.weekday === 7 && (
               <div>
-                <h3>{this.findProperByType(day.propers, 0).text}</h3>
+                <h4>{this.findProperByType(day.propers, 0).text}</h4>
                 <div>
                   Old Test: {this.findProperByType(day.propers, 19).text}
                 </div>
@@ -111,17 +111,30 @@ class Example extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>
-          {this.state.year}-{this.paddNumber(this.state.month)}
-        </h1>
-        <a href={`#/${Object.values(this.getLastMonth()).join("/")}/`}>
-          Last Month
-        </a>
-        <a href={`#/${Object.values(this.getNextMonth()).join("/")}/`}>
-          Next Month
-        </a>
-        <table width="100%" border="1">
+      <div id="calendar">
+        <nav>
+          <a href={`#/${Object.values(this.getLastMonth()).join("/")}/`}>
+            Last Month
+          </a>
+          <h2>
+            {this.state.year}-{this.paddNumber(this.state.month)}
+          </h2>
+          <a href={`#/${Object.values(this.getNextMonth()).join("/")}/`}>
+            Next Month
+          </a>
+        </nav>
+        <table>
+          <thead>
+            <tr>
+              <th>Sunday</th>
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wednesday</th>
+              <th>Thursday</th>
+              <th>Friday</th>
+              <th>Saturday</th>
+            </tr>
+          </thead>
           <tbody>
             {this.state.grid.map((week, row) => (
               <tr key={row}>
