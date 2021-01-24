@@ -10,8 +10,11 @@
     "lint": "eslint --ext js ./src/"
   },
   "keywords": [
+    "christian",
     "lectionary",
-    "lutheran"
+    "liturgy",
+    "lutheran",
+    "lutheranism"
   ],
   "author": "Stan Lemon",
   "license": "MIT",
@@ -29,8 +32,8 @@
     "html-webpack-plugin": "^4.5.1",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
-    "webpack": "^5.15.0",
-    "webpack-cli": "^4.3.1",
+    "webpack": "^5.17.0",
+    "webpack-cli": "^4.4.0",
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
