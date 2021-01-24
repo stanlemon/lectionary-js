@@ -1,14 +1,7 @@
 {
   "name": "@stanlemon/lectionary",
   "version": "1.0.0",
-  "description": "A calculator for the historic lectionary.",
-  "main": "index.js",
-  "scripts": {
-    "start": "webpack serve",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "lint": "eslint --ext js ./src/"
-  },
+  "description": "A calculator for the Western Christian church calendar.",
   "keywords": [
     "christian",
     "lectionary",
@@ -16,8 +9,28 @@
     "lutheran",
     "lutheranism"
   ],
-  "author": "Stan Lemon",
+  "author": "Stan Lemon <stanlemon@users.github.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:stanlemon/lectionary-js.git"
+  },
+  "engines": {
+    "node": ">=14.0"
+  },
+  "scripts": {
+    "start": "webpack serve",
+    "build": "NODE_ENV=production webpack",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint --ext js ./src/"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "luxon": "^1.25.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/eslint-parser": "^7.12.1",
@@ -35,11 +48,5 @@
     "webpack": "^5.17.0",
     "webpack-cli": "^4.4.0",
     "webpack-dev-server": "^3.11.2"
-  },
-  "dependencies": {
-    "classnames": "^2.2.6",
-    "luxon": "^1.25.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
   }
 }

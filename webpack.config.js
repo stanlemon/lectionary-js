@@ -1,15 +1,19 @@
+const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const env = process.env.NODE_ENV;
+const publicPath = process.env.PUBLIC_PATH || "/";
+const isProduction = env === "production";
+
 module.exports = {
-  mode: "development",
+  mode: env || "development",
+  devtool: isProduction ? "source-map" : "inline-source-map",
   entry: ["./example/Example.jsx"],
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "example", "out"),
-    publicPath: "/",
+    path: path.resolve(__dirname, "dist"),
+    publicPath,
   },
-  devtool: "eval-source-map",
   devServer: {
     hot: true,
     historyApiFallback: true,
@@ -31,7 +35,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      minify: false,
       template: path.resolve(__dirname, "example", "index.html"),
+    }),
+    new webpack.DefinePlugin({
+      PUBLIC_PATH: JSON.stringify(publicPath),
     }),
   ],
 };
