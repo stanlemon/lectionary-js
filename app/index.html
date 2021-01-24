@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="iso-8859-1">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta charset="UTF-8">
 		<title>Sanctus.org</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -342,10 +341,10 @@
  		}
 
 		 @media (prefers-color-scheme: dark) {
-			 body {
+			body {
 				background-color: #000;
 				color: #fff;
-			 }
+			}
 
 			a, a:link, a:active, a:visited {
 				color: #007db5;
@@ -362,7 +361,7 @@
 
 		@media only screen and (prefers-color-scheme: dark) and (min-device-width: 481px) {
 
-			 #calendar {
+			 #calendar table {
 				outline: 1px #fff solid;
 			 }
 
@@ -379,37 +378,17 @@
 		</style>
 	</head>
 	<body>
-		<header class="title-bar">
-			<a class="brand" href="{{home_url}}">Sanctus.org</a>
+		<header class="title-bar" id="top">
+			<a class="brand" href="https://sanctus.org">Sanctus.org</a>
 		</header>
 
     <div id="root"></div>
     
 		<footer>
-			<p>Built by <a target="_blank" href="https://stanlemon.com">Stan Lemon</a></p>
+      <p>Source code and application for sanctus.org Copyright &copy; 2003-<script type="text/javascript">document.write((new Date()).getFullYear());</script> <a target="_blank" href="https://stanlemon.com">Stan Lemon</a>.</p>
 		</footer>
 
-		<script type="text/javascript">
-			var tds = document.getElementsByTagName('td');
-
-			for (td of tds) {
-				if (td.getAttribute('class') === 'highlight-none') {
-					continue;
-				}
-
-				td.addEventListener('click', function(e) {
-					// If we actually clicked the link, no need to do the javascript thing
-					if (e.target.nodeName === 'A') {
-						return;
-					}
-					var url = e.currentTarget.getAttribute('data-url');
-
-					if (url) {
-						window.location.href = url;
-					}
-				});
-			}
-
+    <script type="text/javascript">
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-33072694-2']);
 			_gaq.push(['_setDomainName', 'sanctus.org']);

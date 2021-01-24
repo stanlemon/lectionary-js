@@ -9,7 +9,7 @@ const isProduction = env === "production";
 module.exports = {
   mode: env || "development",
   devtool: isProduction ? "source-map" : "inline-source-map",
-  entry: ["./example/Example.jsx"],
+  entry: ["./app/App.jsx"],
   output: {
     path: path.resolve(__dirname, "dist"),
     publicPath,
@@ -36,7 +36,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       minify: false,
-      template: path.resolve(__dirname, "example", "index.html"),
+      template: path.resolve(__dirname, "app", "index.html"),
     }),
     new webpack.DefinePlugin({
       PUBLIC_PATH: JSON.stringify(publicPath),

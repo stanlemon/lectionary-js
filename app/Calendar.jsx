@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { DateTime } from "luxon";
 import classNames from "classnames";
 import { CalendarBuilder } from "../src/CalendarBuilder";
@@ -12,7 +11,7 @@ import commemorations from "../data/lsb-commemorations.json";
 
 const loader = new KeyLoader({ lectionary, festivals, daily, commemorations });
 
-class Example extends React.Component {
+export default class Calendar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -120,10 +119,11 @@ class Example extends React.Component {
   }
 
   renderDay(day, weekDay) {
-    const color = this.findColor(day);
-    const classes = classNames(
-      color ? `highlight-${color.toLowerCase()}` : false
-    );
+    const color = this.findColor(day)?.toLowerCase() ?? "none";
+    const classes = classNames({
+      [`highlight-${color}`]: color,
+      today: day && day.date && DateTime.local().hasSame(day.date, "day"),
+    });
 
     return (
       <td className={classes} key={weekDay}>
@@ -197,5 +197,3 @@ class Example extends React.Component {
     );
   }
 }
-
-ReactDOM.render(<Example />, document.getElementById("root"));
