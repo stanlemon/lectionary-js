@@ -43,7 +43,7 @@ class CalendarBuilder {
 
     // Rewind to the first column of the first row
     if (first.weekday !== 7) {
-      current = current.minus({ days: first.weekday + 1 });
+      current = current.minus({ days: first.weekday });
     }
 
     const grid = [];
@@ -53,8 +53,6 @@ class CalendarBuilder {
 
     while (current <= last) {
       for (let col = 0; col <= 6; col++) {
-        current = current.plus({ days: 1 });
-
         // Calculate the week of the church year
         const weekCalculator = new Week(current);
         const weekOfLectionary = weekCalculator.getWeek();
@@ -75,6 +73,8 @@ class CalendarBuilder {
         if (current >= first && current <= last) {
           grid[row][col] = day;
         }
+
+        current = current.plus({ days: 1 });
       }
 
       row++;

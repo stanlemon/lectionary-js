@@ -22,7 +22,7 @@ describe("SimpleLoader", () => {
       "Epiphany 2"
     );
     expect(grid[4][0].propers.filter((p) => p.type === 0)[0].text).toEqual(
-      "St. Timothy, Pastor" /* "Transfiguration" */ // St. Tim appears first in the data file
+      "Transfiguration"
     );
     expect(grid[5][0].propers.filter((p) => p.type === 0)[0].text).toEqual(
       "Septuagesima"
