@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { DateTime } from "luxon";
+import classNames from "classnames";
 import { CalendarBuilder } from "../src/CalendarBuilder";
 import { SimpleLoader } from "../src/SimpleLoader";
 
@@ -85,8 +86,13 @@ class Example extends React.Component {
   }
 
   renderDay(day, weekDay) {
+    const color = this.findProperByType(day?.propers, 25)?.text;
+    const classes = classNames(
+      color ? `highlight-${color.toLowerCase()}` : false
+    );
+
     return (
-      <td key={weekDay}>
+      <td className={classes} key={weekDay}>
         {day && day.date && (
           <div>
             <h3>{day.date.day}</h3>
