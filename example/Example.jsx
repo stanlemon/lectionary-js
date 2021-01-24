@@ -85,8 +85,14 @@ class Example extends React.Component {
       : propers.filter((p) => p.type === type).shift();
   }
 
+  findColor(day) {
+    const dayColor = this.findProperByType(day?.propers, 25)?.text;
+    const sundayColor = this.findProperByType(day?.sunday?.propers, 25)?.text;
+    return dayColor ? dayColor : sundayColor;
+  }
+
   renderDay(day, weekDay) {
-    const color = this.findProperByType(day?.propers, 25)?.text;
+    const color = this.findColor(day);
     const classes = classNames(
       color ? `highlight-${color.toLowerCase()}` : false
     );
@@ -98,17 +104,19 @@ class Example extends React.Component {
             <h3>{day.date.day}</h3>
             {day.date.weekday === 7 && (
               <div>
-                <h4>{this.findProperByType(day.propers, 0).text}</h4>
+                <h4>{this.findProperByType(day.propers, 0)?.text}</h4>
                 <div>
-                  Old Test: {this.findProperByType(day.propers, 19).text}
+                  Old Test: {this.findProperByType(day.propers, 19)?.text}
                 </div>
-                <div>Epistle: {this.findProperByType(day.propers, 1).text}</div>
-                <div>Gospel: {this.findProperByType(day.propers, 2).text}</div>
+                <div>
+                  Epistle: {this.findProperByType(day.propers, 1)?.text}
+                </div>
+                <div>Gospel: {this.findProperByType(day.propers, 2)?.text}</div>
                 <br />
               </div>
             )}
-            <div>{this.findProperByType(day.propers, 38).text}</div>
-            <div>{this.findProperByType(day.propers, 39).text}</div>
+            <div>{this.findProperByType(day.propers, 38)?.text}</div>
+            <div>{this.findProperByType(day.propers, 39)?.text}</div>
           </div>
         )}
       </td>

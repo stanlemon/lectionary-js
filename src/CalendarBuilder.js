@@ -38,38 +38,42 @@ class CalendarBuilder {
       0,
       0
     );
-    const grid = [];
 
     let current = first;
+
+    // Rewind to the first column of the first row
+    if (first.weekday !== 7) {
+      current = current.minus({ days: first.weekday + 1 });
+    }
+
+    const grid = [];
+
     let row = 0;
-    let started = false; // Track when we've started the month (there can be non-month blocks at the start of the grid).
+    let sunday = null;
 
     while (current <= last) {
       for (let col = 0; col <= 6; col++) {
+        current = current.plus({ days: 1 });
+
+        // Calculate the week of the church year
+        const weekCalculator = new Week(current);
+        const weekOfLectionary = weekCalculator.getWeek();
+
+        const day = {
+          date: current,
+          day: col + 1,
+          week: weekOfLectionary,
+          propers: loader(current, weekOfLectionary),
+          sunday,
+        };
+
         if (!grid[row]) {
           grid[row] = new Array(7).fill(null, 0, 7);
+          sunday = day;
         }
 
-        // Luxon makes Sunday as '7', but it's the first day of our week
-        const weekday = current.weekday === 7 ? 0 : current.weekday;
-
-        if (started === false && col === weekday) {
-          started = true;
-        }
-
-        if (started && current <= last) {
-          // Calculate the week of the church year
-          const weekCalculator = new Week(current);
-          const weekOfLectionary = weekCalculator.getWeek();
-
-          grid[row][col] = {
-            date: current,
-            day: col + 1,
-            week: weekOfLectionary,
-            propers: loader(current, weekOfLectionary),
-          };
-
-          current = current.plus({ days: 1 });
+        if (current >= first && current <= last) {
+          grid[row][col] = day;
         }
       }
 
