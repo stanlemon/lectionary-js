@@ -10,7 +10,9 @@ _All of the code in this repository is available free under the [MIT](LICENSE) l
 
 ## Getting Started
 
-There are two pieces to this library, first is the calculator and second is a [React](http://reactjs.org) that serves as the latest generation of [sanctus.org](https://sanctus.org).
+There are two pieces to this library, first is the calculator and second is a [React](http://reactjs.org) app that serves as the latest generation of [sanctus.org](https://sanctus.org).
+
+You can see the app in action at: 
 
 Install dependencies:
 
