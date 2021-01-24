@@ -1,0 +1,639 @@
+[
+  {
+    "type": 37,
+    "week": null,
+    "month": 12,
+    "day": 25,
+    "text": "Christmastide I"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 12,
+    "day": 26,
+    "text": "Christmastide II"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 12,
+    "day": 27,
+    "text": "Christmastide III"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 12,
+    "day": 28,
+    "text": "Christmastide IV"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 12,
+    "day": 29,
+    "text": "Christmastide V \/ David"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 12,
+    "day": 30,
+    "text": "Christmastide VI"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 12,
+    "day": 31,
+    "text": "Christmastide VII"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 1,
+    "day": 1,
+    "text": "Christmastide VIII"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 1,
+    "day": 2,
+    "text": "Christmastide IX \/ J. K. Wilhelm Loehe, Pastor"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 1,
+    "day": 3,
+    "text": "Christmastide X"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 1,
+    "day": 4,
+    "text": "Christmastide XI"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 1,
+    "day": 5,
+    "text": "Christmastide XII"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 1,
+    "day": 10,
+    "text": "Basil the Great of Caesarea, Gregory of Nazianzus, and Gregory of Nyssa, Pastors and Confessors"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 1,
+    "day": 20,
+    "text": "Sarah"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 1,
+    "day": 27,
+    "text": "John Chrysostom, Preacher"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 2,
+    "day": 5,
+    "text": "Jacob (Israel), Patriarch"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 2,
+    "day": 10,
+    "text": "Silas, Fellow worker of St. Peter and St. Paul"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 2,
+    "day": 13,
+    "text": "Aquila, Priscilla, Apollos"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 2,
+    "day": 14,
+    "text": "Valentine, Martyr"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 2,
+    "day": 15,
+    "text": "Philemon and Onesimus"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 2,
+    "day": 16,
+    "text": "Philip Melanchthon (birth), Confessor"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 2,
+    "day": 18,
+    "text": "Martin Luther, Doctor and Confessor"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 2,
+    "day": 23,
+    "text": "Polycarp of Smyrna, Pastor and Martyr"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 3,
+    "day": 7,
+    "text": "Perpetua and Felicitas, Martyrs"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 3,
+    "day": 17,
+    "text": "Patrick, Missionary to Ireland"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 3,
+    "day": 31,
+    "text": "Joseph, Patriarch"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 4,
+    "day": 6,
+    "text": "Lucas Cranach, Albrecht Durer, and Michelangelo, Artists"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 4,
+    "day": 20,
+    "text": "Johannes Bugenhagen, Pastor"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 4,
+    "day": 21,
+    "text": "Anselm of Canterbury, Theologian"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 4,
+    "day": 24,
+    "text": "Johann Walter, Kantor"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 5,
+    "day": 2,
+    "text": "Athanasius of Alexandria, Pastor and Confessor"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 5,
+    "day": 4,
+    "text": "Friedrich Wyneken, Pastor and Missionary"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 5,
+    "day": 5,
+    "text": "Frederick the Wise, Christian Ruler"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 5,
+    "day": 7,
+    "text": "C. F. W. Walther, Theologian"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 5,
+    "day": 9,
+    "text": "Job"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 5,
+    "day": 11,
+    "text": "Cyril and Methodius, Missionaries to the Slavs"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 5,
+    "day": 21,
+    "text": "Emperor Constantine, Christian Ruler and \\ Helen, Mother of Constantine"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 5,
+    "day": 24,
+    "text": "Esther"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 5,
+    "day": 25,
+    "text": "Bede the Venerable, Theologian"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 6,
+    "day": 1,
+    "text": "Justin, Martyr"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 6,
+    "day": 5,
+    "text": "Boniface of Mainz, Missionary to the Germans"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 6,
+    "day": 12,
+    "text": "The Ecumenical Council of Nicaea, A.D. 325"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 6,
+    "day": 14,
+    "text": "Elisha"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 6,
+    "day": 25,
+    "text": "Presentation of the Augsburg Confession"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 6,
+    "day": 26,
+    "text": "Jeremiah"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 6,
+    "day": 27,
+    "text": "Cyril of Alexandria, Pastor and Confessor"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 6,
+    "day": 28,
+    "text": "Irenaeus of Lyons, Pastor"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 7,
+    "day": 6,
+    "text": "Isaiah"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 7,
+    "day": 16,
+    "text": "Ruth"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 7,
+    "day": 20,
+    "text": "Elijah"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 7,
+    "day": 21,
+    "text": "Ezekiel"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 7,
+    "day": 28,
+    "text": "Johann Sebastian Bach, Kantor"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 7,
+    "day": 29,
+    "text": "Mary, Martha, and Lazarus of Bethany"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 7,
+    "day": 31,
+    "text": "Joseph of Arimathea"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 8,
+    "day": 3,
+    "text": "Joanna, Mary, and Salome, Myrrhbearers"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 8,
+    "day": 10,
+    "text": "Lawrence, Deacon and Martyr"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 8,
+    "day": 16,
+    "text": "Isaac"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 8,
+    "day": 17,
+    "text": "Johann Gerhard, Theologian"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 8,
+    "day": 19,
+    "text": "Bernard of Clairvaux, Hymnwriter and Theologian"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 8,
+    "day": 20,
+    "text": "Samuel"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 8,
+    "day": 27,
+    "text": "Monica, Mother of Augustine"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 8,
+    "day": 28,
+    "text": "Augustine of Hippo, Pastor and Theologian"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 9,
+    "day": 1,
+    "text": "Joshua"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 9,
+    "day": 2,
+    "text": "Hannah"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 9,
+    "day": 3,
+    "text": "Gregory the Great, Pastor"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 9,
+    "day": 4,
+    "text": "Moses"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 9,
+    "day": 5,
+    "text": "Zacharias and Elizabeth"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 9,
+    "day": 16,
+    "text": "Cyprian of Carthage, Pastor and Martyr"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 9,
+    "day": 22,
+    "text": "Jonah"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 9,
+    "day": 30,
+    "text": "Jerome, Translator of Holy Scripture"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 10,
+    "day": 7,
+    "text": "Henry Melchior Muhlenberg, Pastor"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 10,
+    "day": 9,
+    "text": "Abraham"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 10,
+    "day": 11,
+    "text": "Philip the Deacon"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 10,
+    "day": 17,
+    "text": "Ignatius of Antioch, Pastor and Martyr"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 10,
+    "day": 25,
+    "text": "Dorcas (Tabitha), Lydia, and Phoebe, Faithful Women"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 10,
+    "day": 26,
+    "text": "Philipp Nicolai, Johann Heerman, and Paul Gerhardt, Hymnwriters"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 11,
+    "day": 2,
+    "text": "Commemoration of the Faithful Departed"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 11,
+    "day": 8,
+    "text": "Johannes von Staupitz, Luther's Father Confessor"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 11,
+    "day": 9,
+    "text": "Martin Chemnitz (birth), Pastor and Confessor"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 11,
+    "day": 11,
+    "text": "Martin of Tours, Pastor"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 11,
+    "day": 14,
+    "text": "Emperor Justinian, Christian Ruler and Confessor of Christ"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 11,
+    "day": 19,
+    "text": "Elizabeth of Hungary"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 11,
+    "day": 23,
+    "text": "Clement of Rome, Pastor"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 11,
+    "day": 29,
+    "text": "Noah"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 12,
+    "day": 4,
+    "text": "John of Damascus, Theologian and Hymnwriter"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 12,
+    "day": 6,
+    "text": "Nicholas of Myra, Pastor"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 12,
+    "day": 7,
+    "text": "Ambrose of Milan, Pastor and Hymnwriter"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 12,
+    "day": 13,
+    "text": "Lucia, Martyr"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 12,
+    "day": 17,
+    "text": "Daniel the Prophet and the Three Young Men"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 12,
+    "day": 19,
+    "text": "Adam and Eve"
+  },
+  {
+    "type": 37,
+    "week": null,
+    "month": 12,
+    "day": 20,
+    "text": "Katharina von Bora Luther"
+  }
+]
