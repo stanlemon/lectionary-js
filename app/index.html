@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>Sanctus.org</title>
+		<title>{% if title is defined %}{{title}} &middot; {% endif %}Sanctus.org</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -12,6 +12,7 @@
 			margin: 0px;
 			font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 			font-size: 14px;
+      		padding-top: 40px;
 		}
 
 		footer {
@@ -122,6 +123,10 @@
 		}
 
 		.title-bar {
+			z-index: 99;
+			position: fixed;
+			top: 0;
+			width: 100%;
 			padding: 10px;
 			background-color: #000;
 			color: #fff;
@@ -218,46 +223,46 @@
 		/* Liturgical Colors */
 
 		.highlight-violet {
-			background-color: 		#ee82ee;
+			background-color: #ee82ee;
 		}
 
 		.violet {
-			color: 					#ee82ee;
+			color: #ee82ee;
 		}
 
 		.highlight-rose {
-			background-color: 		#ff69b4;
+			background-color: #ff69b4;
 		}
 
 		.rose {
-			color: 					#ff69b4;
+			color: #ff69b4;
 		}
 
 		.highlight-green {
-			background-color: 		#009900;
+			background-color: #009900;
 		}
 
 		.green {
-			color: 					#009900;
+			color: #009900;
 		}
 
 		.highlight-white {
-			background-color: 		#ffffff;
+			background-color: #ffffff;
 		}
 
 		.white {
-			color: 					black;
+			color: black;
 			-webkit-text-fill-color: white; /* Will override color (regardless of order) */
 			-webkit-text-stroke-width: 1px;
 			-webkit-text-stroke-color: black;
 		}
 
 		.highlight-red {
-			background-color: 		#FF0000;
+			background-color: #FF0000;
 		}
 
 		.red {
-			color: 					#ff0000;
+			color: #ff0000;
 		}
 		
 		.highlight-black {
@@ -282,13 +287,23 @@
 
 		@media only screen and (max-device-width: 480px) {
 
-			.container {
+			.propers {
+				font-size: 16px;
+			}
+
+			#calendar {
 				padding-left: 0px;
 				padding-right: 0px;
 			}
 
-			.propers {
-				font-size: 16px;
+			#calendar nav {
+				padding-left: 7px;
+				padding-right: 7px;
+			}
+
+			#calendar table {
+				border-left: 0px;
+				border-right: 0px;
 			}
 
 			/* Force table to not be like tables anymore */
@@ -350,7 +365,7 @@
 				color: #007db5;
 			}
 
-			.title-bar a, .title-bar a:hover {
+			h2, .title-bar a, .title-bar a:hover {
 				color: #fff;
 			}
 
@@ -374,7 +389,6 @@
 				border: 5px #fff solid;
 			}
 		}
-		
 		</style>
 	</head>
 	<body>
