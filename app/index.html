@@ -144,7 +144,6 @@
 		.space { min-height: 15px; height: 15px; }
 		#calendar h1, h2, h3, h4, h5 { line-height: 1em !important; }
 		#calendar td { cursor: pointer; }
-		h3 a:active, h3 a:link, h3 a:visited, h3 a:hover { color: #000 !important; text-decoration: none; }
 
 		#calendar h3 {
 			text-align: center;
@@ -159,7 +158,7 @@
 			font-size: 85%;
 		}
 
-		#calendar nav {
+		nav {
 			display: flex;
 			align-items: baseline;
 			margin-bottom: 5px;
@@ -169,13 +168,13 @@
 			text-align: center;
 		}
 
-		#calendar nav > * {
+		nav > * {
 			display: inline-block;
 			flex-grow: 1;
 			flex-shrink: 1;
 		}
 
-		#calendar nav > *:last-child {
+		nav > *:last-child {
 			text-align: right;
 		}
 
@@ -392,8 +391,10 @@
 		</style>
 	</head>
 	<body>
-		<header class="title-bar" id="top">
-			<a class="brand" href="https://sanctus.org">Sanctus.org</a>
+    <div id="top"></div>
+
+    <header class="title-bar">
+			<a href="https://sanctus.org">Sanctus.org</a>
 		</header>
 
     <div id="root"></div>

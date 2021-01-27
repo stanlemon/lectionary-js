@@ -2,7 +2,8 @@
   {
     "type": 0,
     "name": "Title of Week",
-    "is_reading": "0"
+    "is_reading": false,
+    "is_viewable": false
   },
   {
     "type": 1,
@@ -22,7 +23,7 @@
   {
     "type": 18,
     "name": "Collect (TLH)",
-    "is_reading": "0"
+    "is_reading": false
   },
   {
     "type": 19,
@@ -32,42 +33,45 @@
   {
     "type": 20,
     "name": "Collect",
-    "is_reading": "0"
+    "is_reading": false
   },
   {
     "type": 23,
     "name": "Introit",
-    "is_reading": "0"
+    "is_reading": false
   },
   {
     "type": 24,
     "name": "Offertory",
-    "is_reading": "0"
+    "is_reading": false
   },
   {
     "type": 25,
     "name": "Color",
-    "is_reading": "0"
+    "is_reading": false,
+    "is_viewable": false
   },
   {
     "type": 34,
     "name": "Festival",
-    "is_reading": "0"
+    "is_reading": false,
+    "is_viewable": false
   },
   {
     "type": 35,
     "name": "Gradual",
-    "is_reading": "0"
+    "is_reading": false
   },
   {
     "type": 36,
     "name": "Verse",
-    "is_reading": "0"
+    "is_reading": false
   },
   {
     "type": 37,
     "name": "Commemoration",
-    "is_reading": "0"
+    "is_reading": false,
+    "is_viewable": false
   },
   {
     "type": 38,

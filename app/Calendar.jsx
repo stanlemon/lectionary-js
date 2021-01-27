@@ -1,8 +1,11 @@
 import * as React from "react";
 import { DateTime } from "luxon";
 import classNames from "classnames";
-import { CalendarBuilder } from "../src/CalendarBuilder";
-import { KeyLoader } from "../src/KeyLoader";
+import { Link } from "react-router-dom";
+
+import { CalendarBuilder } from "../lib/CalendarBuilder";
+import { KeyLoader } from "../lib/KeyLoader";
+import { findColor, findProperByType, hasReadings } from "../lib/utils";
 
 import lectionary from "../data/lsb-1yr.json";
 import festivals from "../data/lsb-festivals.json";
@@ -12,26 +15,8 @@ import commemorations from "../data/lsb-commemorations.json";
 const loader = new KeyLoader({ lectionary, festivals, daily, commemorations });
 
 export default class Calendar extends React.Component {
-  constructor(props) {
-    super(props);
-
-    const { year, month } = this.getYearAndMonth();
-
-    this.state = {
-      year: year ?? DateTime.local().year,
-      month: month ?? DateTime.local().month,
-      grid: [],
-    };
-  }
-
   componentDidMount() {
     this.build();
-
-    window.onhashchange = () => {
-      const { year, month } = this.getYearAndMonth();
-      this.setState({ year, month });
-      this.build();
-    };
   }
 
   getYearAndMonthLabel({ year, month }) {
@@ -39,18 +24,14 @@ export default class Calendar extends React.Component {
   }
 
   getYearAndMonth() {
-    const [year, month] = window.location.hash
-      .trim()
-      .substring(2, window.location.hash.length - 1)
-      .split("/")
-      .map((v) => {
-        return v.trim() === "" ? null : parseInt(v, 0.1);
-      });
-    return { year, month };
+    return {
+      year: parseInt(this.props.match.params.year),
+      month: parseInt(this.props.match.params.month),
+    };
   }
 
   getNextMonth() {
-    const { year, month } = this.state;
+    const { year, month } = this.getYearAndMonth();
 
     if (month === 12) {
       return { year: year + 1, month: "01" };
@@ -60,7 +41,7 @@ export default class Calendar extends React.Component {
   }
 
   getLastMonth() {
-    const { year, month } = this.state;
+    const { year, month } = this.getYearAndMonth();
 
     if (month === 1) {
       return { year: year - 1, month: 12 };
@@ -78,78 +59,60 @@ export default class Calendar extends React.Component {
   }
 
   build() {
-    const builder = new CalendarBuilder(this.state.year, this.state.month);
+    const { year, month } = this.getYearAndMonth();
 
     window.document.title = `${this.getYearAndMonthLabel({
-      year: this.state.year,
-      month: this.state.month,
+      year,
+      month,
     })} · Sanctus.org`;
 
-    this.setState({
-      grid: builder.build(loader.load),
-    });
+    const builder = new CalendarBuilder(year, month);
+    return builder.build(loader.load);
   }
 
-  /** MOVE TO UTILITIES */
-  findProperByType(propers, type) {
-    return !Array.isArray(propers)
-      ? ""
-      : propers.filter((p) => p.type === type).shift();
-  }
-
-  /** MOVE TO UTILITIES */
-  hasReadings(propers) {
-    return (
-      this.findProperByType(propers, 19) &&
-      this.findProperByType(propers, 2) &&
-      this.findProperByType(propers, 1)
-    );
-  }
-
-  /** MOVE TO UTILITIES */
-  findColor(day) {
-    const festivalColor = this.findProperByType(day?.propers.festivals, 25)
-      ?.text;
-    const dayColor = this.findProperByType(day?.propers.lectionary, 25)?.text;
-    const sundayColor = this.findProperByType(
-      day?.sunday?.propers.lectionary,
-      25
-    )?.text;
-    return dayColor || festivalColor || sundayColor;
-  }
+  navigateToDay = (day) => {
+    const { year, month } = this.getYearAndMonth();
+    this.props.history.push(`/${year}/${month}/${day}/`);
+  };
 
   renderDay(day, weekDay) {
-    const color = this.findColor(day)?.toLowerCase() ?? "none";
+    const color =
+      findColor(
+        // Don't let festivals trump Sundays
+        day?.date.weekday === 7 ? null : day?.propers.festivals,
+        day?.propers.lectionary,
+        day?.sunday?.propers.lectionary
+      )?.toLowerCase() ?? "none";
     const classes = classNames({
       [`highlight-${color}`]: color,
       today: day && day.date && DateTime.local().hasSame(day.date, "day"),
     });
 
     return (
-      <td className={classes} key={weekDay}>
+      <td
+        className={classes}
+        key={weekDay}
+        onClick={() => this.navigateToDay(day.date.day)}
+      >
         {day && day.date && (
           <div>
             <h3>{day.date.day}</h3>
             {[day.propers.lectionary, day.propers.festivals]
-              .filter((p) => p.length > 0 && this.hasReadings(p))
+              .filter((p) => p.length > 0 && hasReadings(p))
               .map((propers, i) => (
                 <div key={i}>
-                  <h4>{this.findProperByType(propers, 0)?.text}</h4>
-                  <div>
-                    Old Test: {this.findProperByType(propers, 19)?.text}
-                  </div>
-                  <div>Epistle: {this.findProperByType(propers, 1)?.text}</div>
-                  <div>Gospel: {this.findProperByType(propers, 2)?.text}</div>
+                  <h4>{findProperByType(propers, 0)?.text}</h4>
+                  <div>Old Test: {findProperByType(propers, 19)?.text}</div>
+                  <div>Epistle: {findProperByType(propers, 1)?.text}</div>
+                  <div>Gospel: {findProperByType(propers, 2)?.text}</div>
                   <br />
                 </div>
               ))}
-            {this.findProperByType(day.propers.commemorations, 37) && (
-              <h5>
-                {this.findProperByType(day.propers.commemorations, 37)?.text}
-              </h5>
+            {findProperByType(day.propers.commemorations, 37) && (
+              <h5>{findProperByType(day.propers.commemorations, 37)?.text}</h5>
             )}
-            <div>{this.findProperByType(day.propers.daily, 38)?.text}</div>
-            <div>{this.findProperByType(day.propers.daily, 39)?.text}</div>
+            <div>{findProperByType(day.propers.daily, 38)?.text}</div>
+            <div>{findProperByType(day.propers.daily, 39)?.text}</div>
           </div>
         )}
       </td>
@@ -157,21 +120,28 @@ export default class Calendar extends React.Component {
   }
 
   render() {
+    const { year, month } = this.getYearAndMonth();
+    const grid = this.build();
+
+    if (!grid) {
+      return <div />;
+    }
+
     return (
       <div id="calendar">
         <nav>
-          <a href={`#/${Object.values(this.getLastMonth()).join("/")}/`}>
+          <Link to={`/${Object.values(this.getLastMonth()).join("/")}/`}>
             &laquo; {this.getYearAndMonthLabel(this.getLastMonth())}
-          </a>
+          </Link>
           <h2>
             {this.getYearAndMonthLabel({
-              year: this.state.year,
-              month: this.state.month,
+              year,
+              month,
             })}
           </h2>
-          <a href={`#/${Object.values(this.getNextMonth()).join("/")}/`}>
+          <Link to={`/${Object.values(this.getNextMonth()).join("/")}/`}>
             {this.getYearAndMonthLabel(this.getNextMonth())} &raquo;
-          </a>
+          </Link>
         </nav>
         <table>
           <thead>
@@ -186,7 +156,7 @@ export default class Calendar extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.grid.map((week, row) => (
+            {grid.map((week, row) => (
               <tr key={row}>
                 {week.map((day, weekDay) => this.renderDay(day, weekDay))}
               </tr>
