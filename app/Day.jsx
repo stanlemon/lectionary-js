@@ -99,7 +99,9 @@ export default class Day extends React.Component {
           <Link to={`/${yesterday.toFormat("y/LL/dd")}/`}>
             &laquo; {yesterday.toFormat("LLLL d, y")}
           </Link>
-
+          <Link className="text-center" to={`/${date.toFormat("y/LL")}/`}>
+            {date.toFormat("LLLL")}
+          </Link>
           <Link to={`/${tomorrow.toFormat("y/LL/dd")}/`}>
             {tomorrow.toFormat("LLLL d, y")} &raquo;
           </Link>
