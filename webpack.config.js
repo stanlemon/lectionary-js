@@ -34,6 +34,9 @@ module.exports = {
     extensions: [".jsx", ".js"],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      PUBLIC_PATH: JSON.stringify(publicPath),
+    }),
     new HtmlWebpackPlugin({
       minify: false,
       template: path.resolve(__dirname, "app", "index.html"),

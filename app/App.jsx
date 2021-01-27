@@ -12,7 +12,7 @@ import Day from "./Day";
 
 function App() {
   return (
-    <Router>
+    <Router basename={PUBLIC_PATH}>
       <Switch>
         <Redirect
           exact
