@@ -11,8 +11,10 @@ import Calendar from "./Calendar";
 import Day from "./Day";
 
 function App() {
+  // eslint-disable-next-line no-undef
+  const basename = PUBLIC_PATH; // Supplied by webpack at build time
   return (
-    <Router basename={PUBLIC_PATH}>
+    <Router basename={basename}>
       <Switch>
         <Redirect
           exact

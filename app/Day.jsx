@@ -1,4 +1,5 @@
 import * as React from "react";
+import PropTypes from "prop-types";
 import { DateTime } from "luxon";
 import { Link } from "react-router-dom";
 
@@ -203,3 +204,13 @@ export default class Day extends React.Component {
     );
   }
 }
+
+Day.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      year: PropTypes.number.isRequired,
+      month: PropTypes.number.isRequired,
+      day: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
+};

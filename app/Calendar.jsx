@@ -1,4 +1,5 @@
 import * as React from "react";
+import PropTypes from "prop-types";
 import { DateTime } from "luxon";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
@@ -167,3 +168,15 @@ export default class Calendar extends React.Component {
     );
   }
 }
+
+Calendar.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      year: PropTypes.number.isRequired,
+      month: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }),
+};
