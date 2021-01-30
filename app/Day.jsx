@@ -208,9 +208,9 @@ export default class Day extends React.Component {
 Day.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      year: PropTypes.number.isRequired,
-      month: PropTypes.number.isRequired,
-      day: PropTypes.number.isRequired,
+      year: PropTypes.string.isRequired,
+      month: PropTypes.string.isRequired,
+      day: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };

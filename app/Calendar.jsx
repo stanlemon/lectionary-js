@@ -172,8 +172,8 @@ export default class Calendar extends React.Component {
 Calendar.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      year: PropTypes.number.isRequired,
-      month: PropTypes.number.isRequired,
+      year: PropTypes.string.isRequired,
+      month: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
   history: PropTypes.shape({
