@@ -139,17 +139,17 @@ export default class Day extends React.Component {
         {[day.propers.lectionary, day.propers.festivals, day.propers.daily]
           .filter((p) => p.length > 0)
           .map((propers, i) => (
-            <>
+            <React.Fragment key={`propers-toc-${i}`}>
               <h4 className={findColor(propers)?.toLowerCase()}>
                 {findProperByType(propers, 0)?.text}
               </h4>
-              <ol key={`propers-${i}`}>
+              <ol>
                 {propers
                   .filter(
                     (proper) => typesById[proper.type]?.is_viewable ?? true
                   )
                   .map((proper, j) => (
-                    <li key={`propers-${i}-${j}`}>
+                    <li key={`propers-toc-${i}-${j}`}>
                       <a href={this.getSectionAnchor(i, proper.type)}>
                         {typesById[proper.type].name}
                         {typesById[proper.type].is_reading && (
@@ -159,72 +159,66 @@ export default class Day extends React.Component {
                     </li>
                   ))}
               </ol>
-            </>
+            </React.Fragment>
           ))}
         <br />
         {[day.propers.lectionary, day.propers.festivals, day.propers.daily]
           .filter((p) => p.length > 0)
           .map((propers, i) => (
-            <>
+            <React.Fragment key={`propers-${i}`}>
               <h2 className={findColor(propers)?.toLowerCase()}>
                 {findProperByType(propers, 0)?.text}
               </h2>
               <hr />
-              <div key={`propers-${i}`}>
-                {propers
-                  .filter(
-                    (proper) => typesById[proper.type]?.is_viewable ?? true
-                  )
-                  .map((proper, j) => (
-                    <>
-                      <div
-                        id={this.getSectionId(i, proper.type)}
-                        key={`propers-${i}-${j}`}
-                      >
-                        <h3>
-                          {typesById[proper.type].name}
+              {propers
+                .filter((proper) => typesById[proper.type]?.is_viewable ?? true)
+                .map((proper, j) => (
+                  <div
+                    id={this.getSectionId(i, proper.type)}
+                    key={`propers-${i}-${j}`}
+                  >
+                    <h3>
+                      {typesById[proper.type].name}
 
-                          {typesById[proper.type].is_reading && (
-                            <>
-                              &nbsp;&middot;&nbsp;
-                              <a
-                                href={`https://www.biblegateway.com/passage/?search=${proper.text}&version=ESV`}
-                              >
-                                {proper.text}
-                              </a>
-                              &nbsp;
-                              <a
-                                title="Open this reading using Accordance, if you don't have it check it out at http://accordancebible.com"
-                                href={this.getAccordanceUrl(proper.text)}
-                              >
-                                <img
-                                  width="24"
-                                  height="24"
-                                  src="https://sanctus.org/images/accordance-64.png"
-                                />
-                              </a>
-                            </>
-                          )}
-                        </h3>
-                        {!typesById[proper.type].is_reading && (
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: proper.text,
-                            }}
-                          />
-                        )}
-                        <div className="text-right">
-                          <small>
-                            <a href="#top">top</a>
-                          </small>
-                        </div>
-                      </div>
-                      <hr />
-                    </>
-                  ))}
-              </div>
+                      {typesById[proper.type].is_reading && (
+                        <>
+                          &nbsp;&middot;&nbsp;
+                          <a
+                            href={`https://www.biblegateway.com/passage/?search=${proper.text}&version=ESV`}
+                          >
+                            {proper.text}
+                          </a>
+                          &nbsp;
+                          <a
+                            title="Open this reading using Accordance, if you don't have it check it out at http://accordancebible.com"
+                            href={this.getAccordanceUrl(proper.text)}
+                          >
+                            <img
+                              width="24"
+                              height="24"
+                              src="https://sanctus.org/images/accordance-64.png"
+                            />
+                          </a>
+                        </>
+                      )}
+                    </h3>
+                    {!typesById[proper.type].is_reading && (
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: proper.text,
+                        }}
+                      />
+                    )}
+                    <hr />
+                    <div className="text-right">
+                      <small>
+                        <a href="#top">top</a>
+                      </small>
+                    </div>
+                  </div>
+                ))}
               <br />
-            </>
+            </React.Fragment>
           ))}
       </div>
     );
