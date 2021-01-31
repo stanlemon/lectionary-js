@@ -22,7 +22,8 @@ types.forEach((type) => {
 const loader = new KeyLoader({
   lectionary,
   festivals,
-  daily: daily.concat(commemorations.map((t) => ({ ...t, type: 0 }))),
+  daily,
+  commemorations,
 });
 
 export default class Day extends React.Component {
@@ -73,13 +74,17 @@ export default class Day extends React.Component {
       sunday: loader.load(sunday, week),
     };
 
-    if (day.propers.daily.length === 2) {
-      // If there is not a commemoration today give the section a title
-      day.propers.daily[day.propers.daily.length] = {
-        type: 0,
-        text: "Daily Lectionary",
-      };
-    }
+    day.propers.daily = [
+      // Find our commemoration and prepend it to the daily lectionary propers
+      {
+        ...(findProperByType(day.propers.commemorations, 37) ?? {
+          text: "Daily Lectionary",
+        }),
+        type: 0, // Reset commemoration description to title
+      },
+      // Only include the first two daily readings (week takes precedent over month)
+      ...day.propers.daily.slice(0, 2),
+    ];
 
     const title = this.getTitle(day);
 
