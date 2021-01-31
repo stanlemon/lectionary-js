@@ -86,21 +86,30 @@ export default class Day extends React.Component {
       ...day.propers.daily.slice(0, 2),
     ];
 
+    // If this is a week day and we have no other propers, append Sunday's collect
+    if (
+      day.propers.lectionary.length === 0 &&
+      day.propers.festivals.length === 0
+    ) {
+      const sundayCollect = findProperByType(day.sunday.lectionary, 20);
+
+      // TODO: Adjust the title
+      if (sundayCollect) {
+        day.propers.daily.splice(1, 0, sundayCollect);
+      }
+    }
+
     const title = this.getTitle(day);
+    const color = findColor(
+      day.propers.festival,
+      day.propers.lectionary,
+      day.sunday.lectionary
+    )?.toLowerCase();
 
     document.title = `${title} · Sanctus.org`;
 
     return (
       <div className="propers">
-        <h2>
-          {date.toLocaleString({
-            weekday: "long",
-            month: "long",
-            day: "2-digit",
-            year: "numeric",
-          })}
-        </h2>
-
         <nav>
           <Link to={`/${yesterday.toFormat("y/LL/dd")}/`}>
             &laquo; {yesterday.toFormat("LLLL d, y")}
@@ -112,6 +121,18 @@ export default class Day extends React.Component {
             {tomorrow.toFormat("LLLL d, y")} &raquo;
           </Link>
         </nav>
+
+        <br />
+
+        <h2 className={color}>
+          {date.toLocaleString({
+            //weekday: "long",
+            month: "long",
+            day: "2-digit",
+            year: "numeric",
+          })}
+        </h2>
+        <h3 className={color}>{title}</h3>
 
         <br />
 

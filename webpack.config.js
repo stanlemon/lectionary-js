@@ -8,7 +8,7 @@ const isProduction = env === "production";
 
 module.exports = {
   mode: env || "development",
-  devtool: isProduction ? "source-map" : "inline-source-map",
+  devtool: isProduction ? "source-map" : "eval-source-map",
   entry: ["./app/App.jsx"],
   output: {
     path: path.resolve(__dirname, "dist"),
