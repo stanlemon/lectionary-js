@@ -1,18 +1,18 @@
 # Lectionary Calculator & Calendar
 
-This is a library for calculating weeks of the Western Christian church calendar. This Christian calendar is often referred to as the liturgical year and each Sunday in it has an associated set readings called pericopes. These pericopes and prayers that go with them are often called propers and together make up the lectionary.
+This is a library for calculating the weeks of the Western Christian church calendar. This Christian calendar is also called the liturgical year.  Each Sunday has a set of appointed readings called pericopes. The lectionary has pericopes as well as prayers, which together are the propers.
 
-This library is a derivative of [sanctus.org](https://sanctus.org) a website that I started back in 2004 with some of my college classmates while studying _Theology & Biblical Languages_. The Lutheran Church was having a liturgical renaissance at that moment as one of the major Lutheran church bodies in North America was creating a new hymnal. Part of that renaissance involved revisiting what some call the _historical lectionary_, a set of Epistle and Gospel lessons that have been used throughout antiquity. That hymnal, the _Lutheran Service Book_ (hereafter LSB), gave new life to the historical readings in the form of its one year lectionary. It also introduced a brand new daily lectionary. Prior to the publishing of the LSB all we had were a set of Microsoft Word docs prepared by those compiling the hymnal. As such [sanctus.org](https://sanctus.org) started as a simple way to facilitate our dorm devotions.
+This library comes from [sanctus.org](https://sanctus.org). I built the first [sanctus.org](https://sanctus.org) with friends while at college. It was first built to help my friends and I organize our dorm devotions. When the Lutheran Church Missouri Synod began work on a new hymnal we added it to the site. The hymnal committee put a Microsoft Word doc with the propers online for review.  It included a revision of the one year lectionary and a new daily lectionary.
+ 
+I am amazed that so many years later people still use [sanctus.org](https://sanctus.org). I open sourced the calculator used by the website in PHP before. This JavaScript library includes a similar calculator as well as calendar building tooling. It also includes structured data of the various propers. I hope that by open sourcing this library it will enable other to build new tools and applications.
 
-Many years after graduating from college I am still amazed and grateful at the traffic that [sanctus.org](https://sanctus.org) receives. I have open sourced the calculator used by the website previously written in PHP, but never any data, calendar building or rendering code. This repository aims to open source as much of the website as I can, both to share knowledge and to enable others to do with the codebase as they please.
-
-_All of the code in this repository is available free under the [MIT](LICENSE) license. Data belongs to the church at large over the ages and the many faithful who have curated it throughout antiquity._
+_All of the code in this repository is available free under the [MIT](LICENSE) license. Lectionary data belongs to the church at large throughout time._
 
 ## Getting Started
 
-There are two pieces to this library, first is the calculator and second is a [React](http://reactjs.org) app that serves as the latest generation of [sanctus.org](https://sanctus.org).
+This repository includes the calculator library and a [React](http://reactjs.org) web app. The web app serves up a version of [sanctus.org](https://sanctus.org).
 
-You can see the app in action at: 
+You can see the app in action at:
 
 Install dependencies:
 
@@ -34,8 +34,8 @@ npm run start
 
 ## Contributing
 
-Almost all of the data supplied here has been entered by hand over the years. If you spot an error, let me know, or better yet submit a pull request with the fix to one of the data files.
+The data in this repository was been entered by hand. If you spot an error, let me know or submit a pull request with the fix.
 
-This repository is **not** intended to include an exhaustive set of Christian lectionaries. If you're interested in using this codebase with a different tradition's propers I think that's great, but upstream contributions will not be merged in. This codebase has been designed so that you can use it as a library in your own project, and you can always fork it too.
+This repository is **not** intended to be an exhaustive set of Christian lectionaries. If you're interested in using this project with another tradition's lectionary that's great. However, it does not mean I will incorporate that lectionary into this repository. This codebase is reusable so that you can incorporate it in your own project.
 
-Any functional change of improvement to the library or application code **must** include a thorough descript, be _linted_ and have corresponding tests.
+Any functional change **must** include a thorough description, be _linted_ and have tests.
