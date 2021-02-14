@@ -39,10 +39,16 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       minify: false,
+      publicPath,
+      filename: "index.html",
       template: path.resolve(__dirname, "app", "index.html"),
     }),
-    new webpack.DefinePlugin({
-      PUBLIC_PATH: JSON.stringify(publicPath),
+    new HtmlWebpackPlugin({
+      minify: false,
+      inject: false,
+      publicPath,
+      filename: "404.html",
+      template: path.resolve(__dirname, "app", "404.html"),
     }),
   ],
 };

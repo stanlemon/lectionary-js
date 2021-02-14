@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { DateTime } from "luxon";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Redirect,
@@ -22,6 +22,16 @@ function App() {
           from="/"
           to={{
             pathname: `/${DateTime.local().year}/${DateTime.local().month}/`,
+          }}
+        />
+        <Redirect
+          exact
+          push
+          from="/today"
+          to={{
+            pathname: `/${DateTime.local().year}/${DateTime.local().month}/${
+              DateTime.local().day
+            }/`,
           }}
         />
         <Route exact path="/:year/:month/" component={Calendar} />
