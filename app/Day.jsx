@@ -106,9 +106,9 @@ export default class Day extends React.Component {
       day.sunday.lectionary
     )?.toLowerCase();
 
-    const scrollTop = () =>{
-      window.scrollTo({top: 0, behavior: 'smooth'});
-   };
+    const scrollTop = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
 
     document.title = `${title} · Sanctus.org`;
 
@@ -189,6 +189,7 @@ export default class Day extends React.Component {
                           &nbsp;&middot;&nbsp;
                           <a
                             target="_blank"
+                            rel="noreferrer"
                             href={`https://www.biblegateway.com/passage/?search=${proper.text}&version=ESV`}
                           >
                             {proper.text}
@@ -217,9 +218,9 @@ export default class Day extends React.Component {
                     <hr />
                     <div className="text-right">
                       <small>
-                        <a
-                          onClick={scrollTop} 
-                          className="scrollTop">top</a>
+                        <a onClick={scrollTop} className="scrollTop">
+                          top
+                        </a>
                       </small>
                     </div>
                   </div>
