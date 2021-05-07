@@ -42,8 +42,12 @@ export default class Day extends React.Component {
     return festivalTitle || weekdayTitle || sundayTitle;
   }
 
-  getSectionAnchor(i, type) {
-    return "#" + this.getSectionId(i, type);
+  getSectionLink(i, type) {
+    return (
+      'javascript:window.scrollTo({ top: document.getElementById("' +
+      this.getSectionId(i, type) +
+      '").offsetTop - 60, behavior: "smooth" });'
+    );
   }
 
   getSectionId(i, type) {
@@ -154,7 +158,7 @@ export default class Day extends React.Component {
                   )
                   .map((proper, j) => (
                     <li key={`propers-toc-${i}-${j}`}>
-                      <a href={this.getSectionAnchor(i, proper.type)}>
+                      <a href={this.getSectionLink(i, proper.type)}>
                         {typesById[proper.type].name}
                         {typesById[proper.type].is_reading && (
                           <>: {proper.text}</>
