@@ -114,7 +114,7 @@ export default class Day extends React.Component {
       window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
-    document.title = `${title} · Sanctus.org`;
+    document.title = `${title} · Lutheran Lectionary`;
 
     return (
       <div className="propers">
@@ -206,7 +206,7 @@ export default class Day extends React.Component {
                             <img
                               width="24"
                               height="24"
-                              src="https://sanctus.org/images/accordance-64.png"
+                              src="/images/accordance-64.png"
                             />
                           </a>
                         </>

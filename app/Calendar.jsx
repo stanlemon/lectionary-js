@@ -65,7 +65,7 @@ export default class Calendar extends React.Component {
     window.document.title = `${this.getYearAndMonthLabel({
       year,
       month,
-    })} · Sanctus.org`;
+    })} · Lutheran Lectionary`;
 
     const builder = new CalendarBuilder(year, month);
     return builder.build(loader.load);

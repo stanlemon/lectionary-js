@@ -2,15 +2,15 @@
 
 This is a library for calculating the weeks of the Western Christian church calendar. This Christian calendar is also called the liturgical year.  Each Sunday has a set of appointed readings called pericopes. The lectionary has pericopes as well as prayers, which together are the propers.
 
-This library comes from [sanctus.org](https://sanctus.org). I built the first [sanctus.org](https://sanctus.org) with friends while at college. It was first built to help my friends and I organize our dorm devotions. When the Lutheran Church Missouri Synod began work on a new hymnal we added it to the site. The hymnal committee put a Microsoft Word doc with the propers online for review.  It included a revision of the one year lectionary and a new daily lectionary.
- 
-I am amazed that so many years later people still use [sanctus.org](https://sanctus.org). I open sourced the calculator used by the website in PHP before. This JavaScript library includes a similar calculator as well as calendar building tooling. It also includes structured data of the various propers. I hope that by open sourcing this library it will enable other to build new tools and applications.
+This library comes from I first build with friends while at college. It was first built to help my friends and I organize our dorm devotions. When the Lutheran Church Missouri Synod began work on a new hymnal we added it to the site. The hymnal committee put a Microsoft Word doc with the propers online for review.  It included a revision of the one year lectionary and a new daily lectionary.
+
+I am amazed that so many years later people still use the site. I open sourced the calculator used by the website in PHP before. This JavaScript library includes a similar calculator as well as calendar building tooling. It also includes structured data of the various propers. I hope that by open sourcing this library it will enable other to build new tools and applications.
 
 _All of the code in this repository is available free under the [MIT](LICENSE) license. Lectionary data belongs to the church at large throughout time._
 
 ## Getting Started
 
-This repository includes the calculator library and a [React](http://reactjs.org) web app. The web app serves up a version of [sanctus.org](https://sanctus.org).
+This repository includes the calculator library and a [React](http://reactjs.org) web app.
 
 You can see the app in action at:
 
