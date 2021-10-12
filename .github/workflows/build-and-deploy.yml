@@ -16,7 +16,7 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: ~/.npm 
+          path: ~/.npm
           key: ${{ runner.OS }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-npm-
@@ -30,7 +30,7 @@ jobs:
       - run: npm ci
       - run: npm run build
         env:
-          PUBLIC_PATH: "/lectionary-js/"
+          PUBLIC_PATH: "/"
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
