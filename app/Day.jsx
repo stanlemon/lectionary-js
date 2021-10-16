@@ -7,6 +7,8 @@ import { Week } from "../lib/Week";
 import { KeyLoader } from "../lib/KeyLoader";
 import { findProperByType, findColor } from "../lib/utils";
 
+import AccordanceIcon from "./images/accordance-64.png";
+
 import lectionary from "../data/lsb-1yr.json";
 import festivals from "../data/lsb-festivals.json";
 import daily from "../data/lsb-daily.json";
@@ -203,11 +205,7 @@ export default class Day extends React.Component {
                             title="Open this reading using Accordance, if you don't have it check it out at http://accordancebible.com"
                             href={this.getAccordanceUrl(proper.text)}
                           >
-                            <img
-                              width="24"
-                              height="24"
-                              src="/images/accordance-64.png"
-                            />
+                            <img width="24" height="24" src={AccordanceIcon} />
                           </a>
                         </>
                       )}
