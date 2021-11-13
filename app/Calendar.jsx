@@ -1,7 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { DateTime } from "luxon";
-import classNames from "classnames";
 import { Link } from "react-router-dom";
 
 import { CalendarBuilder } from "../lib/CalendarBuilder";
@@ -84,14 +83,13 @@ export default class Calendar extends React.Component {
         day?.propers.lectionary,
         day?.sunday?.propers.lectionary
       )?.toLowerCase() ?? "none";
-    const classes = classNames({
-      [`highlight-${color}`]: color,
-      today: day && day.date && DateTime.local().hasSame(day.date, "day"),
-    });
+    const isToday =
+      day && day.date && DateTime.local().hasSame(day.date, "day");
+    const className = `highlight-${color}` + (isToday ? " today" : "");
 
     return (
       <td
-        className={classes}
+        className={className}
         key={weekDay}
         onClick={() => this.navigateToDay(day.date.day)}
       >
