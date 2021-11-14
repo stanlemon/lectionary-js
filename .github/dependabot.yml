@@ -2,6 +2,10 @@ version: 2
 updates:
   # Enable version updates for npm
   - package-ecosystem: "npm"
+    ignore:
+      # Ignore any major update for react router
+      - dependency-name: "react-router-dom"
+        update-types: ["major"]
     # Look for `package.json` and `lock` files in the `root` directory
     directory: "/"
     schedule:
