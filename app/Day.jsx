@@ -28,7 +28,31 @@ const loader = new KeyLoader({
   commemorations,
 });
 
+function renderScripture() {
+  console.log(arguments);
+}
+
 export default class Day extends React.Component {
+  __componentDidMount() {
+    const options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      //body: JSON.stringify(payload),
+      cors: true, // allow cross-origin HTTP request
+      credentials: "same-origin", // This is similar to XHR’s withCredentials flag
+    };
+
+    const url = "https://api.esv.org/v3/passage/html/?q=John+11:35";
+    //const url = `https://api.biblia.com/v1/bible/content/LEB.html.js?passage=John3.16&callback=renderScripture&key=5e5a5a5ca95341a4426432271f1d19db`;
+
+    // SEND REQUEST
+    fetch(url, options)
+      .then((response) => response.text())
+      .then((text) => console.log(text));
+  }
   getDate() {
     const { year, month, day } = this.props.match.params;
     return DateTime.fromObject({ year, month, day });
