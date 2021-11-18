@@ -5,7 +5,6 @@ updates:
     ignore:
       # Ignore any major update for react router
       - dependency-name: "react-router-dom"
-        update-types: ["major"]
     # Look for `package.json` and `lock` files in the `root` directory
     directory: "/"
     schedule:
