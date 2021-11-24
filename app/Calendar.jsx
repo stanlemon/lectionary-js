@@ -1,7 +1,8 @@
 import * as React from "react";
 import PropTypes from "prop-types";
+import { isRequiredNumeric } from "./propTypes/isNumeric";
 import { DateTime } from "luxon";
-import { Link } from "react-router-dom";
+import { Link } from "wouter";
 
 import { CalendarBuilder } from "../lib/CalendarBuilder";
 import { KeyLoader } from "../lib/KeyLoader";
@@ -25,8 +26,8 @@ export default class Calendar extends React.Component {
 
   getYearAndMonth() {
     return {
-      year: parseInt(this.props.match.params.year),
-      month: parseInt(this.props.match.params.month),
+      year: parseInt(this.props.year),
+      month: parseInt(this.props.month),
     };
   }
 
@@ -70,9 +71,9 @@ export default class Calendar extends React.Component {
     return builder.build(loader.load);
   }
 
-  navigateToDay = (day) => {
+  makeUrlToDay = (day) => {
     const { year, month } = this.getYearAndMonth();
-    this.props.history.push(`/${year}/${month}/${day}/`);
+    return `/${year}/${month}/${day}/`;
   };
 
   renderDay(day, weekDay) {
@@ -87,13 +88,13 @@ export default class Calendar extends React.Component {
       day && day.date && DateTime.local().hasSame(day.date, "day");
     const className = `highlight-${color}` + (isToday ? " today" : "");
 
+    if (!day || !day.date) {
+      return <td className={className} key={weekDay} />;
+    }
+
     return (
-      <td
-        className={className}
-        key={weekDay}
-        onClick={() => this.navigateToDay(day.date.day)}
-      >
-        {day && day.date && (
+      <Link to={this.makeUrlToDay(day.date.day)} key={weekDay}>
+        <td className={className}>
           <div>
             <h3>{day.date.day}</h3>
             {[day.propers.lectionary, day.propers.festivals]
@@ -113,8 +114,8 @@ export default class Calendar extends React.Component {
             <div>{findProperByType(day.propers.daily, 38)?.text}</div>
             <div>{findProperByType(day.propers.daily, 39)?.text}</div>
           </div>
-        )}
-      </td>
+        </td>
+      </Link>
     );
   }
 
@@ -168,13 +169,6 @@ export default class Calendar extends React.Component {
 }
 
 Calendar.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      year: PropTypes.string.isRequired,
-      month: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }),
+  year: isRequiredNumeric,
+  month: isRequiredNumeric,
 };

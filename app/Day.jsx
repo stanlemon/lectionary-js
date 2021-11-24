@@ -1,7 +1,8 @@
 import * as React from "react";
 import PropTypes from "prop-types";
+import { isRequiredNumeric } from "./propTypes/isNumeric";
 import { DateTime } from "luxon";
-import { Link } from "react-router-dom";
+import { Link } from "wouter";
 
 import { Week } from "../lib/Week";
 import { KeyLoader } from "../lib/KeyLoader";
@@ -30,7 +31,7 @@ const loader = new KeyLoader({
 
 export default class Day extends React.Component {
   getDate() {
-    const { year, month, day } = this.props.match.params;
+    const { year, month, day } = this.props;
     return DateTime.fromObject({ year, month, day });
   }
 
@@ -44,14 +45,6 @@ export default class Day extends React.Component {
     return festivalTitle || weekdayTitle || sundayTitle;
   }
 
-  getSectionLink(i, type) {
-    return (
-      'javascript:window.scrollTo({ top: document.getElementById("' +
-      this.getSectionId(i, type) +
-      '").offsetTop - 60, behavior: "smooth" });'
-    );
-  }
-
   getSectionId(i, type) {
     return `proper_${i}_${typesById[type].name
       .toLowerCase()
@@ -62,6 +55,19 @@ export default class Day extends React.Component {
     const end = text.indexOf("-") === -1 ? text.length : text.indexOf("-");
     const passage = text.replace(" ", "_").substring(0, end);
     return `accord://read/?#${passage}`;
+  }
+
+  scrollToSection(i, type) {
+    return () => {
+      window.scrollTo({
+        top: document.getElementById(this.getSectionId(i, type)).offsetTop - 60,
+        behavior: "smooth",
+      });
+    };
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   /* eslint-disable max-lines-per-function */
@@ -112,10 +118,6 @@ export default class Day extends React.Component {
       day.sunday.lectionary
     )?.toLowerCase();
 
-    const scrollTop = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
     document.title = `${title} · Lutheran Lectionary`;
 
     return (
@@ -160,7 +162,7 @@ export default class Day extends React.Component {
                   )
                   .map((proper, j) => (
                     <li key={`propers-toc-${i}-${j}`}>
-                      <a href={this.getSectionLink(i, proper.type)}>
+                      <a onClick={this.scrollToSection(i, proper.type)}>
                         {typesById[proper.type].name}
                         {typesById[proper.type].is_reading && (
                           <>: {proper.text}</>
@@ -217,14 +219,10 @@ export default class Day extends React.Component {
                         }}
                       />
                     )}
-                    <hr />
                     <div className="text-right">
-                      <small>
-                        <a onClick={scrollTop} className="scrollTop">
-                          top
-                        </a>
-                      </small>
+                      <a onClick={this.scrollToTop}>top</a>
                     </div>
+                    <hr />
                   </div>
                 ))}
               <br />
@@ -236,11 +234,7 @@ export default class Day extends React.Component {
 }
 
 Day.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      year: PropTypes.string.isRequired,
-      month: PropTypes.string.isRequired,
-      day: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
+  year: isRequiredNumeric,
+  month: isRequiredNumeric,
+  day: isRequiredNumeric,
 };
