@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import { isRequiredNumeric } from "./propTypes/isNumeric";
 import { DateTime } from "luxon";
 import { Link } from "wouter";
