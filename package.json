@@ -16,7 +16,7 @@
     "url": "git@github.com:stanlemon/lectionary-js.git"
   },
   "engines": {
-    "node": ">=14.0"
+    "node": ">=16.0"
   },
   "scripts": {
     "start": "webpack serve",
@@ -37,6 +37,7 @@
     "@babel/eslint-parser": "^7.16.3",
     "@babel/preset-env": "^7.16.0",
     "@babel/preset-react": "^7.16.0",
+    "@testing-library/react": "^12.1.2",
     "babel-loader": "^8.2.3",
     "eslint": "<9.0.0",
     "eslint-config-prettier": "^8.3.0",

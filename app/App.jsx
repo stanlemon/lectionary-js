@@ -30,7 +30,6 @@ function App() {
   return (
     <Router hook={useHashLocation}>
       <Switch>
-        {" "}
         <Route exact path="/:year/:month/">
           {({ month, year }) => <Calendar year={year} month={month} />}
         </Route>
