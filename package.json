@@ -25,7 +25,8 @@
     "test:watch": "jest --watch",
     "lint": "eslint --ext js,jsx ./lib/ ./app/"
   },
-  "main": "lib/index.js",
+  "type": "module",
+  "exports": "./lib/index.js",
   "dependencies": {
     "luxon": "^2.1.1",
     "react": "^17.0.2",

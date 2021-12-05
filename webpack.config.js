@@ -1,17 +1,17 @@
-const webpack = require("webpack");
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+import webpack from "webpack";
+import path from "path";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 const env = process.env.NODE_ENV;
 const publicPath = process.env.PUBLIC_PATH || "/";
 const isProduction = env === "production";
 
-module.exports = {
+export default {
   mode: env || "development",
   devtool: isProduction ? "source-map" : "eval-source-map",
   entry: ["./app/App.jsx"],
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve("./", "dist"),
     publicPath,
   },
   devServer: {
@@ -47,14 +47,14 @@ module.exports = {
       minify: false,
       publicPath,
       filename: "index.html",
-      template: path.resolve(__dirname, "app", "index.html"),
+      template: path.resolve("./", "app", "index.html"),
     }),
     new HtmlWebpackPlugin({
       minify: false,
       inject: false,
       publicPath,
       filename: "404.html",
-      template: path.resolve(__dirname, "app", "404.html"),
+      template: path.resolve("./", "app", "404.html"),
     }),
   ],
 };
