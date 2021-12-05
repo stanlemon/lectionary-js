@@ -1,5 +1,4 @@
 import * as React from "react";
-import { isRequiredNumeric } from "./propTypes/isNumeric";
 import { DateTime } from "luxon";
 import { Link } from "wouter";
 
@@ -28,6 +27,13 @@ const loader = new KeyLoader({
   commemorations,
 });
 
+/**
+ * @typedef {object} Props
+ * @prop {number} year
+ * @prop {number} month
+ * @prop {number} day
+ * @extends {Component<Props>}
+ */
 export default class Day extends React.Component {
   getDate() {
     const { year, month, day } = this.props;
@@ -231,9 +237,3 @@ export default class Day extends React.Component {
     );
   }
 }
-
-Day.propTypes = {
-  year: isRequiredNumeric,
-  month: isRequiredNumeric,
-  day: isRequiredNumeric,
-};

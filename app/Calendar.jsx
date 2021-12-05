@@ -1,5 +1,4 @@
 import * as React from "react";
-import { isRequiredNumeric } from "./propTypes/isNumeric";
 import { DateTime } from "luxon";
 import { Link } from "wouter";
 
@@ -14,6 +13,12 @@ import commemorations from "../data/lsb-commemorations.json";
 
 const loader = new KeyLoader({ lectionary, festivals, daily, commemorations });
 
+/**
+ * @typedef {object} Props
+ * @prop {number} year
+ * @prop {number} month
+ * @extends {Component<Props>}
+ */
 export default class Calendar extends React.Component {
   componentDidMount() {
     this.build();
@@ -166,8 +171,3 @@ export default class Calendar extends React.Component {
     );
   }
 }
-
-Calendar.propTypes = {
-  year: isRequiredNumeric,
-  month: isRequiredNumeric,
-};

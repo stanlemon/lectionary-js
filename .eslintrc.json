@@ -22,7 +22,8 @@
     // If functions are too long, break them up into smaller ones
     "max-lines-per-function": ["error", { "max": 60 }],
     // Linting shouldn't break on this, but we also want to discourage using console logging
-    "no-console": "warn"
+    "no-console": "warn",
+    "react/prop-types": 0
   },
   "settings": {
     "react": {
@@ -32,4 +33,3 @@
   },
   "ignorePatterns": ["**/dist/*"]
 }
-  
