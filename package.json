@@ -41,8 +41,8 @@
     "wouter": "^2.8.0-alpha.2"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.16.0",
-    "@parcel/babel-preset-env": "^2.0.1",
     "@testing-library/react": "^12.1.2",
     "jest": "^27.4.3",
     "parcel": "^2.0.1",
