@@ -41,7 +41,7 @@ export default class Calendar extends React.Component {
     if (month === 12) {
       return { year: year + 1, month: "01" };
     } else {
-      return { year, month: this.paddNumber(month + 1) };
+      return { year, month: this.padNumber(month + 1) };
     }
   }
 
@@ -51,11 +51,11 @@ export default class Calendar extends React.Component {
     if (month === 1) {
       return { year: year - 1, month: 12 };
     } else {
-      return { year, month: this.paddNumber(month - 1) };
+      return { year, month: this.padNumber(month - 1) };
     }
   }
 
-  paddNumber(v) {
+  padNumber(v) {
     if (v < 10) {
       return `0${v}`;
     } else {
