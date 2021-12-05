@@ -6,3 +6,6 @@ node_modules
 
 ## Compiled assets
 dist
+
+## Parcel cache
+.parcel-cache
