@@ -4,6 +4,7 @@ import { DateTime } from 'luxon'
 import { Router, Switch, Route } from 'wouter'
 import Calendar from './Calendar'
 import Day from './Day'
+import './App.css'
 
 const currentLocation = () => {
   return window.location.hash.replace(/^#/, '') || '/'
