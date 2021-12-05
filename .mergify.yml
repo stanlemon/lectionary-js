@@ -1,8 +1,0 @@
-pull_request_rules:
-  - name: Automatically merge dependapot PRs with passing tests
-    conditions:
-      - author~=dependabot
-      - status-success~=build
-    actions:
-      merge:
-        method: squash

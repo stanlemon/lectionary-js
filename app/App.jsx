@@ -1,44 +1,44 @@
-import React, { useState, useEffect } from "react";
-import * as ReactDOM from "react-dom";
-import { DateTime } from "luxon";
-import { Router, Switch, Route } from "wouter";
-import Calendar from "./Calendar";
-import Day from "./Day";
+import React, { useState, useEffect } from 'react'
+import * as ReactDOM from 'react-dom'
+import { DateTime } from 'luxon'
+import { Router, Switch, Route } from 'wouter'
+import Calendar from './Calendar'
+import Day from './Day'
 
 const currentLocation = () => {
-  return window.location.hash.replace(/^#/, "") || "/";
-};
+  return window.location.hash.replace(/^#/, '') || '/'
+}
 
-const navigate = (to) => (window.location.hash = to);
+const navigate = (to) => (window.location.hash = to)
 
 const useHashLocation = () => {
-  const [loc, setLoc] = useState(currentLocation());
+  const [loc, setLoc] = useState(currentLocation())
 
   useEffect(() => {
     // this function is called whenever the hash changes
-    const handler = () => setLoc(currentLocation());
+    const handler = () => setLoc(currentLocation())
 
     // subscribe to hash changes
-    window.addEventListener("hashchange", handler);
-    return () => window.removeEventListener("hashchange", handler);
-  }, []);
+    window.addEventListener('hashchange', handler)
+    return () => window.removeEventListener('hashchange', handler)
+  }, [])
 
-  return [loc, navigate];
-};
+  return [loc, navigate]
+}
 
-function App() {
+function App () {
   return (
     <Router hook={useHashLocation}>
       <Switch>
-        <Route exact path="/:year/:month/">
+        <Route exact path='/:year/:month/'>
           {({ month, year }) => <Calendar year={year} month={month} />}
         </Route>
-        <Route exact path="/:year/:month/:day/">
+        <Route exact path='/:year/:month/:day/'>
           {({ month, year, day }) => (
             <Day year={year} month={month} day={day} />
           )}
         </Route>
-        <Route exact path="/today">
+        <Route exact path='/today'>
           <Day
             year={DateTime.local().year}
             month={DateTime.local().month}
@@ -53,7 +53,7 @@ function App() {
         </Route>
       </Switch>
     </Router>
-  );
+  )
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById('root'))
