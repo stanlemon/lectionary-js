@@ -1,6 +1,14 @@
 {
   "presets": [
-    "@parcel/babel-preset-env",
+    [
+      "@babel/preset-env",
+      {
+        "bugfixes": true,
+        "targets": {
+          "esmodules": true
+        }
+      }
+    ],
     "@babel/preset-react"
   ]
 }
