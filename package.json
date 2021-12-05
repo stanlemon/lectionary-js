@@ -1,6 +1,6 @@
 {
   "name": "@stanlemon/lectionary",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A calculator for the Western Christian church calendar.",
   "keywords": [
     "christian",
@@ -19,8 +19,8 @@
     "node": ">=16.0"
   },
   "scripts": {
-    "start": "webpack serve",
-    "build": "NODE_ENV=production webpack",
+    "start": "parcel app/index.html",
+    "build": "parcel build app/index.html app/404.html",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "standard",
@@ -33,6 +33,7 @@
       "jest"
     ]
   },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "dependencies": {
     "luxon": "^2.1.1",
     "react": "^17.0.2",
@@ -40,18 +41,9 @@
     "wouter": "^2.8.0-alpha.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/eslint-parser": "^7.16.3",
-    "@babel/preset-env": "^7.16.4",
-    "@babel/preset-react": "^7.16.0",
     "@testing-library/react": "^12.1.2",
-    "babel-loader": "^8.2.3",
-    "html-webpack-plugin": "^5.5.0",
     "jest": "^27.4.3",
-    "standard": "^16.0.4",
-    "url-loader": "^4.1.1",
-    "webpack": "^5.64.4",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.6.0"
+    "parcel": "^2.0.1",
+    "standard": "^16.0.4"
   }
 }
