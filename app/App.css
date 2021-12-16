@@ -23,17 +23,34 @@ ol {
 a,
 a:link,
 a:active,
-a:visited {
+a:visited,
+button.link {
   color: navy;
   text-decoration: none;
 }
 
-a:hover {
+a:hover,
+button.link:hover {
   text-decoration: underline;
 }
 
 a.active {
   font-weight: bold;
+}
+
+button.link {
+  display: inline-block;
+  border: none;
+  padding: 0px;
+  margin: 0;
+  text-decoration: none;
+  background: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
 }
 
 h1 {
@@ -397,7 +414,8 @@ sup {
   a,
   a:link,
   a:active,
-  a:visited {
+  a:visited,
+  button.link {
     color: #007db5;
   }
 
