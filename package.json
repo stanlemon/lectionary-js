@@ -19,33 +19,17 @@
     "node": ">=16.0"
   },
   "scripts": {
-    "start": "parcel app/index.html",
-    "build": "parcel build app/index.html app/404.html",
+    "start": "webpack serve",
+    "build": "NODE_ENV=production webpack",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "lint": "standard",
-    "lint:format": "standard --fix"
+    "lint": "eslint --ext js,jsx,ts,tsx ./app/ ./lib/",
+    "lint:format": "eslint --fix --ext js,jsx,ts,tsx ./app/ ./lib/"
   },
   "type": "module",
   "exports": "./lib/index.js",
-  "standard": {
-    "envs": [
-      "jest"
-    ]
-  },
-  "browserslist": "> 0.5%, last 2 versions, not dead",
   "dependencies": {
-    "luxon": "^2.1.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "@stanlemon/webdev": "^0.1.6",
+    "luxon": "^2.2.0",
     "wouter": "^2.8.0-alpha.2"
-  },
-  "devDependencies": {
-    "@babel/preset-env": "^7.16.4",
-    "@babel/preset-react": "^7.16.0",
-    "@testing-library/react": "^12.1.2",
-    "jest": "^27.4.3",
-    "parcel": "^2.0.1",
-    "standard": "^16.0.4"
   }
 }

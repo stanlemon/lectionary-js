@@ -1,17 +1,17 @@
-import * as React from 'react'
-import { DateTime } from 'luxon'
-import { Link } from 'wouter'
+import * as React from "react";
+import { DateTime } from "luxon";
+import { Link } from "wouter";
 
-import { CalendarBuilder } from '../lib/CalendarBuilder'
-import { KeyLoader } from '../lib/KeyLoader'
-import { findColor, findProperByType, hasReadings } from '../lib/utils'
+import { CalendarBuilder } from "../lib/CalendarBuilder";
+import { KeyLoader } from "../lib/KeyLoader";
+import { findColor, findProperByType, hasReadings } from "../lib/utils";
 
-import lectionary from '../data/lsb-1yr.json'
-import festivals from '../data/lsb-festivals.json'
-import daily from '../data/lsb-daily.json'
-import commemorations from '../data/lsb-commemorations.json'
+import lectionary from "../data/lsb-1yr.json";
+import festivals from "../data/lsb-festivals.json";
+import daily from "../data/lsb-daily.json";
+import commemorations from "../data/lsb-commemorations.json";
 
-const loader = new KeyLoader({ lectionary, festivals, daily, commemorations })
+const loader = new KeyLoader({ lectionary, festivals, daily, commemorations });
 
 /**
  * @typedef {object} Props
@@ -20,80 +20,80 @@ const loader = new KeyLoader({ lectionary, festivals, daily, commemorations })
  * @extends {Component<Props>}
  */
 export default class Calendar extends React.Component {
-  componentDidMount () {
-    this.build()
+  componentDidMount() {
+    this.build();
   }
 
-  getYearAndMonthLabel ({ year, month }) {
-    return DateTime.fromObject({ year, month, day: 1 }).toFormat('MMMM y')
+  getYearAndMonthLabel({ year, month }) {
+    return DateTime.fromObject({ year, month, day: 1 }).toFormat("MMMM y");
   }
 
-  getYearAndMonth () {
+  getYearAndMonth() {
     return {
       year: parseInt(this.props.year),
-      month: parseInt(this.props.month)
-    }
+      month: parseInt(this.props.month),
+    };
   }
 
-  getNextMonth () {
-    const { year, month } = this.getYearAndMonth()
+  getNextMonth() {
+    const { year, month } = this.getYearAndMonth();
 
     if (month === 12) {
-      return { year: year + 1, month: '01' }
+      return { year: year + 1, month: "01" };
     } else {
-      return { year, month: this.padNumber(month + 1) }
+      return { year, month: this.padNumber(month + 1) };
     }
   }
 
-  getLastMonth () {
-    const { year, month } = this.getYearAndMonth()
+  getLastMonth() {
+    const { year, month } = this.getYearAndMonth();
 
     if (month === 1) {
-      return { year: year - 1, month: 12 }
+      return { year: year - 1, month: 12 };
     } else {
-      return { year, month: this.padNumber(month - 1) }
+      return { year, month: this.padNumber(month - 1) };
     }
   }
 
-  padNumber (v) {
+  padNumber(v) {
     if (v < 10) {
-      return `0${v}`
+      return `0${v}`;
     } else {
-      return `${v}`
+      return `${v}`;
     }
   }
 
-  build () {
-    const { year, month } = this.getYearAndMonth()
+  build() {
+    const { year, month } = this.getYearAndMonth();
 
     window.document.title = `${this.getYearAndMonthLabel({
       year,
-      month
-    })} · Lutheran Lectionary`
+      month,
+    })} · Lutheran Lectionary`;
 
-    const builder = new CalendarBuilder(year, month)
-    return builder.build(loader)
+    const builder = new CalendarBuilder(year, month);
+    return builder.build(loader);
   }
 
-  makeUrlToDay (day) {
-    const { year, month } = this.getYearAndMonth()
-    return `/${year}/${month}/${day}/`
+  makeUrlToDay(day) {
+    const { year, month } = this.getYearAndMonth();
+    return `/${year}/${month}/${day}/`;
   }
 
-  renderDay (day, weekDay) {
+  renderDay(day, weekDay) {
     const color =
       findColor(
         // Don't let festivals trump Sundays
         day?.date.weekday === 7 ? null : day?.propers.festivals,
         day?.propers.lectionary,
         day?.sunday?.propers.lectionary
-      )?.toLowerCase() ?? 'none'
+      )?.toLowerCase() ?? "none";
     const isToday =
-      day && day.date && DateTime.local().hasSame(day.date, 'day')
-    const className = `highlight-${color}` + (isToday ? ' today' : '')
+      day && day.date && DateTime.local().hasSame(day.date, "day");
+    const className = `highlight-${color}` + (isToday ? " today" : "");
 
     if (!day || !day.date) {
-      return <td className={className} key={weekDay} />
+      return <td className={className} key={weekDay} />;
     }
 
     return (
@@ -120,30 +120,30 @@ export default class Calendar extends React.Component {
           </div>
         </td>
       </Link>
-    )
+    );
   }
 
-  render () {
-    const { year, month } = this.getYearAndMonth()
-    const grid = this.build()
+  render() {
+    const { year, month } = this.getYearAndMonth();
+    const grid = this.build();
 
     if (!grid) {
-      return <div />
+      return <div />;
     }
 
     return (
-      <div id='calendar'>
+      <div id="calendar">
         <nav>
-          <Link to={`/${Object.values(this.getLastMonth()).join('/')}/`}>
+          <Link to={`/${Object.values(this.getLastMonth()).join("/")}/`}>
             &laquo; {this.getYearAndMonthLabel(this.getLastMonth())}
           </Link>
           <h2>
             {this.getYearAndMonthLabel({
               year,
-              month
+              month,
             })}
           </h2>
-          <Link to={`/${Object.values(this.getNextMonth()).join('/')}/`}>
+          <Link to={`/${Object.values(this.getNextMonth()).join("/")}/`}>
             {this.getYearAndMonthLabel(this.getNextMonth())} &raquo;
           </Link>
         </nav>
@@ -168,6 +168,6 @@ export default class Calendar extends React.Component {
           </tbody>
         </table>
       </div>
-    )
+    );
   }
 }
