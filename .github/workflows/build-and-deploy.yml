@@ -12,7 +12,6 @@ jobs:
         with:
           persist-credentials: false
 
-
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
@@ -25,7 +24,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v1
         with:
-          node-version: '14'
+          node-version: "16"
 
       - run: npm ci
       - run: npm run build
