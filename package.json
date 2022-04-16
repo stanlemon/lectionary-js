@@ -28,8 +28,13 @@
   "type": "module",
   "exports": "./lib/index.js",
   "dependencies": {
-    "@stanlemon/webdev": "^0.1.22",
+    "@stanlemon/webdev": "^0.1.31",
     "luxon": "^2.3.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "wouter": "^2.8.0-alpha.2"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^13.1.1"
   }
 }
