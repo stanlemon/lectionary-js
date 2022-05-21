@@ -28,8 +28,8 @@
   "type": "module",
   "exports": "./lib/index.js",
   "dependencies": {
-    "@stanlemon/webdev": "^0.1.43",
-    "luxon": "^2.3.2",
+    "@stanlemon/webdev": "^0.1.50",
+    "luxon": "^2.4.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "wouter": "^2.8.0-alpha.2"
