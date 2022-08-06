@@ -28,7 +28,7 @@
   "type": "module",
   "exports": "./lib/index.js",
   "dependencies": {
-    "@stanlemon/webdev": "^0.1.62",
+    "@stanlemon/webdev": "^0.1.63",
     "luxon": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
