@@ -35,6 +35,6 @@
     "wouter": "^2.8.0-alpha.2"
   },
   "devDependencies": {
-    "@testing-library/react": "^13.3.0"
+    "@testing-library/react": "^13.4.0"
   }
 }
