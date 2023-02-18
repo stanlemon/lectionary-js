@@ -35,6 +35,6 @@
     "wouter": "^2.10.0"
   },
   "devDependencies": {
-    "@testing-library/react": "^13.4.0"
+    "@testing-library/react": "^14.0.0"
   }
 }
