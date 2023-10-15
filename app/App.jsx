@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import * as ReactDOM from "react-dom";
+import { useState, useEffect } from "react";
+import { createRoot } from "react-dom/client";
 import { DateTime } from "luxon";
 import { Router, Switch, Route } from "wouter";
 import Calendar from "./Calendar";
@@ -57,4 +57,6 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(<App />);
