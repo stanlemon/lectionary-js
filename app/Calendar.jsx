@@ -75,6 +75,12 @@ export default class Calendar extends React.Component {
     return builder.build(loader);
   }
 
+  goToDay(day) {
+    return () => {
+      window.location.hash = this.makeUrlToDay(day);
+    };
+  }
+
   makeUrlToDay(day) {
     const { year, month } = this.getYearAndMonth();
     return `/${year}/${month}/${day}/`;
@@ -97,29 +103,31 @@ export default class Calendar extends React.Component {
     }
 
     return (
-      <Link to={this.makeUrlToDay(day.date.day)} key={weekDay}>
-        <td className={className}>
-          <div>
-            <h3>{day.date.day}</h3>
-            {[day.propers.lectionary, day.propers.festivals]
-              .filter((p) => p.length > 0 && hasReadings(p))
-              .map((propers, i) => (
-                <div key={i}>
-                  <h4>{findProperByType(propers, 0)?.text}</h4>
-                  <div>Old Test: {findProperByType(propers, 19)?.text}</div>
-                  <div>Epistle: {findProperByType(propers, 1)?.text}</div>
-                  <div>Gospel: {findProperByType(propers, 2)?.text}</div>
-                  <br />
-                </div>
-              ))}
-            {findProperByType(day.propers.commemorations, 37) && (
-              <h5>{findProperByType(day.propers.commemorations, 37)?.text}</h5>
-            )}
-            <div>{findProperByType(day.propers.daily, 38)?.text}</div>
-            <div>{findProperByType(day.propers.daily, 39)?.text}</div>
-          </div>
-        </td>
-      </Link>
+      <td
+        className={className}
+        onClick={this.goToDay(day.date.day)}
+        key={weekDay}
+      >
+        <div>
+          <h3>{day.date.day}</h3>
+          {[day.propers.lectionary, day.propers.festivals]
+            .filter((p) => p.length > 0 && hasReadings(p))
+            .map((propers, i) => (
+              <div key={i}>
+                <h4>{findProperByType(propers, 0)?.text}</h4>
+                <div>Old Test: {findProperByType(propers, 19)?.text}</div>
+                <div>Epistle: {findProperByType(propers, 1)?.text}</div>
+                <div>Gospel: {findProperByType(propers, 2)?.text}</div>
+                <br />
+              </div>
+            ))}
+          {findProperByType(day.propers.commemorations, 37) && (
+            <h5>{findProperByType(day.propers.commemorations, 37)?.text}</h5>
+          )}
+          <div>{findProperByType(day.propers.daily, 38)?.text}</div>
+          <div>{findProperByType(day.propers.daily, 39)?.text}</div>
+        </div>
+      </td>
     );
   }
 

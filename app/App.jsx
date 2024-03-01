@@ -1,31 +1,10 @@
-import { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { DateTime } from "luxon";
 import { Router, Switch, Route } from "wouter";
+import { useHashLocation } from "wouter/use-hash-location";
 import Calendar from "./Calendar";
 import Day from "./Day";
 import "./App.css";
-
-const currentLocation = () => {
-  return window.location.hash.replace(/^#/, "") || "/";
-};
-
-const navigate = (to) => (window.location.hash = to);
-
-const useHashLocation = () => {
-  const [loc, setLoc] = useState(currentLocation());
-
-  useEffect(() => {
-    // this function is called whenever the hash changes
-    const handler = () => setLoc(currentLocation());
-
-    // subscribe to hash changes
-    window.addEventListener("hashchange", handler);
-    return () => window.removeEventListener("hashchange", handler);
-  }, []);
-
-  return [loc, navigate];
-};
 
 function App() {
   return (
