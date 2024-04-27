@@ -30,11 +30,11 @@
   "dependencies": {
     "@stanlemon/webdev": "^0.1.181",
     "luxon": "^3.4.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "wouter": "^3.1.2"
   },
   "devDependencies": {
-    "@testing-library/react": "^15.0.2"
+    "@testing-library/react": "^15.0.5"
   }
 }
