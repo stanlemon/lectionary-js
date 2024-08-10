@@ -29,7 +29,7 @@
   "exports": "./lib/index.js",
   "dependencies": {
     "@stanlemon/webdev": "^0.1.191",
-    "luxon": "^3.4.4",
+    "luxon": "^3.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "wouter": "^3.3.1"
