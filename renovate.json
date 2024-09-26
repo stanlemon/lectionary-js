@@ -8,6 +8,16 @@
   "schedule": [
     "after 10am and before 4pm on Saturday"
   ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "automergeType": "branch",
+    "schedule": [
+      "on the first day of the month",
+      "after 10am and before 4pm"
+    ]
+  },
+  "automerge": true,
   "packageRules": [
     {
       "packageNames": [
@@ -34,7 +44,6 @@
       "matchUpdateTypes": [
         "major"
       ],
-      "automerge": true,
       "automergeType": "pr"
     },
     {
@@ -47,8 +56,17 @@
         "pin",
         "digest"
       ],
-      "automerge": true,
-      "automergeType": "branch"
+      "automergeType": "branch",
+      "stabilityDays": 14
+    },
+    {
+      "matchUpdateTypes": [
+        "security"
+      ],
+      "schedule": [
+        "at any time"
+      ],
+      "automergeType": "pr"
     }
   ]
 }
