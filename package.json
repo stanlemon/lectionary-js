@@ -22,13 +22,13 @@
     "start": "webpack serve",
     "build": "NODE_ENV=production webpack",
     "test": "jest",
-    "lint": "eslint --ext js,jsx,ts,tsx ./app/ ./lib/",
-    "lint:format": "eslint --fix --ext js,jsx,ts,tsx ./app/ ./lib/"
+    "lint": "eslint .",
+    "lint:format": "eslint --fix ."
   },
   "type": "module",
   "exports": "./lib/index.js",
   "dependencies": {
-    "@stanlemon/webdev": "^0.1.198",
+    "@stanlemon/webdev": "^0.1.200",
     "luxon": "^3.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
