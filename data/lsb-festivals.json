@@ -1288,18 +1288,25 @@
     "text": true
   },
   {
-    "type": 1,
+    "type": 19,
     "week": null,
     "month": 10,
     "day": 31,
     "text": "Rev. 14:6-7"
   },
   {
+    "type": 1,
+    "week": null,
+    "month": 10,
+    "day": 31,
+    "text": "Rom. 3:19–28"
+  },
+  {
     "type": 2,
     "week": null,
     "month": 10,
     "day": 31,
-    "text": "Matt. 11:12-15"
+    "text": "John 8:31-36"
   },
   {
     "type": 25,
