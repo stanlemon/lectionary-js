@@ -73,7 +73,6 @@ export default class Day extends React.Component {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  /* eslint-disable max-lines-per-function */
   render() {
     const date = this.getDate();
     const yesterday = this.getDate().minus({ days: 1 });
