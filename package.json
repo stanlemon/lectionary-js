@@ -16,7 +16,7 @@
     "url": "git@github.com:stanlemon/lectionary-js.git"
   },
   "engines": {
-    "node": ">=16.13"
+    "node": ">=20.0"
   },
   "scripts": {
     "start": "webpack serve",
