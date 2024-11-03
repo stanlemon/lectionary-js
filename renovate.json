@@ -1,6 +1,6 @@
 {
   "extends": [
-    "config:base",
+    "config:recommended",
     "group:allNonMajor"
   ],
   "timezone": "America/Indiana/Indianapolis",
@@ -20,13 +20,13 @@
   "automerge": true,
   "packageRules": [
     {
-      "packageNames": [
+      "matchPackageNames": [
         "node"
       ],
       "enabled": false
     },
     {
-      "packageNames": [
+      "matchPackageNames": [
         "@types/node"
       ],
       "enabled": false
@@ -57,7 +57,7 @@
         "digest"
       ],
       "automergeType": "branch",
-      "stabilityDays": 14
+      "minimumReleaseAge": "14 days"
     },
     {
       "matchUpdateTypes": [
