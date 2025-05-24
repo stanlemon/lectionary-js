@@ -1,6 +1,6 @@
 {
   "name": "@stanlemon/lectionary",
-  "version": "1.1.29",
+  "version": "1.1.30",
   "description": "A calculator for the Western Christian church calendar.",
   "keywords": [
     "christian",
@@ -16,7 +16,7 @@
     "url": "git@github.com:stanlemon/lectionary-js.git"
   },
   "engines": {
-    "node": ">=20.19.1"
+    "node": ">=20.19.2"
   },
   "scripts": {
     "start": "webpack serve",
