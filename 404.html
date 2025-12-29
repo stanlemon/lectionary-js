@@ -1,0 +1,13 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Redirecting...</title></head><body><script>const PUBLIC_PATH = '/';
+
+    let pathname = window.location.pathname;
+    // If we are not serving from the root, remove the public path first.
+    if (pathname.indexOf(PUBLIC_PATH) > -1) {
+      pathname = pathname.substring(PUBLIC_PATH.length - 1);
+    }
+
+    const url = window.location.origin + PUBLIC_PATH + '#' + pathname
+
+    console.log(`Redirecting from ${window.location.href} to ${url}`);
+
+    window.location.href = url;</script></body></html>
