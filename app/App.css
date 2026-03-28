@@ -351,8 +351,17 @@ sup {
   }
 
   #calendar nav {
-    padding-left: 7px;
-    padding-right: 7px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Allow nav flex items to shrink below content width */
+  #calendar nav > * {
+    min-width: 0;
+  }
+
+  #calendar nav h2 {
+    font-size: 20px;
   }
 
   #calendar table {
