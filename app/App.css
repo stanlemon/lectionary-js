@@ -354,50 +354,62 @@ sup {
     border-right: 0px;
   }
 
-  /* Force table to not be like tables anymore */
-  #calendar table,
-  #calendar thead,
-  #calendar tbody,
-  #calendar th,
+  /* Compact 7-column grid — keep table layout, shrink cells */
   #calendar td,
-  #calendar tr {
-    display: block;
+  #calendar th {
+    padding: 6px 2px;
+    font-size: 11px;
+    text-align: center;
+    vertical-align: middle;
   }
 
-  #calendar {
-    border-left: none;
-    border-right: none;
+  #calendar h3 {
+    font-size: 14px;
+    margin: 0;
   }
 
-  /* Hide table headers (but not display: none;, for accessibility) */
-  #calendar thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
+  /* Hide reading content inside cells; only show the date number */
+  #calendar td .day-readings {
+    display: none;
   }
 
-  #calendar td {
-    /* Behave  like a "row" */
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    position: relative;
-    white-space: normal;
-    text-align: left;
-    font-size: 18px;
+  /* Today gets a visible ring on mobile too */
+  td.today {
+    border: 3px #000 solid;
   }
 
-  #calendar td:before {
-    /* Now like a table header */
-    position: absolute;
-    /* Top/left values mimic padding */
-    top: 6px;
-    left: 6px;
-    width: 45%;
-    padding-right: 10px;
-    white-space: nowrap;
-    text-align: left;
+  /* Detail panel rendered below the calendar table */
+  .day-detail-panel {
+    border-top: 2px solid #000;
+    padding: 12px 12px 20px;
+    background: #f9f9f9;
+  }
+
+  .day-detail-panel .day-detail-date {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+  }
+
+  .day-detail-panel .day-detail-title {
     font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: #000;
+  }
+
+  .day-detail-panel .day-detail-readings {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #222;
+    margin-bottom: 10px;
+  }
+
+  .day-detail-panel a.day-detail-link {
+    color: navy;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
   }
 
   .highlight-none {
