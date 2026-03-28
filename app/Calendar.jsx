@@ -109,25 +109,24 @@ export default class Calendar extends React.Component {
       >
         <div>
           <h3>{day.date.day}</h3>
-          {[
-            { propers: day.propers.lectionary, id: "lectionary" },
-            { propers: day.propers.festivals, id: "festivals" },
-          ]
-            .filter(({ propers: p }) => p.length > 0 && hasReadings(p))
-            .map(({ propers, id }) => (
-              <div key={id}>
-                <h4>{findProperByType(propers, 0)?.text}</h4>
-                <div>Old Test: {findProperByType(propers, 19)?.text}</div>
-                <div>Epistle: {findProperByType(propers, 1)?.text}</div>
-                <div>Gospel: {findProperByType(propers, 2)?.text}</div>
-                <br />
-              </div>
-            ))}
-          {findProperByType(day.propers.commemorations, 37) && (
-            <h5>{findProperByType(day.propers.commemorations, 37)?.text}</h5>
-          )}
-          <div>{findProperByType(day.propers.daily, 38)?.text}</div>
-          <div>{findProperByType(day.propers.daily, 39)?.text}</div>
+          <div className="day-readings">
+            {[day.propers.lectionary, day.propers.festivals]
+              .filter((p) => p.length > 0 && hasReadings(p))
+              .map((propers, i) => (
+                <div key={i}>
+                  <h4>{findProperByType(propers, 0)?.text}</h4>
+                  <div>Old Test: {findProperByType(propers, 19)?.text}</div>
+                  <div>Epistle: {findProperByType(propers, 1)?.text}</div>
+                  <div>Gospel: {findProperByType(propers, 2)?.text}</div>
+                  <br />
+                </div>
+              ))}
+            {findProperByType(day.propers.commemorations, 37) && (
+              <h5>{findProperByType(day.propers.commemorations, 37)?.text}</h5>
+            )}
+            <div>{findProperByType(day.propers.daily, 38)?.text}</div>
+            <div>{findProperByType(day.propers.daily, 39)?.text}</div>
+          </div>
         </div>
       </td>
     );
@@ -160,13 +159,13 @@ export default class Calendar extends React.Component {
         <table>
           <thead>
             <tr>
-              <th>Sunday</th>
-              <th>Monday</th>
-              <th>Tuesday</th>
-              <th>Wednesday</th>
-              <th>Thursday</th>
-              <th>Friday</th>
-              <th>Saturday</th>
+              <th>Su</th>
+              <th>Mo</th>
+              <th>Tu</th>
+              <th>We</th>
+              <th>Th</th>
+              <th>Fr</th>
+              <th>Sa</th>
             </tr>
           </thead>
           <tbody>
