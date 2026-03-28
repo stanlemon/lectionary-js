@@ -26,6 +26,16 @@ export default class Calendar extends React.Component {
 
   componentDidMount() {
     this.build();
+    this._onResize = () => {
+      if (window.innerWidth > 480 && this.state.selectedDay) {
+        this.setState({ selectedDay: null });
+      }
+    };
+    window.addEventListener("resize", this._onResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this._onResize);
   }
 
   componentDidUpdate(prevProps) {
