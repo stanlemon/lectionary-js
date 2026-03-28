@@ -22,20 +22,23 @@ describe("Calendar", () => {
     expect(screen.queryByText("Monday")).not.toBeInTheDocument();
   });
 
-  it("applies festival-day class to Sunday date numbers", () => {
+  it("applies bold classes to Sundays and festival weekdays", () => {
     render(<Calendar year={2021} month={12} />);
 
-    // Dec 5 2021 is a Sunday (Advent 2)
+    // Dec 5 2021 is a Sunday — gets sunday-day class
     const sundayNumber = screen.getByText("5", { selector: "h3" });
-    expect(sundayNumber).toHaveClass("festival-day");
+    expect(sundayNumber).toHaveClass("sunday-day");
+    expect(sundayNumber).not.toHaveClass("festival-day");
 
-    // Dec 1 2021 is a Wednesday — should not be bold
+    // Dec 1 2021 is a plain Wednesday — no bold classes
     const weekdayNumber = screen.getByText("1", { selector: "h3" });
+    expect(weekdayNumber).not.toHaveClass("sunday-day");
     expect(weekdayNumber).not.toHaveClass("festival-day");
 
-    // Dec 27 2021 is a Monday with St. John the Apostle festival propers — should also be bold
+    // Dec 27 2021 is a Monday with St. John the Apostle festival propers — gets festival-day class
     const festivalWeekdayNumber = screen.getByText("27", { selector: "h3" });
     expect(festivalWeekdayNumber).toHaveClass("festival-day");
+    expect(festivalWeekdayNumber).not.toHaveClass("sunday-day");
   });
 
   it("shows a detail panel below the calendar when a date is tapped on mobile", () => {

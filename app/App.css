@@ -196,7 +196,8 @@ h5 {
   text-align: center;
 }
 
-#calendar .festival-day {
+#calendar .festival-day,
+#calendar .sunday-day {
   font-weight: bold;
 }
 
@@ -386,6 +387,11 @@ sup {
   /* Hide reading content inside cells; only show the date number */
   #calendar td .day-readings {
     display: none;
+  }
+
+  /* On mobile, only bold actual festival days — not plain Sundays */
+  #calendar .sunday-day:not(.festival-day) {
+    font-weight: normal;
   }
 
   /* Today gets a visible ring on mobile too */
