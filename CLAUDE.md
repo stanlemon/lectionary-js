@@ -9,9 +9,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run start        # Webpack dev server
-npm run build        # Production build (NODE_ENV=production)
-npm run test         # Run Jest tests
+npm run start        # Vite dev server
+npm run build        # Production build
+npm run test         # Run Vitest tests
 npm run lint         # ESLint check
 npm run lint:format  # ESLint with --fix
 ```
@@ -24,6 +24,11 @@ npm run test -- Year.test.js
 Watch mode:
 ```bash
 npm run test -- --watch
+```
+
+Coverage report:
+```bash
+npm run test -- --coverage
 ```
 
 ## Architecture
@@ -62,7 +67,26 @@ JSON files for propers (appointed readings). Each entry: `{ type, week, month, d
 
 ### Build & Config
 
-Build, Jest, and ESLint configs are thin wrappers that re-export from `@stanlemon/webdev` and `@stanlemon/eslint-config`. App entry points come from `.env` (`WEBDEV_ENTRY`, `WEBDEV_HTML`).
+Build tooling uses Vite (`vite.config.js`). Tests run via Vitest with jsdom. ESLint uses a flat config (`eslint.config.js`).
+
+## Testing
+
+Tests live alongside source files (`*.test.js` / `*.test.jsx`). Coverage runs at ~95% statements.
+
+### Structure
+
+- `lib/` — Unit tests for all core classes. `Week.test.js` is data-driven from `data/tests.json`, which was generated from the original PHP implementation and covers 10,000+ date/week combinations.
+- `app/` — Component tests using `@testing-library/react`. `App.test.jsx` covers routing via hash location.
+
+### Key pitfalls
+
+**Date string format matters.** `new Date("2022-12-25")` parses as **UTC midnight**, which in US timezones resolves to Dec 24 locally. Always use `MM/DD/YYYY` format (`new Date("12/25/2022")`) when constructing dates for `Week` in tests — this matches the format used throughout `data/tests.json`.
+
+**Luxon Sunday is weekday 7, not 0.** The codebase normalizes Sunday to `0` in loader and week logic, but Luxon's `.weekday` returns `7` for Sunday. Tests that verify Sunday matching should account for this.
+
+**Class components and HMR.** React Fast Refresh only works with function components. Changes to class components (`Calendar.jsx`, `Day.jsx`) require a full page refresh in the dev server.
+
+**`App.jsx` is importable in tests** because the `createRoot` mount is guarded by `if (container)`. Import the named `App` export, not the default module side-effect.
 
 ## Key Domain Notes
 
