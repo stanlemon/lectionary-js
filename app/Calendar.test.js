@@ -3,7 +3,7 @@
  */
 import * as React from "react";
 import Calendar from "./Calendar";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 describe("Calendar", () => {
   it("uses abbreviated day-of-week headers", () => {
@@ -36,6 +36,31 @@ describe("Calendar", () => {
     // Dec 27 2021 is a Monday with St. John the Apostle festival propers — should also be bold
     const festivalWeekdayNumber = screen.getByText("27", { selector: "h3" });
     expect(festivalWeekdayNumber).toHaveClass("festival-day");
+  });
+
+  it("shows a detail panel below the calendar when a date is tapped on mobile", () => {
+    // Simulate mobile viewport
+    Object.defineProperty(window, "innerWidth", {
+      writable: true,
+      configurable: true,
+      value: 400,
+    });
+
+    render(<Calendar year={2021} month={12} />);
+
+    // Tap Dec 5 (Sunday — Advent 2 "Populus Zion")
+    const dayCell = screen.getByText("5", { selector: "h3" }).closest("td");
+    fireEvent.click(dayCell);
+
+    expect(screen.getByText("Populus Zion (Advent 2)")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /view full readings/i })).toBeInTheDocument();
+
+    // Tap Dec 1 (Wednesday — no Sunday lectionary of its own)
+    const day1Cell = screen.getByText("1", { selector: "h3" }).closest("td");
+    fireEvent.click(day1Cell);
+
+    // Panel should update — Advent 1 Sunday's name
+    expect(screen.getByText("Ad Te Levavi (Advent 1)")).toBeInTheDocument();
   });
 
   it("renders", () => {

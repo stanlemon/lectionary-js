@@ -19,6 +19,11 @@ const loader = new KeyLoader({ lectionary, festivals, daily, commemorations });
  * @extends {Component<Props>}
  */
 export default class Calendar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { selectedDay: null };
+  }
+
   componentDidMount() {
     this.build();
   }
@@ -80,6 +85,14 @@ export default class Calendar extends React.Component {
     };
   }
 
+  selectDay(day) {
+    if (window.innerWidth <= 480) {
+      this.setState({ selectedDay: day });
+    } else {
+      this.goToDay(day.date.day)();
+    }
+  }
+
   makeUrlToDay(day) {
     const { year, month } = this.getYearAndMonth();
     return `/${year}/${month}/${day}/`;
@@ -108,7 +121,7 @@ export default class Calendar extends React.Component {
     return (
       <td
         className={className}
-        onClick={this.goToDay(day.date.day)}
+        onClick={() => this.selectDay(day)}
         key={weekDay}
       >
         <div>
@@ -120,7 +133,6 @@ export default class Calendar extends React.Component {
               .filter((p) => p.length > 0 && hasReadings(p))
               .map((propers, i) => (
                 <div key={i}>
-                  <h4>{findProperByType(propers, 0)?.text}</h4>
                   <div>Old Test: {findProperByType(propers, 19)?.text}</div>
                   <div>Epistle: {findProperByType(propers, 1)?.text}</div>
                   <div>Gospel: {findProperByType(propers, 2)?.text}</div>
@@ -135,6 +147,54 @@ export default class Calendar extends React.Component {
           </div>
         </div>
       </td>
+    );
+  }
+
+  renderDetailPanel() {
+    const { selectedDay } = this.state;
+    if (!selectedDay) return null;
+
+    const { year, month } = this.getYearAndMonth();
+    const { date, propers, sunday } = selectedDay;
+
+    const title =
+      findProperByType(propers.festivals, 0)?.text ||
+      findProperByType(propers.lectionary, 0)?.text ||
+      findProperByType(sunday?.propers.lectionary, 0)?.text;
+
+    const readingPropers =
+      propers.festivals.length > 0 && hasReadings(propers.festivals)
+        ? propers.festivals
+        : propers.lectionary.length > 0
+          ? propers.lectionary
+          : sunday?.propers.lectionary ?? [];
+
+    const ot = findProperByType(readingPropers, 19)?.text;
+    const epistle = findProperByType(readingPropers, 1)?.text;
+    const gospel = findProperByType(readingPropers, 2)?.text;
+
+    const dateLabel = date.toLocaleString({
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+
+    return (
+      <div className="day-detail-panel">
+        <div className="day-detail-date">{dateLabel}</div>
+        <div className="day-detail-title">{title}</div>
+        <div className="day-detail-readings">
+          {ot && <div>Old Test: {ot}</div>}
+          {epistle && <div>Epistle: {epistle}</div>}
+          {gospel && <div>Gospel: {gospel}</div>}
+        </div>
+        <Link
+          className="day-detail-link"
+          to={`/${year}/${month}/${date.day}/`}
+        >
+          View full readings →
+        </Link>
+      </div>
     );
   }
 
@@ -185,6 +245,7 @@ export default class Calendar extends React.Component {
             })}
           </tbody>
         </table>
+        {this.renderDetailPanel()}
       </div>
     );
   }
