@@ -389,11 +389,6 @@ sup {
     display: none;
   }
 
-  /* On mobile, only bold actual festival days — not plain Sundays */
-  #calendar .sunday-day:not(.festival-day) {
-    font-weight: normal;
-  }
-
   /* Today gets a visible ring on mobile too */
   td.today {
     border: 3px #000 solid;
