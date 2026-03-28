@@ -1,10 +1,12 @@
-import { createRoot } from "react-dom/client";
+import "./App.css";
+
 import { DateTime } from "luxon";
-import { Router, Switch, Route } from "wouter";
+import { createRoot } from "react-dom/client";
+import { Route, Router, Switch } from "wouter";
 import { useHashLocation } from "wouter/use-hash-location";
+
 import Calendar from "./Calendar";
 import Day from "./Day";
-import "./App.css";
 
 function App() {
   return (

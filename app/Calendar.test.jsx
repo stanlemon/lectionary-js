@@ -1,9 +1,9 @@
 /**
  * @jest-environment jsdom
  */
-import * as React from "react";
-import Calendar from "./Calendar";
 import { render, screen } from "@testing-library/react";
+
+import Calendar from "./Calendar";
 
 describe("Calendar", () => {
   it("renders", () => {

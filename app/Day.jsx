@@ -1,17 +1,15 @@
-import * as React from "react";
 import { DateTime } from "luxon";
+import * as React from "react";
 import { Link } from "wouter";
 
-import { Week } from "../lib/Week";
-import { KeyLoader } from "../lib/KeyLoader";
-import { findProperByType, findColor } from "../lib/utils";
-
 import lectionary from "../data/lsb-1yr.json";
-import festivals from "../data/lsb-festivals.json";
-import daily from "../data/lsb-daily.json";
 import commemorations from "../data/lsb-commemorations.json";
-
+import daily from "../data/lsb-daily.json";
+import festivals from "../data/lsb-festivals.json";
 import types from "../data/types.json";
+import { KeyLoader } from "../lib/KeyLoader";
+import { findColor, findProperByType } from "../lib/utils";
+import { Week } from "../lib/Week";
 
 const typesById = {};
 types.forEach((type) => {

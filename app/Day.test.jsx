@@ -1,9 +1,9 @@
 /**
  * @jest-environment jsdom
  */
-import * as React from "react";
-import Day from "./Day";
 import { render, screen } from "@testing-library/react";
+
+import Day from "./Day";
 
 describe("Day", () => {
   it("renders", () => {
