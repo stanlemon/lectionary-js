@@ -22,9 +22,9 @@ describe("App", () => {
 
   it("renders the calendar by default", () => {
     render(<App />);
-    // Calendar renders a table with day-of-week column headers
-    expect(screen.getByText("Sunday")).toBeInTheDocument();
-    expect(screen.getByText("Saturday")).toBeInTheDocument();
+    // Calendar renders a table with abbreviated day-of-week column headers
+    expect(screen.getByText("Su")).toBeInTheDocument();
+    expect(screen.getByText("Sa")).toBeInTheDocument();
   });
 
   it("routes to a specific month calendar via /:year/:month/", () => {
