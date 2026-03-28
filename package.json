@@ -19,22 +19,28 @@
     "node": ">=22.21.1"
   },
   "scripts": {
-    "start": "webpack serve",
-    "build": "NODE_ENV=production webpack",
-    "test": "jest",
+    "start": "vite",
+    "build": "vite build",
+    "test": "vitest run",
     "lint": "eslint .",
     "lint:format": "eslint --fix ."
   },
   "type": "module",
   "exports": "./lib/index.js",
   "dependencies": {
-    "@stanlemon/webdev": "^0.2.69",
     "luxon": "^3.7.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "wouter": "^3.9.0"
   },
   "devDependencies": {
-    "@testing-library/react": "16.3.2"
+    "@stanlemon/eslint-config": "^3.0.70",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "16.3.2",
+    "@vitejs/plugin-react": "^4.5.2",
+    "eslint": "^9.39.4",
+    "jsdom": "^26.1.0",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
   }
 }
