@@ -131,7 +131,9 @@ export default class Calendar extends React.Component {
     }
 
     const isSunday = day.date.weekday === 7;
-    const hasFestivalPropers = day.propers.festivals.length > 0;
+    const hasFestivalPropers =
+      day.propers.festivals.length > 0 ||
+      (!isSunday && day.propers.lectionary.length > 0);
     const h3ClassName =
       [isSunday ? "sunday-day" : null, hasFestivalPropers ? "festival-day" : null]
         .filter(Boolean)
