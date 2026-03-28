@@ -39,6 +39,7 @@ describe("Calendar", () => {
   });
 
   it("shows a detail panel below the calendar when a date is tapped on mobile", () => {
+    const originalInnerWidth = window.innerWidth;
     // Simulate mobile viewport
     Object.defineProperty(window, "innerWidth", {
       writable: true,
@@ -53,8 +54,12 @@ describe("Calendar", () => {
     fireEvent.click(dayCell);
 
     const panel = document.querySelector(".day-detail-panel");
-    expect(within(panel).getByText("Populus Zion (Advent 2)")).toBeInTheDocument();
-    expect(within(panel).getByRole("link", { name: /view full readings/i })).toBeInTheDocument();
+    expect(
+      within(panel).getByText("Populus Zion (Advent 2)")
+    ).toBeInTheDocument();
+    expect(
+      within(panel).getByRole("link", { name: /view full readings/i })
+    ).toBeInTheDocument();
 
     // Tap Dec 1 (Wednesday — no Sunday lectionary of its own)
     const day1Cell = screen.getByText("1", { selector: "h3" }).closest("td");
@@ -62,7 +67,15 @@ describe("Calendar", () => {
 
     // Panel should update — Advent 1 Sunday's name
     const panel2 = document.querySelector(".day-detail-panel");
-    expect(within(panel2).getByText("Ad Te Levavi (Advent 1)")).toBeInTheDocument();
+    expect(
+      within(panel2).getByText("Ad Te Levavi (Advent 1)")
+    ).toBeInTheDocument();
+
+    Object.defineProperty(window, "innerWidth", {
+      writable: true,
+      configurable: true,
+      value: originalInnerWidth,
+    });
   });
 
   it("renders", () => {

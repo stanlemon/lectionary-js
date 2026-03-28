@@ -28,6 +28,15 @@ export default class Calendar extends React.Component {
     this.build();
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.year !== this.props.year ||
+      prevProps.month !== this.props.month
+    ) {
+      this.setState({ selectedDay: null });
+    }
+  }
+
   getYearAndMonthLabel({ year, month }) {
     return DateTime.fromObject({ year, month, day: 1 }).toFormat("MMMM y");
   }
@@ -168,7 +177,7 @@ export default class Calendar extends React.Component {
         ? propers.festivals
         : propers.lectionary.length > 0
           ? propers.lectionary
-          : sunday?.propers.lectionary ?? [];
+          : (sunday?.propers.lectionary ?? []);
 
     const ot = findProperByType(readingPropers, 19)?.text;
     const epistle = findProperByType(readingPropers, 1)?.text;
@@ -189,10 +198,7 @@ export default class Calendar extends React.Component {
           {epistle && <div>Epistle: {epistle}</div>}
           {gospel && <div>Gospel: {gospel}</div>}
         </div>
-        <Link
-          className="day-detail-link"
-          to={`/${year}/${month}/${date.day}/`}
-        >
+        <Link className="day-detail-link" to={`/${year}/${month}/${date.day}/`}>
           View full readings →
         </Link>
       </div>
