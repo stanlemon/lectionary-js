@@ -382,6 +382,7 @@ sup {
   #calendar h3 {
     font-size: 14px;
     margin: 0;
+    font-weight: normal;
   }
 
   /* Hide reading content inside cells; only show the date number */
