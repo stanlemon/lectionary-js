@@ -3,7 +3,7 @@
  */
 import * as React from "react";
 import Calendar from "./Calendar";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, within } from "@testing-library/react";
 
 describe("Calendar", () => {
   it("uses abbreviated day-of-week headers", () => {
@@ -52,15 +52,17 @@ describe("Calendar", () => {
     const dayCell = screen.getByText("5", { selector: "h3" }).closest("td");
     fireEvent.click(dayCell);
 
-    expect(screen.getByText("Populus Zion (Advent 2)")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /view full readings/i })).toBeInTheDocument();
+    const panel = document.querySelector(".day-detail-panel");
+    expect(within(panel).getByText("Populus Zion (Advent 2)")).toBeInTheDocument();
+    expect(within(panel).getByRole("link", { name: /view full readings/i })).toBeInTheDocument();
 
     // Tap Dec 1 (Wednesday — no Sunday lectionary of its own)
     const day1Cell = screen.getByText("1", { selector: "h3" }).closest("td");
     fireEvent.click(day1Cell);
 
     // Panel should update — Advent 1 Sunday's name
-    expect(screen.getByText("Ad Te Levavi (Advent 1)")).toBeInTheDocument();
+    const panel2 = document.querySelector(".day-detail-panel");
+    expect(within(panel2).getByText("Ad Te Levavi (Advent 1)")).toBeInTheDocument();
   });
 
   it("renders", () => {

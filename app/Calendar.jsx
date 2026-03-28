@@ -133,6 +133,7 @@ export default class Calendar extends React.Component {
               .filter((p) => p.length > 0 && hasReadings(p))
               .map((propers, i) => (
                 <div key={i}>
+                  <h4>{findProperByType(propers, 0)?.text}</h4>
                   <div>Old Test: {findProperByType(propers, 19)?.text}</div>
                   <div>Epistle: {findProperByType(propers, 1)?.text}</div>
                   <div>Gospel: {findProperByType(propers, 2)?.text}</div>
