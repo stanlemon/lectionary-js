@@ -224,11 +224,14 @@ export default class Day extends React.Component {
                       )}
                     </h3>
                     {!typesById[proper.type].is_reading && (
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: proper.text,
-                        }}
-                      />
+                      // proper.text contains HTML markup (e.g. <i>, <b>, <br />,
+                      // &nbsp;) used to format liturgical texts such as introits,
+                      // graduals, and collects. This content comes exclusively from
+                      // static JSON files bundled with the app at build time — there
+                      // is no user input or external data source involved, so there
+                      // is no XSS risk here.
+                      // eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml
+                      <div dangerouslySetInnerHTML={{ __html: proper.text }} />
                     )}
                     <div className="text-right">
                       <button className="link" onClick={this.handleScrollToTop}>
