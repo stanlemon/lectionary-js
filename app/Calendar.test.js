@@ -22,6 +22,18 @@ describe("Calendar", () => {
     expect(screen.queryByText("Monday")).not.toBeInTheDocument();
   });
 
+  it("applies festival-day class to Sunday date numbers", () => {
+    render(<Calendar year={2021} month={12} />);
+
+    // Dec 5 2021 is a Sunday (Advent 2)
+    const sundayNumber = screen.getByText("5", { selector: "h3" });
+    expect(sundayNumber).toHaveClass("festival-day");
+
+    // Dec 1 2021 is a Wednesday — should not be bold
+    const weekdayNumber = screen.getByText("1", { selector: "h3" });
+    expect(weekdayNumber).not.toHaveClass("festival-day");
+  });
+
   it("renders", () => {
     render(<Calendar year={2021} month={12} />);
 

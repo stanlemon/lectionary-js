@@ -108,7 +108,13 @@ export default class Calendar extends React.Component {
         key={weekDay}
       >
         <div>
-          <h3>{day.date.day}</h3>
+          <h3 className={
+            (day.date.weekday === 7 || (day.propers.festivals.length > 0 && hasReadings(day.propers.festivals)))
+              ? "festival-day"
+              : undefined
+          }>
+            {day.date.day}
+          </h3>
           <div className="day-readings">
             {[day.propers.lectionary, day.propers.festivals]
               .filter((p) => p.length > 0 && hasReadings(p))

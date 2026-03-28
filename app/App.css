@@ -195,6 +195,10 @@ h5 {
   text-align: center;
 }
 
+.festival-day {
+  font-weight: bold;
+}
+
 #calendar td {
   font-size: 85%;
 }
