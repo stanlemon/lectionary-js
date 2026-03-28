@@ -148,10 +148,14 @@ export default class Day extends React.Component {
 
         <br />
 
-        {[day.propers.lectionary, day.propers.festivals, day.propers.daily]
-          .filter((p) => p.length > 0)
-          .map((propers, i) => (
-            <React.Fragment key={`propers-toc-${i}`}>
+        {[
+          { propers: day.propers.lectionary, id: "lectionary" },
+          { propers: day.propers.festivals, id: "festivals" },
+          { propers: day.propers.daily, id: "daily" },
+        ]
+          .filter(({ propers: p }) => p.length > 0)
+          .map(({ propers, id }, i) => (
+            <React.Fragment key={`propers-toc-${id}`}>
               <h4 className={findColor(propers)?.toLowerCase()}>
                 {findProperByType(propers, 0)?.text}
               </h4>
@@ -160,8 +164,8 @@ export default class Day extends React.Component {
                   .filter(
                     (proper) => typesById[proper.type]?.is_viewable ?? true
                   )
-                  .map((proper, j) => (
-                    <li key={`propers-toc-${i}-${j}`}>
+                  .map((proper) => (
+                    <li key={`propers-toc-${id}-${proper.type}`}>
                       <button
                         className="link"
                         onClick={this.scrollToSection(i, proper.type)}
@@ -177,20 +181,24 @@ export default class Day extends React.Component {
             </React.Fragment>
           ))}
         <br />
-        {[day.propers.lectionary, day.propers.festivals, day.propers.daily]
-          .filter((p) => p.length > 0)
-          .map((propers, i) => (
-            <React.Fragment key={`propers-${i}`}>
+        {[
+          { propers: day.propers.lectionary, id: "lectionary" },
+          { propers: day.propers.festivals, id: "festivals" },
+          { propers: day.propers.daily, id: "daily" },
+        ]
+          .filter(({ propers: p }) => p.length > 0)
+          .map(({ propers, id }, i) => (
+            <React.Fragment key={`propers-${id}`}>
               <h2 className={findColor(propers)?.toLowerCase()}>
                 {findProperByType(propers, 0)?.text}
               </h2>
               <hr />
               {propers
                 .filter((proper) => typesById[proper.type]?.is_viewable ?? true)
-                .map((proper, j) => (
+                .map((proper) => (
                   <div
                     id={this.getSectionId(i, proper.type)}
-                    key={`propers-${i}-${j}`}
+                    key={`propers-${id}-${proper.type}`}
                   >
                     <h3>
                       {typesById[proper.type].name}
