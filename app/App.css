@@ -401,7 +401,8 @@ sup {
 
   /* Today gets a visible ring on mobile too */
   td.today {
-    border: 3px #000 solid;
+    outline: 3px solid #000;
+    outline-offset: -3px;
   }
 
   /* Selected date ring */
