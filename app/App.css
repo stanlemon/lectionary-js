@@ -322,7 +322,7 @@ sup {
 
 /* Calendar View for Mobile */
 
-@media only screen and (min-device-width: 481px) {
+@media only screen and (min-width: 481px) {
   td.today {
     border: 5px #000 solid;
   }
@@ -334,7 +334,7 @@ sup {
   }
 }
 
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-width: 480px) {
   .propers {
     font-size: 16px;
   }
@@ -430,7 +430,7 @@ sup {
   }
 }
 
-@media only screen and (prefers-color-scheme: dark) and (min-device-width: 481px) {
+@media only screen and (prefers-color-scheme: dark) and (min-width: 481px) {
   #calendar table {
     outline: 1px #fff solid;
   }
