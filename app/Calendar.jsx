@@ -109,10 +109,13 @@ export default class Calendar extends React.Component {
       >
         <div>
           <h3>{day.date.day}</h3>
-          {[day.propers.lectionary, day.propers.festivals]
-            .filter((p) => p.length > 0 && hasReadings(p))
-            .map((propers, i) => (
-              <div key={i}>
+          {[
+            { propers: day.propers.lectionary, id: "lectionary" },
+            { propers: day.propers.festivals, id: "festivals" },
+          ]
+            .filter(({ propers: p }) => p.length > 0 && hasReadings(p))
+            .map(({ propers, id }) => (
+              <div key={id}>
                 <h4>{findProperByType(propers, 0)?.text}</h4>
                 <div>Old Test: {findProperByType(propers, 19)?.text}</div>
                 <div>Epistle: {findProperByType(propers, 1)?.text}</div>
@@ -167,11 +170,14 @@ export default class Calendar extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {grid.map((week, row) => (
-              <tr key={row}>
-                {week.map((day, weekDay) => this.renderDay(day, weekDay))}
-              </tr>
-            ))}
+            {grid.map((week) => {
+              const firstDay = week.find((d) => d?.date);
+              return (
+                <tr key={firstDay ? firstDay.date.toISODate() : "empty"}>
+                  {week.map((day, weekDay) => this.renderDay(day, weekDay))}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
