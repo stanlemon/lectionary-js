@@ -8,7 +8,7 @@ import { useHashLocation } from "wouter/use-hash-location";
 import Calendar from "./Calendar";
 import Day from "./Day";
 
-function App() {
+export function App() {
   return (
     <>
       <header className="title-bar">
@@ -48,5 +48,7 @@ function App() {
 }
 
 const container = document.getElementById("root");
-const root = createRoot(container);
-root.render(<App />);
+if (container) {
+  const root = createRoot(container);
+  root.render(<App />);
+}
