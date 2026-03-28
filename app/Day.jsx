@@ -37,13 +37,14 @@ export default class Day extends React.Component {
   }
 
   getTitle(day) {
-    const festivalTitle = findProperByType(day.propers.festival, 0)?.text;
+    const festivalTitle = findProperByType(day.propers.festivals, 0)?.text;
+    const lectionaryTitle = findProperByType(day.propers.lectionary, 0)?.text;
     const sundayTitle = findProperByType(day.sunday.lectionary, 0)?.text;
     const weekdayTitle =
       day.date.weekday === 7
         ? null
         : `${day.date.weekdayLong} of ${sundayTitle}`;
-    return festivalTitle || weekdayTitle || sundayTitle;
+    return festivalTitle || lectionaryTitle || weekdayTitle || sundayTitle;
   }
 
   getSectionId(i, type) {
@@ -113,7 +114,7 @@ export default class Day extends React.Component {
 
     const title = this.getTitle(day);
     const color = findColor(
-      day.propers.festival,
+      day.propers.festivals,
       day.propers.lectionary,
       day.sunday.lectionary
     )?.toLowerCase();

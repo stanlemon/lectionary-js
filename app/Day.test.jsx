@@ -36,15 +36,17 @@ describe("Day", () => {
     expect(screen.getByText("December 6, 2021 »")).toBeInTheDocument();
   });
 
-  it("renders a feast day with Christmas readings", () => {
-    // December 25, 2021 — The Nativity of Our Lord (Christmas)
+  it("renders a feast day with its proper title from the lectionary", () => {
+    // December 25, 2021 is a Saturday — without the lectionaryTitle fix it would
+    // show "Saturday of Rorate coeli (Advent 4)" instead of the feast name
     render(<Day year={2021} month={12} day={25} />);
 
     expect(
       screen.queryAllByText("December 25, 2021", { selector: "h2" })
     ).toHaveLength(1);
-    // Christmas lectionary readings should appear
-    expect(screen.getByText("Luke 2:15-20")).toBeInTheDocument();
+    expect(
+      screen.queryAllByText("The Nativity of Our Lord (Christmas Dawn)", { selector: "h3" })
+    ).toHaveLength(1);
   });
 
   it("shows a navigation link back to the monthly calendar", () => {
