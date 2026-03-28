@@ -32,6 +32,10 @@ describe("Calendar", () => {
     // Dec 1 2021 is a Wednesday — should not be bold
     const weekdayNumber = screen.getByText("1", { selector: "h3" });
     expect(weekdayNumber).not.toHaveClass("festival-day");
+
+    // Dec 27 2021 is a Monday with St. John the Apostle festival propers — should also be bold
+    const festivalWeekdayNumber = screen.getByText("27", { selector: "h3" });
+    expect(festivalWeekdayNumber).toHaveClass("festival-day");
   });
 
   it("renders", () => {

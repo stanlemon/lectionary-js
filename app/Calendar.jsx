@@ -101,6 +101,10 @@ export default class Calendar extends React.Component {
       return <td className={className} key={weekDay} />;
     }
 
+    const isFestivalDay =
+      day.date.weekday === 7 ||
+      (day.propers.festivals.length > 0 && hasReadings(day.propers.festivals));
+
     return (
       <td
         className={className}
@@ -108,11 +112,7 @@ export default class Calendar extends React.Component {
         key={weekDay}
       >
         <div>
-          <h3 className={
-            (day.date.weekday === 7 || (day.propers.festivals.length > 0 && hasReadings(day.propers.festivals)))
-              ? "festival-day"
-              : undefined
-          }>
+          <h3 className={isFestivalDay ? "festival-day" : undefined}>
             {day.date.day}
           </h3>
           <div className="day-readings">
