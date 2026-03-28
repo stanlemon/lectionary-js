@@ -374,6 +374,10 @@ sup {
     vertical-align: middle;
   }
 
+  #calendar td {
+    height: 55px;
+  }
+
   #calendar h3 {
     font-size: 14px;
     margin: 0;
@@ -426,10 +430,6 @@ sup {
     font-size: 13px;
     font-weight: 600;
     text-decoration: none;
-  }
-
-  .highlight-none {
-    display: none !important;
   }
 
   footer {
