@@ -53,7 +53,7 @@ Data flow: `Date → Week → CalendarBuilder → Loader provides propers for ea
 - **`Calendar.jsx`** — Monthly calendar grid view; uses `CalendarBuilder` + `KeyLoader` with `lsb-1yr.json`, `lsb-festivals.json`, `lsb-daily.json`, `lsb-commemorations.json`.
 - **`Day.jsx`** — Single-day detail view showing full readings text.
 
-Components are class-based React (legacy style).
+Components are functional React with hooks.
 
 ### Data (`/data`)
 
@@ -83,8 +83,6 @@ Tests live alongside source files (`*.test.js` / `*.test.jsx`). Coverage runs at
 **Date string format matters.** `new Date("2022-12-25")` parses as **UTC midnight**, which in US timezones resolves to Dec 24 locally. Always use `MM/DD/YYYY` format (`new Date("12/25/2022")`) when constructing dates for `Week` in tests — this matches the format used throughout `data/tests.json`.
 
 **Luxon Sunday is weekday 7, not 0.** The codebase normalizes Sunday to `0` in loader and week logic, but Luxon's `.weekday` returns `7` for Sunday. Tests that verify Sunday matching should account for this.
-
-**Class components and HMR.** React Fast Refresh only works with function components. Changes to class components (`Calendar.jsx`, `Day.jsx`) require a full page refresh in the dev server.
 
 **`App.jsx` is importable in tests** because the `createRoot` mount is guarded by `if (container)`. Import the named `App` export, not the default module side-effect.
 
