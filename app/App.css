@@ -153,6 +153,7 @@ th {
   position: fixed;
   top: 0;
   width: 100%;
+  box-sizing: border-box;
   padding: 10px;
   background-color: #000;
 }
@@ -356,6 +357,7 @@ sup {
   #calendar table {
     border-left: 0px;
     border-right: 0px;
+    border-bottom: 0;
   }
 
   /* Remove last row's cell bottom borders — panel border-top is the separator */
@@ -397,7 +399,6 @@ sup {
   .day-detail-panel {
     border-top: 1px solid #000;
     padding: 12px 12px 20px;
-    background: #f9f9f9;
   }
 
   .day-detail-panel .day-detail-date {
