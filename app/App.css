@@ -358,6 +358,11 @@ sup {
     border-right: 0px;
   }
 
+  /* Remove last row's cell bottom borders — panel border-top is the separator */
+  #calendar tr:last-child td {
+    border-bottom: 0;
+  }
+
   /* Compact 7-column grid — keep table layout, shrink cells */
   #calendar td,
   #calendar th {
@@ -390,7 +395,7 @@ sup {
 
   /* Detail panel rendered below the calendar table */
   .day-detail-panel {
-    border-top: 2px solid #000;
+    border-top: 1px solid #000;
     padding: 12px 12px 20px;
     background: #f9f9f9;
   }
@@ -424,6 +429,22 @@ sup {
 
   .highlight-none {
     display: none !important;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid #eee;
+    padding: 8px 10px;
+    margin-bottom: 0;
+  }
+
+  /* Prevent calendar content from hiding behind fixed footer */
+  #calendar {
+    padding-bottom: 44px;
   }
 }
 

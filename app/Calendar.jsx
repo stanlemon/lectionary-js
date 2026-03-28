@@ -169,7 +169,10 @@ export default class Calendar extends React.Component {
 
   renderDetailPanel() {
     const { selectedDay } = this.state;
-    if (!selectedDay) return null;
+
+    if (!selectedDay) {
+      return <div className="day-detail-panel" />;
+    }
 
     const { year, month } = this.getYearAndMonth();
     const { date, propers, sunday } = selectedDay;
