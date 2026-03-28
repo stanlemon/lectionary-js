@@ -117,7 +117,14 @@ export default class Calendar extends React.Component {
       )?.toLowerCase() ?? "none";
     const isToday =
       day && day.date && DateTime.local().hasSame(day.date, "day");
-    const className = `highlight-${color}` + (isToday ? " today" : "");
+    const isSelected =
+      this.state.selectedDay &&
+      day?.date &&
+      this.state.selectedDay.date.hasSame(day.date, "day");
+    const className =
+      `highlight-${color}` +
+      (isToday ? " today" : "") +
+      (isSelected ? " selected" : "");
 
     if (!day || !day.date) {
       return <td className={className} key={weekDay} />;
@@ -172,16 +179,22 @@ export default class Calendar extends React.Component {
       findProperByType(propers.lectionary, 0)?.text ||
       findProperByType(sunday?.propers.lectionary, 0)?.text;
 
-    const readingPropers =
-      propers.festivals.length > 0 && hasReadings(propers.festivals)
-        ? propers.festivals
-        : propers.lectionary.length > 0
-          ? propers.lectionary
+    const hasLectionary = propers.lectionary.length > 0;
+    const hasFestivals =
+      propers.festivals.length > 0 && hasReadings(propers.festivals);
+    const readingPropers = hasFestivals
+      ? propers.festivals
+      : hasLectionary
+        ? propers.lectionary
+        : propers.daily.length > 0
+          ? propers.daily
           : (sunday?.propers.lectionary ?? []);
 
     const ot = findProperByType(readingPropers, 19)?.text;
     const epistle = findProperByType(readingPropers, 1)?.text;
     const gospel = findProperByType(readingPropers, 2)?.text;
+    const daily1 = findProperByType(readingPropers, 38)?.text;
+    const daily2 = findProperByType(readingPropers, 39)?.text;
 
     const dateLabel = date.toLocaleString({
       month: "long",
@@ -197,6 +210,8 @@ export default class Calendar extends React.Component {
           {ot && <div>Old Test: {ot}</div>}
           {epistle && <div>Epistle: {epistle}</div>}
           {gospel && <div>Gospel: {gospel}</div>}
+          {daily1 && <div>{daily1}</div>}
+          {daily2 && <div>{daily2}</div>}
         </div>
         <Link className="day-detail-link" to={`/${year}/${month}/${date.day}/`}>
           View full readings →
