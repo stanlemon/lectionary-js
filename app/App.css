@@ -1,10 +1,45 @@
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   color: #000;
   margin: 0px;
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
-  padding-top: 40px;
+  /* Match fixed .title-bar height; extra when safe-area padding grows the bar */
+  padding-top: calc(40px + env(safe-area-inset-top, 0px));
+}
+
+/* Only customize scrollbars for mouse/desktop environments. On Safari responsive
+   mode and touch devices, overlay scrollbars can read as stray lines or pills. */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body {
+    scrollbar-color: rgba(0, 0, 0, 0.28) transparent;
+    scrollbar-width: thin;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  html::-webkit-scrollbar-track,
+  body::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  html::-webkit-scrollbar-thumb,
+  body::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.28);
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
 }
 
 footer {
@@ -119,6 +154,18 @@ table {
   width: 100%;
 }
 
+/* Prevent the calendar grid from exceeding the viewport (avoids horizontal
+   scroll + the prominent vertical scrollbar track that reads as a “white line”). */
+#calendar table {
+  table-layout: fixed;
+}
+
+#calendar td,
+#calendar th {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 table,
 td,
 th {
@@ -144,17 +191,30 @@ th {
   margin-left: auto;
   margin-right: auto;
   padding-top: 15px;
-  padding-left: 20px;
-  padding-right: 20px;
+  /* Side padding only on wider viewports — on phones/small tablets it matched the
+     scrollbar edge and read as a permanent white “line” beside the grid. */
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (min-width: 769px) {
+  #calendar {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .title-bar {
   z-index: 99;
   position: fixed;
   top: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
+  /* Fixed bars should stretch via edges, not 100vw, or they create horizontal
+     overflow when the browser reserves room for classic scrollbars. */
   box-sizing: border-box;
-  padding: 10px;
+  padding: max(10px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right))
+    max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
   background-color: #000;
 }
 
@@ -345,14 +405,9 @@ sup {
     font-size: 16px;
   }
 
-  #calendar {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-
   #calendar nav {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 7px;
+    padding-right: 7px;
   }
 
   /* Allow nav flex items to shrink below content width */
@@ -451,8 +506,10 @@ sup {
     right: 0;
     background: #fff;
     border-top: 1px solid #eee;
-    padding: 8px 10px;
+    padding: 8px max(10px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom))
+      max(10px, env(safe-area-inset-left));
     margin-bottom: 0;
+    box-sizing: border-box;
   }
 
   /* Prevent calendar content from hiding behind fixed footer */
@@ -483,6 +540,18 @@ sup {
 
   #calendar {
     color: #000;
+  }
+}
+
+@media (prefers-color-scheme: dark) and (hover: hover) and (pointer: fine) {
+  html,
+  body {
+    scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
+  }
+
+  html::-webkit-scrollbar-thumb,
+  body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.35);
   }
 }
 
