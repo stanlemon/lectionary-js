@@ -51,20 +51,21 @@ describe("Calendar", () => {
     expect(dayOnes).toHaveLength(1);
   });
 
-  it("uses abbreviated day-of-week headers", () => {
+  it("renders responsive day-of-week headers", () => {
     render(<Calendar year={2021} month={12} />);
 
-    expect(screen.getByText("Su")).toBeInTheDocument();
-    expect(screen.getByText("Mo")).toBeInTheDocument();
-    expect(screen.getByText("Tu")).toBeInTheDocument();
-    expect(screen.getByText("We")).toBeInTheDocument();
-    expect(screen.getByText("Th")).toBeInTheDocument();
-    expect(screen.getByText("Fr")).toBeInTheDocument();
-    expect(screen.getByText("Sa")).toBeInTheDocument();
-
-    // Full names should not be present
-    expect(screen.queryByText("Sunday")).not.toBeInTheDocument();
-    expect(screen.queryByText("Monday")).not.toBeInTheDocument();
+    [
+      ["Sunday", "Su"],
+      ["Monday", "Mo"],
+      ["Tuesday", "Tu"],
+      ["Wednesday", "We"],
+      ["Thursday", "Th"],
+      ["Friday", "Fr"],
+      ["Saturday", "Sa"],
+    ].forEach(([full, short]) => {
+      expect(screen.getByText(full)).toHaveClass("weekday-label-full");
+      expect(screen.getByText(short)).toHaveClass("weekday-label-short");
+    });
   });
 
   it("applies bold classes to Sundays and festival weekdays", () => {

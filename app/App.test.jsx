@@ -22,7 +22,9 @@ describe("App", () => {
 
   it("renders the calendar by default", () => {
     render(<App />);
-    // Calendar renders a table with abbreviated day-of-week column headers
+    // Calendar keeps both full and abbreviated weekday labels in the DOM
+    expect(screen.getByText("Sunday")).toBeInTheDocument();
+    expect(screen.getByText("Saturday")).toBeInTheDocument();
     expect(screen.getByText("Su")).toBeInTheDocument();
     expect(screen.getByText("Sa")).toBeInTheDocument();
   });

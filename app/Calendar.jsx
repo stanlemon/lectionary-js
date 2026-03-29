@@ -11,6 +11,15 @@ import { KeyLoader } from "../lib/KeyLoader";
 import { findColor, findProperByType, hasReadings } from "../lib/utils";
 
 const loader = new KeyLoader({ lectionary, festivals, daily, commemorations });
+const weekdayHeaders = [
+  { full: "Sunday", short: "Su" },
+  { full: "Monday", short: "Mo" },
+  { full: "Tuesday", short: "Tu" },
+  { full: "Wednesday", short: "We" },
+  { full: "Thursday", short: "Th" },
+  { full: "Friday", short: "Fr" },
+  { full: "Saturday", short: "Sa" },
+];
 
 /**
  * @typedef {object} Props
@@ -145,7 +154,10 @@ export default class Calendar extends React.Component {
       day.propers.festivals.length > 0 ||
       (!isSunday && day.propers.lectionary.length > 0);
     const h3ClassName =
-      [isSunday ? "sunday-day" : null, hasFestivalPropers ? "festival-day" : null]
+      [
+        isSunday ? "sunday-day" : null,
+        hasFestivalPropers ? "festival-day" : null,
+      ]
         .filter(Boolean)
         .join(" ") || undefined;
 
@@ -156,14 +168,17 @@ export default class Calendar extends React.Component {
         key={weekDay}
       >
         <div>
-          <h3 className={h3ClassName}>
-            {day.date.day}
-          </h3>
+          <h3 className={h3ClassName}>{day.date.day}</h3>
           <div className="day-readings">
-            {[day.propers.lectionary, day.propers.festivals]
-              .filter((p) => p.length > 0 && hasReadings(p))
-              .map((propers, i) => (
-                <div key={i}>
+            {[
+              { propers: day.propers.lectionary, key: "lectionary" },
+              { propers: day.propers.festivals, key: "festivals" },
+            ]
+              .filter(
+                ({ propers }) => propers.length > 0 && hasReadings(propers)
+              )
+              .map(({ propers, key }) => (
+                <div key={key}>
                   <h4>{findProperByType(propers, 0)?.text}</h4>
                   <div>Old Test: {findProperByType(propers, 19)?.text}</div>
                   <div>Epistle: {findProperByType(propers, 1)?.text}</div>
@@ -265,13 +280,12 @@ export default class Calendar extends React.Component {
         <table>
           <thead>
             <tr>
-              <th>Su</th>
-              <th>Mo</th>
-              <th>Tu</th>
-              <th>We</th>
-              <th>Th</th>
-              <th>Fr</th>
-              <th>Sa</th>
+              {weekdayHeaders.map(({ full, short }) => (
+                <th key={full}>
+                  <span className="weekday-label-full">{full}</span>
+                  <span className="weekday-label-short">{short}</span>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>

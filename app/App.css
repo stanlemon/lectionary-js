@@ -246,6 +246,10 @@ h5 {
   cursor: pointer;
 }
 
+#calendar th {
+  text-align: center;
+}
+
 #calendar h3 {
   text-align: center;
   margin-bottom: 7px;
@@ -259,6 +263,10 @@ h5 {
 #calendar .festival-day,
 #calendar .sunday-day {
   font-weight: bold;
+}
+
+#calendar .weekday-label-short {
+  display: none;
 }
 
 #calendar td {
@@ -447,6 +455,14 @@ sup {
     font-size: 14px;
     margin: 0;
     font-weight: normal;
+  }
+
+  #calendar .weekday-label-full {
+    display: none;
+  }
+
+  #calendar .weekday-label-short {
+    display: inline;
   }
 
   /* Hide reading content inside cells; only show the date number */
