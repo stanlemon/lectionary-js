@@ -45,7 +45,9 @@ describe("Day", () => {
       screen.queryAllByText("December 25, 2021", { selector: "h2" })
     ).toHaveLength(1);
     expect(
-      screen.queryAllByText("The Nativity of Our Lord (Christmas Dawn)", { selector: "h3" })
+      screen.queryAllByText("The Nativity of Our Lord (Christmas Dawn)", {
+        selector: "h3",
+      })
     ).toHaveLength(1);
   });
 

@@ -40,8 +40,14 @@ export function App() {
         </Switch>
       </Router>
       <footer>
-        Copyright &copy; <a target="_blank" href="https://stanlemon.com">Stan Lemon</a>.{" "}
-        <a href="https://github.com/stanlemon/lectionary-js">Check out the source code.</a>
+        Copyright &copy;{" "}
+        <a target="_blank" href="https://stanlemon.com">
+          Stan Lemon
+        </a>
+        .{" "}
+        <a href="https://github.com/stanlemon/lectionary-js">
+          Check out the source code.
+        </a>
       </footer>
     </>
   );

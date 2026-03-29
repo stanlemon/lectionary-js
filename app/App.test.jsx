@@ -12,7 +12,9 @@ describe("App", () => {
     expect(
       screen.getByRole("heading", { level: 1, name: "Lutheran Lectionary" })
     ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Stan Lemon" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Stan Lemon" })
+    ).toBeInTheDocument();
     expect(
       screen.getByRole("link", { name: "Check out the source code." })
     ).toBeInTheDocument();
