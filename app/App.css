@@ -1,10 +1,45 @@
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   color: #000;
   margin: 0px;
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
-  padding-top: 40px;
+  /* Match fixed .title-bar height; extra when safe-area padding grows the bar */
+  padding-top: calc(40px + env(safe-area-inset-top, 0px));
+}
+
+/* Only customize scrollbars for mouse/desktop environments. On Safari responsive
+   mode and touch devices, overlay scrollbars can read as stray lines or pills. */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body {
+    scrollbar-color: rgba(0, 0, 0, 0.28) transparent;
+    scrollbar-width: thin;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  html::-webkit-scrollbar-track,
+  body::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  html::-webkit-scrollbar-thumb,
+  body::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.28);
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
 }
 
 footer {
@@ -119,6 +154,18 @@ table {
   width: 100%;
 }
 
+/* Prevent the calendar grid from exceeding the viewport (avoids horizontal
+   scroll + the prominent vertical scrollbar track that reads as a “white line”). */
+#calendar table {
+  table-layout: fixed;
+}
+
+#calendar td,
+#calendar th {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 table,
 td,
 th {
@@ -144,16 +191,30 @@ th {
   margin-left: auto;
   margin-right: auto;
   padding-top: 15px;
-  padding-left: 20px;
-  padding-right: 20px;
+  /* Side padding only on wider viewports — on phones/small tablets it matched the
+     scrollbar edge and read as a permanent white “line” beside the grid. */
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (min-width: 769px) {
+  #calendar {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .title-bar {
   z-index: 99;
   position: fixed;
   top: 0;
-  width: 100%;
-  padding: 10px;
+  left: 0;
+  right: 0;
+  /* Fixed bars should stretch via edges, not 100vw, or they create horizontal
+     overflow when the browser reserves room for classic scrollbars. */
+  box-sizing: border-box;
+  padding: max(10px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right))
+    max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
   background-color: #000;
 }
 
@@ -185,6 +246,10 @@ h5 {
   cursor: pointer;
 }
 
+#calendar th {
+  text-align: center;
+}
+
 #calendar h3 {
   text-align: center;
   margin-bottom: 7px;
@@ -193,6 +258,15 @@ h5 {
 #calendar h4,
 #calendar h5 {
   text-align: center;
+}
+
+#calendar .festival-day,
+#calendar .sunday-day {
+  font-weight: bold;
+}
+
+#calendar .weekday-label-short {
+  display: none;
 }
 
 #calendar td {
@@ -322,7 +396,7 @@ sup {
 
 /* Calendar View for Mobile */
 
-@media only screen and (min-device-width: 481px) {
+@media only screen and (min-width: 481px) {
   td.today {
     border: 5px #000 solid;
   }
@@ -334,14 +408,9 @@ sup {
   }
 }
 
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-width: 480px) {
   .propers {
     font-size: 16px;
-  }
-
-  #calendar {
-    padding-left: 0px;
-    padding-right: 0px;
   }
 
   #calendar nav {
@@ -349,59 +418,119 @@ sup {
     padding-right: 7px;
   }
 
+  /* Allow nav flex items to shrink below content width */
+  #calendar nav > * {
+    min-width: 0;
+  }
+
+  #calendar nav h2 {
+    font-size: 20px;
+  }
+
   #calendar table {
     border-left: 0px;
     border-right: 0px;
+    border-bottom: 0;
   }
 
-  /* Force table to not be like tables anymore */
-  #calendar table,
-  #calendar thead,
-  #calendar tbody,
-  #calendar th,
+  /* Remove last row's cell bottom borders — panel border-top is the separator */
+  #calendar tr:last-child td {
+    border-bottom: 0;
+  }
+
+  /* Compact 7-column grid — keep table layout, shrink cells */
   #calendar td,
-  #calendar tr {
-    display: block;
-  }
-
-  #calendar {
-    border-left: none;
-    border-right: none;
-  }
-
-  /* Hide table headers (but not display: none;, for accessibility) */
-  #calendar thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
+  #calendar th {
+    padding: 6px 2px;
+    font-size: 11px;
+    text-align: center;
+    vertical-align: middle;
   }
 
   #calendar td {
-    /* Behave  like a "row" */
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    position: relative;
-    white-space: normal;
-    text-align: left;
-    font-size: 18px;
+    height: 41px;
   }
 
-  #calendar td:before {
-    /* Now like a table header */
-    position: absolute;
-    /* Top/left values mimic padding */
-    top: 6px;
-    left: 6px;
-    width: 45%;
-    padding-right: 10px;
-    white-space: nowrap;
-    text-align: left;
+  #calendar h3 {
+    font-size: 14px;
+    margin: 0;
+    font-weight: normal;
+  }
+
+  #calendar .weekday-label-full {
+    display: none;
+  }
+
+  #calendar .weekday-label-short {
+    display: inline;
+  }
+
+  /* Hide reading content inside cells; only show the date number */
+  #calendar td .day-readings {
+    display: none;
+  }
+
+  /* Today gets a visible ring on mobile too */
+  td.today {
+    outline: 3px solid #000;
+    outline-offset: -3px;
+  }
+
+  /* Selected date ring */
+  td.selected {
+    outline: 3px solid #000;
+    outline-offset: -3px;
+  }
+
+  /* Detail panel rendered below the calendar table */
+  .day-detail-panel {
+    border-top: 1px solid #000;
+    padding: 12px 12px 20px;
+  }
+
+  .day-detail-panel .day-detail-date {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+  }
+
+  .day-detail-panel .day-detail-title {
     font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: #000;
   }
 
-  .highlight-none {
-    display: none !important;
+  .day-detail-panel .day-detail-readings {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #222;
+    margin-bottom: 10px;
+  }
+
+  .day-detail-panel a.day-detail-link {
+    color: navy;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid #eee;
+    padding: 8px max(10px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom))
+      max(10px, env(safe-area-inset-left));
+    margin-bottom: 0;
+    box-sizing: border-box;
+  }
+
+  /* Prevent calendar content from hiding behind fixed footer */
+  #calendar {
+    padding-bottom: 44px;
   }
 }
 
@@ -430,7 +559,19 @@ sup {
   }
 }
 
-@media only screen and (prefers-color-scheme: dark) and (min-device-width: 481px) {
+@media (prefers-color-scheme: dark) and (hover: hover) and (pointer: fine) {
+  html,
+  body {
+    scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
+  }
+
+  html::-webkit-scrollbar-thumb,
+  body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.35);
+  }
+}
+
+@media only screen and (prefers-color-scheme: dark) and (min-width: 481px) {
   #calendar table {
     outline: 1px #fff solid;
   }
