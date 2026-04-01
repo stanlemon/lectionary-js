@@ -206,7 +206,7 @@ export default function Day({ year, month, day: dayProp }) {
                   // static JSON files bundled with the app at build time — there
                   // is no user input or external data source involved, so there
                   // is no XSS risk here.
-                  // eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml
+                  // eslint-disable-next-line @eslint-react/dom-no-dangerously-set-innerhtml
                   <div dangerouslySetInnerHTML={{ __html: proper.text }} />
                 )}
                 <div className="text-right">
