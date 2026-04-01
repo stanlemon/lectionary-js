@@ -17,6 +17,16 @@ describe("Day", () => {
     ).toHaveLength(1);
   });
 
+  it("shows a parament pill beside the date", () => {
+    render(<Day year={2021} month={12} day={5} />);
+
+    const date = screen.getByText("December 05, 2021", { selector: "h2" });
+    const pill = screen.getByText("Violet", { selector: ".parament-pill" });
+
+    expect(pill).toHaveClass("parament-pill", "parament-pill-violet");
+    expect(date.parentElement).toContainElement(pill);
+  });
+
   it("renders a weekday with a title referencing its Sunday", () => {
     // December 6, 2021 is a Monday in the Advent 2 week
     render(<Day year={2021} month={12} day={6} />);
@@ -49,6 +59,9 @@ describe("Day", () => {
         selector: "h3",
       })
     ).toHaveLength(1);
+    expect(
+      screen.getByText("White", { selector: ".parament-pill" })
+    ).toHaveClass("parament-pill-white");
   });
 
   it("shows a navigation link back to the monthly calendar", () => {

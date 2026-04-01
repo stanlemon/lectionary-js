@@ -129,6 +129,60 @@ h6 {
   margin-bottom: 10px;
 }
 
+.day-date-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.day-date-row h2 {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.parament-pill {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  box-sizing: border-box;
+  color: #000;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.parament-pill-violet {
+  background-color: #ee82ee;
+}
+
+.parament-pill-rose {
+  background-color: #ff69b4;
+}
+
+.parament-pill-green {
+  background-color: #009900;
+}
+
+.parament-pill-white {
+  background-color: #ffffff;
+  border-color: #000;
+}
+
+.parament-pill-red {
+  background-color: #ff0000;
+}
+
+.parament-pill-black {
+  background-color: #000;
+  color: #fff;
+}
+
 hr {
   margin: 20px 0;
   border: 0;
@@ -367,10 +421,6 @@ sup {
 
 .white {
   color: black;
-  -webkit-text-fill-color: white;
-  /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
 }
 
 .highlight-red {

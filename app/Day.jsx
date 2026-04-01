@@ -96,11 +96,12 @@ export default function Day({ year, month, day: dayProp }) {
   }
 
   const title = getTitle(day);
-  const color = findColor(
+  const colorName = findColor(
     day.propers.festivals,
     day.propers.lectionary,
     day.sunday.lectionary
-  )?.toLowerCase();
+  );
+  const colorClassName = colorName?.toLowerCase();
 
   useEffect(() => {
     document.title = `${title} · Lutheran Lectionary`;
@@ -128,15 +129,22 @@ export default function Day({ year, month, day: dayProp }) {
 
       <br />
 
-      <h2 className={color}>
-        {date.toLocaleString({
-          // weekday: "long",
-          month: "long",
-          day: "2-digit",
-          year: "numeric",
-        })}
-      </h2>
-      <h3 className={color}>{title}</h3>
+      <div className="day-date-row">
+        <h2 className={colorClassName}>
+          {date.toLocaleString({
+            // weekday: "long",
+            month: "long",
+            day: "2-digit",
+            year: "numeric",
+          })}
+        </h2>
+        {colorName && (
+          <span className={`parament-pill parament-pill-${colorClassName}`}>
+            {colorName}
+          </span>
+        )}
+      </div>
+      <h3 className={colorClassName}>{title}</h3>
 
       <br />
 
