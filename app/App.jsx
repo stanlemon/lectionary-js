@@ -41,7 +41,11 @@ export function App() {
       </Router>
       <footer>
         Copyright &copy;{" "}
-        <a target="_blank" href="https://stanlemon.com">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://stanlemon.com"
+        >
           Stan Lemon
         </a>
         .{" "}

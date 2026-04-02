@@ -159,6 +159,7 @@ export default function Day({ year, month, day: dayProp }) {
               .map((proper) => (
                 <li key={`propers-toc-${id}-${proper.type}`}>
                   <button
+                    type="button"
                     className="link"
                     onClick={scrollToSection(i, proper.type)}
                   >
@@ -214,11 +215,15 @@ export default function Day({ year, month, day: dayProp }) {
                   // static JSON files bundled with the app at build time — there
                   // is no user input or external data source involved, so there
                   // is no XSS risk here.
-                  // eslint-disable-next-line @eslint-react/dom-no-dangerously-set-innerhtml
+                  // biome-ignore lint/security/noDangerouslySetInnerHtml: proper.text comes from bundled static JSON data, not user input.
                   <div dangerouslySetInnerHTML={{ __html: proper.text }} />
                 )}
                 <div className="text-right">
-                  <button className="link" onClick={handleScrollToTop}>
+                  <button
+                    type="button"
+                    className="link"
+                    onClick={handleScrollToTop}
+                  >
                     top
                   </button>
                 </div>

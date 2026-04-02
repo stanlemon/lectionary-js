@@ -67,7 +67,7 @@ JSON files for propers (appointed readings). Each entry: `{ type, week, month, d
 
 ### Build & Config
 
-Build tooling uses Vite (`vite.config.js`). Tests run via Vitest with jsdom. ESLint uses a flat config (`eslint.config.js`).
+Build tooling uses Vite (`vite.config.js`). Tests run via Vitest with jsdom. Biome is configured in `biome.json`.
 
 ## Testing
 

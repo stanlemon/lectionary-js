@@ -61,9 +61,11 @@ function getDayClassName(day, selectedDay) {
       day?.propers.lectionary,
       day?.sunday?.propers.lectionary
     )?.toLowerCase() ?? "none";
-  const isToday = day && day.date && DateTime.local().hasSame(day.date, "day");
+  const isToday = day?.date ? DateTime.local().hasSame(day.date, "day") : false;
   const isSelected =
-    selectedDay && day?.date && selectedDay.date.hasSame(day.date, "day");
+    selectedDay?.date && day?.date
+      ? selectedDay.date.hasSame(day.date, "day")
+      : false;
 
   return (
     `highlight-${color}` +
@@ -88,7 +90,7 @@ function getDayNumberClassName(day) {
 function CalendarDay({ day, selectedDay, onSelectDay }) {
   const className = getDayClassName(day, selectedDay);
 
-  if (!day || !day.date) {
+  if (!day?.date) {
     return <td className={className} />;
   }
 
@@ -97,8 +99,21 @@ function CalendarDay({ day, selectedDay, onSelectDay }) {
     { propers: day.propers.festivals, id: "festivals" },
   ].filter(({ propers }) => propers.length > 0 && hasReadings(propers));
 
+  function handleKeyDown(event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      onSelectDay(day);
+    }
+  }
+
   return (
-    <td className={className} onClick={() => onSelectDay(day)}>
+    <td
+      className={className}
+      onClick={() => onSelectDay(day)}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+    >
       <div>
         <h3 className={getDayNumberClassName(day)}>{day.date.day}</h3>
         <div className="day-readings">
@@ -176,8 +191,8 @@ function DayDetailPanel({ selectedDay, year, month }) {
 }
 
 export default function Calendar({ year: yearProp, month: monthProp }) {
-  const year = parseInt(yearProp);
-  const month = parseInt(monthProp);
+  const year = parseInt(yearProp, 10);
+  const month = parseInt(monthProp, 10);
   const monthKey = getMonthKey(year, month);
   const [selectedDayState, setSelectedDayState] = useState(null);
 
