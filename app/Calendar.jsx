@@ -192,10 +192,14 @@ export default function Calendar({ year: yearProp, month: monthProp }) {
   const [selectedDayState, setSelectedDayState] = useState(null);
   const { loader } = useLectionary();
 
-  const selectedDay =
-    selectedDayState?.monthKey === monthKey ? selectedDayState.day : null;
   const builder = new CalendarBuilder(year, month);
   const grid = builder.build(loader);
+
+  const selectedDay =
+    selectedDayState?.monthKey === monthKey
+      ? (grid.flat().find((d) => d?.date?.day === selectedDayState.dayNumber) ??
+        null)
+      : null;
   const previousMonth = getLastMonth(year, month);
   const nextMonth = getNextMonth(year, month);
 
@@ -218,7 +222,7 @@ export default function Calendar({ year: yearProp, month: monthProp }) {
 
   function selectDay(day) {
     if (window.innerWidth <= 480) {
-      setSelectedDayState({ monthKey, day });
+      setSelectedDayState({ monthKey, dayNumber: day.date.day });
     } else {
       window.location.hash = `/${year}/${month}/${day.date.day}/`;
     }
