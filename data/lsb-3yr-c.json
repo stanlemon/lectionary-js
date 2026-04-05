@@ -491,6 +491,41 @@
   },
   {
     "type": 25,
+    "week": 15,
+    "month": null,
+    "day": 3,
+    "text": "Violet"
+  },
+  {
+    "type": 0,
+    "week": 15,
+    "month": null,
+    "day": 3,
+    "text": "Ash Wednesday"
+  },
+  {
+    "type": 38,
+    "week": 15,
+    "month": null,
+    "day": 3,
+    "text": "Joel 2:12-19"
+  },
+  {
+    "type": 39,
+    "week": 15,
+    "month": null,
+    "day": 3,
+    "text": "2 Cor. 5:20b-6:10"
+  },
+  {
+    "type": 2,
+    "week": 15,
+    "month": null,
+    "day": 3,
+    "text": "Matt. 6:1-6, 16-21"
+  },
+  {
+    "type": 25,
     "week": 16,
     "month": null,
     "day": 0,
@@ -701,6 +736,216 @@
   },
   {
     "type": 25,
+    "week": 21,
+    "month": null,
+    "day": 1,
+    "text": "Violet"
+  },
+  {
+    "type": 0,
+    "week": 21,
+    "month": null,
+    "day": 1,
+    "text": "Monday of Holy Week"
+  },
+  {
+    "type": 38,
+    "week": 21,
+    "month": null,
+    "day": 1,
+    "text": "Is. 50:5-10"
+  },
+  {
+    "type": 39,
+    "week": 21,
+    "month": null,
+    "day": 1,
+    "text": "Heb. 9:11-15"
+  },
+  {
+    "type": 2,
+    "week": 21,
+    "month": null,
+    "day": 1,
+    "text": "Matt. 26:1-27:66"
+  },
+  {
+    "type": 25,
+    "week": 21,
+    "month": null,
+    "day": 2,
+    "text": "Violet"
+  },
+  {
+    "type": 0,
+    "week": 21,
+    "month": null,
+    "day": 2,
+    "text": "Tuesday of Holy Week"
+  },
+  {
+    "type": 38,
+    "week": 21,
+    "month": null,
+    "day": 2,
+    "text": "Is. 49:1-7"
+  },
+  {
+    "type": 39,
+    "week": 21,
+    "month": null,
+    "day": 2,
+    "text": "1 Cor. 1:18-25"
+  },
+  {
+    "type": 2,
+    "week": 21,
+    "month": null,
+    "day": 2,
+    "text": "Mark 14:1-15:47"
+  },
+  {
+    "type": 25,
+    "week": 21,
+    "month": null,
+    "day": 3,
+    "text": "Violet"
+  },
+  {
+    "type": 0,
+    "week": 21,
+    "month": null,
+    "day": 3,
+    "text": "Wednesday of Holy Week"
+  },
+  {
+    "type": 38,
+    "week": 21,
+    "month": null,
+    "day": 3,
+    "text": "Is. 62:11-63:7"
+  },
+  {
+    "type": 39,
+    "week": 21,
+    "month": null,
+    "day": 3,
+    "text": "Rom. 5:6-11"
+  },
+  {
+    "type": 2,
+    "week": 21,
+    "month": null,
+    "day": 3,
+    "text": "Luke 22:1-23:56"
+  },
+  {
+    "type": 25,
+    "week": 21,
+    "month": null,
+    "day": 4,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 21,
+    "month": null,
+    "day": 4,
+    "text": "Maundy Thursday"
+  },
+  {
+    "type": 38,
+    "week": 21,
+    "month": null,
+    "day": 4,
+    "text": "Jer. 31:31-34"
+  },
+  {
+    "type": 39,
+    "week": 21,
+    "month": null,
+    "day": 4,
+    "text": "Heb. 10:15-25"
+  },
+  {
+    "type": 2,
+    "week": 21,
+    "month": null,
+    "day": 4,
+    "text": "Luke 22:7-20"
+  },
+  {
+    "type": 25,
+    "week": 21,
+    "month": null,
+    "day": 5,
+    "text": "Black"
+  },
+  {
+    "type": 0,
+    "week": 21,
+    "month": null,
+    "day": 5,
+    "text": "Good Friday"
+  },
+  {
+    "type": 38,
+    "week": 21,
+    "month": null,
+    "day": 5,
+    "text": "Is. 52:13-53:12"
+  },
+  {
+    "type": 39,
+    "week": 21,
+    "month": null,
+    "day": 5,
+    "text": "Heb. 4:14-16; 5:7-9"
+  },
+  {
+    "type": 2,
+    "week": 21,
+    "month": null,
+    "day": 5,
+    "text": "John 18:1-19:42"
+  },
+  {
+    "type": 25,
+    "week": 21,
+    "month": null,
+    "day": 6,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 21,
+    "month": null,
+    "day": 6,
+    "text": "Holy Saturday"
+  },
+  {
+    "type": 38,
+    "week": 21,
+    "month": null,
+    "day": 6,
+    "text": "Dan. 6:1-24"
+  },
+  {
+    "type": 39,
+    "week": 21,
+    "month": null,
+    "day": 6,
+    "text": "1 Pet. 4:1-8"
+  },
+  {
+    "type": 2,
+    "week": 21,
+    "month": null,
+    "day": 6,
+    "text": "Matt. 27:57-66"
+  },
+  {
+    "type": 25,
     "week": 22,
     "month": null,
     "day": 0,
@@ -733,6 +978,111 @@
     "month": null,
     "day": 0,
     "text": "Luke 24:1-11 (12)"
+  },
+  {
+    "type": 25,
+    "week": 22,
+    "month": null,
+    "day": 1,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 22,
+    "month": null,
+    "day": 1,
+    "text": "Easter Evening/Monday"
+  },
+  {
+    "type": 38,
+    "week": 22,
+    "month": null,
+    "day": 1,
+    "text": "Ex. 15:1-18"
+  },
+  {
+    "type": 39,
+    "week": 22,
+    "month": null,
+    "day": 1,
+    "text": "Acts 10:34-43"
+  },
+  {
+    "type": 2,
+    "week": 22,
+    "month": null,
+    "day": 1,
+    "text": "Luke 24:13-35"
+  },
+  {
+    "type": 25,
+    "week": 22,
+    "month": null,
+    "day": 2,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 22,
+    "month": null,
+    "day": 2,
+    "text": "Easter Tuesday"
+  },
+  {
+    "type": 38,
+    "week": 22,
+    "month": null,
+    "day": 2,
+    "text": "Dan. 3:8-28"
+  },
+  {
+    "type": 39,
+    "week": 22,
+    "month": null,
+    "day": 2,
+    "text": "Acts 13:26-33"
+  },
+  {
+    "type": 2,
+    "week": 22,
+    "month": null,
+    "day": 2,
+    "text": "Luke 24:36-49"
+  },
+  {
+    "type": 25,
+    "week": 22,
+    "month": null,
+    "day": 3,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 22,
+    "month": null,
+    "day": 3,
+    "text": "Easter Wednesday"
+  },
+  {
+    "type": 38,
+    "week": 22,
+    "month": null,
+    "day": 3,
+    "text": "Acts 3:13-15, 17-19"
+  },
+  {
+    "type": 39,
+    "week": 22,
+    "month": null,
+    "day": 3,
+    "text": "Col. 3:1-7"
+  },
+  {
+    "type": 2,
+    "week": 22,
+    "month": null,
+    "day": 3,
+    "text": "John 21:1-14"
   },
   {
     "type": 25,
@@ -911,6 +1261,41 @@
   },
   {
     "type": 25,
+    "week": 27,
+    "month": null,
+    "day": 4,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 27,
+    "month": null,
+    "day": 4,
+    "text": "Ascension"
+  },
+  {
+    "type": 38,
+    "week": 27,
+    "month": null,
+    "day": 4,
+    "text": "Acts 1:1-11"
+  },
+  {
+    "type": 39,
+    "week": 27,
+    "month": null,
+    "day": 4,
+    "text": "Eph. 1:15-23"
+  },
+  {
+    "type": 2,
+    "week": 27,
+    "month": null,
+    "day": 4,
+    "text": "Luke 24:44-53"
+  },
+  {
+    "type": 25,
     "week": 28,
     "month": null,
     "day": 0,
@@ -978,6 +1363,76 @@
     "month": null,
     "day": 0,
     "text": "John 14:23-27 (28-31)"
+  },
+  {
+    "type": 25,
+    "week": 29,
+    "month": null,
+    "day": 1,
+    "text": "Red"
+  },
+  {
+    "type": 0,
+    "week": 29,
+    "month": null,
+    "day": 1,
+    "text": "Pentecost Evening/Monday"
+  },
+  {
+    "type": 38,
+    "week": 29,
+    "month": null,
+    "day": 1,
+    "text": "Is. 57:15-21"
+  },
+  {
+    "type": 39,
+    "week": 29,
+    "month": null,
+    "day": 1,
+    "text": "Acts 10:34a, 42-48"
+  },
+  {
+    "type": 2,
+    "week": 29,
+    "month": null,
+    "day": 1,
+    "text": "John 3:16-21"
+  },
+  {
+    "type": 25,
+    "week": 29,
+    "month": null,
+    "day": 2,
+    "text": "Red"
+  },
+  {
+    "type": 0,
+    "week": 29,
+    "month": null,
+    "day": 2,
+    "text": "Pentecost Tuesday"
+  },
+  {
+    "type": 38,
+    "week": 29,
+    "month": null,
+    "day": 2,
+    "text": "Is. 32:14-20"
+  },
+  {
+    "type": 39,
+    "week": 29,
+    "month": null,
+    "day": 2,
+    "text": "Acts 8:14-17"
+  },
+  {
+    "type": 2,
+    "week": 29,
+    "month": null,
+    "day": 2,
+    "text": "John 10:1-10"
   },
   {
     "type": 25,
@@ -1958,5 +2413,110 @@
     "month": null,
     "day": 0,
     "text": "Luke 6:(20–26) 27–42"
+  },
+  {
+    "type": 25,
+    "week": null,
+    "month": 12,
+    "day": 24,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": null,
+    "month": 12,
+    "day": 24,
+    "text": "Christmas Eve"
+  },
+  {
+    "type": 38,
+    "week": null,
+    "month": 12,
+    "day": 24,
+    "text": "Is. 7:10-14"
+  },
+  {
+    "type": 39,
+    "week": null,
+    "month": 12,
+    "day": 24,
+    "text": "1 John 4:7-16"
+  },
+  {
+    "type": 2,
+    "week": null,
+    "month": 12,
+    "day": 24,
+    "text": "Matt. 1:18-25"
+  },
+  {
+    "type": 25,
+    "week": null,
+    "month": 12,
+    "day": 25,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": null,
+    "month": 12,
+    "day": 25,
+    "text": "Christmas Day"
+  },
+  {
+    "type": 38,
+    "week": null,
+    "month": 12,
+    "day": 25,
+    "text": "Is. 52:7-10"
+  },
+  {
+    "type": 39,
+    "week": null,
+    "month": 12,
+    "day": 25,
+    "text": "Heb. 1:1-6 (7-12)"
+  },
+  {
+    "type": 2,
+    "week": null,
+    "month": 12,
+    "day": 25,
+    "text": "John 1:1-14 (15-18)"
+  },
+  {
+    "type": 25,
+    "week": null,
+    "month": 1,
+    "day": 6,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": null,
+    "month": 1,
+    "day": 6,
+    "text": "The Epiphany of Our Lord"
+  },
+  {
+    "type": 38,
+    "week": null,
+    "month": 1,
+    "day": 6,
+    "text": "Is. 60:1-6"
+  },
+  {
+    "type": 39,
+    "week": null,
+    "month": 1,
+    "day": 6,
+    "text": "Eph. 3:1-12"
+  },
+  {
+    "type": 2,
+    "week": null,
+    "month": 1,
+    "day": 6,
+    "text": "Matt. 2:1-12"
   }
 ]
