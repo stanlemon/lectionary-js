@@ -29,7 +29,7 @@ from `lsb-festivals.json`. Each entry shows its data-model identifier
 | Series | Added | Source |
 |---|---|---|
 | A | ✓ | *Lutheran Service Book* Three-Year Lectionary pp. xiv–xv |
-| B | pending | |
+| B | ✓ | *Lutheran Service Book* Three-Year Lectionary pp. xvi–xvii |
 | C | pending | |
 
 ## Notes
