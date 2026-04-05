@@ -20,6 +20,10 @@ function wrapper({ children }) {
 }
 
 describe("LectionaryContext", () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
   it("defaults to the 1-year lectionary", () => {
     const { result } = renderHook(() => useLectionary(), { wrapper });
     expect(result.current.lectionaryType).toBe(LECTIONARY_1YR);
@@ -58,11 +62,32 @@ describe("LectionaryContext", () => {
     );
     spy.mockRestore();
   });
+
+  it("persists the selection to localStorage when toggled", () => {
+    const { result } = renderHook(() => useLectionary(), { wrapper });
+    act(() => result.current.toggleLectionary());
+    expect(localStorage.getItem("lectionary-type")).toBe(LECTIONARY_3YR);
+    act(() => result.current.toggleLectionary());
+    expect(localStorage.getItem("lectionary-type")).toBe(LECTIONARY_1YR);
+  });
+
+  it("restores the 3-year selection from localStorage on mount", () => {
+    localStorage.setItem("lectionary-type", LECTIONARY_3YR);
+    const { result } = renderHook(() => useLectionary(), { wrapper });
+    expect(result.current.lectionaryType).toBe(LECTIONARY_3YR);
+  });
+
+  it("defaults to 1-year when localStorage has an unrecognised value", () => {
+    localStorage.setItem("lectionary-type", "bogus");
+    const { result } = renderHook(() => useLectionary(), { wrapper });
+    expect(result.current.lectionaryType).toBe(LECTIONARY_1YR);
+  });
 });
 
 describe("LectionaryToggle", () => {
   afterEach(() => {
     window.location.hash = "";
+    localStorage.clear();
   });
 
   it("renders the toggle button showing '1 Year' by default", () => {

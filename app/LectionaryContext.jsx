@@ -29,17 +29,24 @@ function createLoader(type) {
   });
 }
 
+const STORAGE_KEY = "lectionary-type";
+
 const LectionaryContext = createContext(null);
 
 export function LectionaryProvider({ children }) {
-  const [lectionaryType, setLectionaryType] = useState(LECTIONARY_1YR);
+  const [lectionaryType, setLectionaryType] = useState(() => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored === LECTIONARY_3YR ? LECTIONARY_3YR : LECTIONARY_1YR;
+  });
 
   const loader = useMemo(() => createLoader(lectionaryType), [lectionaryType]);
 
   function toggleLectionary() {
-    setLectionaryType((t) =>
-      t === LECTIONARY_1YR ? LECTIONARY_3YR : LECTIONARY_1YR
-    );
+    setLectionaryType((t) => {
+      const next = t === LECTIONARY_1YR ? LECTIONARY_3YR : LECTIONARY_1YR;
+      localStorage.setItem(STORAGE_KEY, next);
+      return next;
+    });
   }
 
   return (
