@@ -279,6 +279,27 @@ th {
   text-align: center;
 }
 
+.lectionary-toggle {
+  position: absolute;
+  right: max(10px, env(safe-area-inset-right));
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.lectionary-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
 .small {
   font-size: 85%;
 }
