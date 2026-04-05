@@ -157,6 +157,11 @@ h6 {
   line-height: 1;
 }
 
+.parament-pill-blue {
+  background-color: #4169e1;
+  color: #fff;
+}
+
 .parament-pill-violet {
   background-color: #ee82ee;
 }
