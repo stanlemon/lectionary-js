@@ -1,4 +1,10 @@
-import { act, fireEvent, render, renderHook, screen } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  renderHook,
+  screen,
+} from "@testing-library/react";
 import { vi } from "vitest";
 
 import { App } from "./App";
