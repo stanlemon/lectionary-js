@@ -14,14 +14,14 @@
     "text": "Advent 1"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 1,
     "month": null,
     "day": 0,
     "text": "Jer. 33:14-16"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 1,
     "month": null,
     "day": 0,
@@ -49,14 +49,14 @@
     "text": "Advent 2"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 2,
     "month": null,
     "day": 0,
     "text": "Mal. 3:1-7b"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 2,
     "month": null,
     "day": 0,
@@ -84,14 +84,14 @@
     "text": "Advent 3"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 3,
     "month": null,
     "day": 0,
     "text": "Zeph. 3:14-18a"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 3,
     "month": null,
     "day": 0,
@@ -119,14 +119,14 @@
     "text": "Advent 4"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 4,
     "month": null,
     "day": 0,
     "text": "Mic. 5:2-5a"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 4,
     "month": null,
     "day": 0,
@@ -154,14 +154,14 @@
     "text": "Sunday after Christmas"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 5,
     "month": null,
     "day": 0,
     "text": "1 Sam. 2:18-20, 26"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 5,
     "month": null,
     "day": 0,
@@ -189,14 +189,14 @@
     "text": "Baptism of Our Lord"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 7,
     "month": null,
     "day": 0,
     "text": "Is. 42:1-7"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 7,
     "month": null,
     "day": 0,
@@ -224,14 +224,14 @@
     "text": "Epiphany 2"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 8,
     "month": null,
     "day": 0,
     "text": "Is. 62:1-5"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 8,
     "month": null,
     "day": 0,
@@ -259,14 +259,14 @@
     "text": "Epiphany 3"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 9,
     "month": null,
     "day": 0,
     "text": "Neh. 8:1-3, 5-6, 8-10"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 9,
     "month": null,
     "day": 0,
@@ -294,14 +294,14 @@
     "text": "Epiphany 4"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 10,
     "month": null,
     "day": 0,
     "text": "Jer. 1:4-10"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 10,
     "month": null,
     "day": 0,
@@ -329,14 +329,14 @@
     "text": "Epiphany 5"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 11,
     "month": null,
     "day": 0,
     "text": "Is. 6:1-8 (9-13)"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 11,
     "month": null,
     "day": 0,
@@ -364,14 +364,14 @@
     "text": "Epiphany 6"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 13,
     "month": null,
     "day": 0,
     "text": "Jer. 17:5-8"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 13,
     "month": null,
     "day": 0,
@@ -399,14 +399,14 @@
     "text": "Epiphany 7"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 14,
     "month": null,
     "day": 0,
     "text": "Gen. 45:3-15"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 14,
     "month": null,
     "day": 0,
@@ -434,14 +434,14 @@
     "text": "Epiphany 8"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 15,
     "month": null,
     "day": 0,
     "text": "Is. 55:10-13"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 15,
     "month": null,
     "day": 0,
@@ -469,14 +469,14 @@
     "text": "Transfiguration"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 12,
     "month": null,
     "day": 0,
     "text": "Deut. 34:1-12"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 12,
     "month": null,
     "day": 0,
@@ -504,14 +504,14 @@
     "text": "Ash Wednesday"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 15,
     "month": null,
     "day": 3,
     "text": "Joel 2:12-19"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 15,
     "month": null,
     "day": 3,
@@ -539,14 +539,14 @@
     "text": "Lent 1"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 16,
     "month": null,
     "day": 0,
     "text": "Deut. 26:1-11"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 16,
     "month": null,
     "day": 0,
@@ -574,14 +574,14 @@
     "text": "Lent 2"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 17,
     "month": null,
     "day": 0,
     "text": "Gen. 15:1-12, 17-18"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 17,
     "month": null,
     "day": 0,
@@ -609,14 +609,14 @@
     "text": "Lent 3"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 18,
     "month": null,
     "day": 0,
     "text": "Ex. 3:1-15"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 18,
     "month": null,
     "day": 0,
@@ -644,14 +644,14 @@
     "text": "Lent 4"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 19,
     "month": null,
     "day": 0,
     "text": "Is. 12:1-6"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 19,
     "month": null,
     "day": 0,
@@ -679,14 +679,14 @@
     "text": "Lent 5"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 20,
     "month": null,
     "day": 0,
     "text": "Is. 43:16-21"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 20,
     "month": null,
     "day": 0,
@@ -714,14 +714,14 @@
     "text": "Palm Sunday"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 21,
     "month": null,
     "day": 0,
     "text": "Is. 50:4-9a"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 21,
     "month": null,
     "day": 0,
@@ -749,14 +749,14 @@
     "text": "Monday of Holy Week"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 21,
     "month": null,
     "day": 1,
     "text": "Is. 50:5-10"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 21,
     "month": null,
     "day": 1,
@@ -784,14 +784,14 @@
     "text": "Tuesday of Holy Week"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 21,
     "month": null,
     "day": 2,
     "text": "Is. 49:1-7"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 21,
     "month": null,
     "day": 2,
@@ -819,14 +819,14 @@
     "text": "Wednesday of Holy Week"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 21,
     "month": null,
     "day": 3,
     "text": "Is. 62:11-63:7"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 21,
     "month": null,
     "day": 3,
@@ -854,14 +854,14 @@
     "text": "Maundy Thursday"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 21,
     "month": null,
     "day": 4,
     "text": "Jer. 31:31-34"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 21,
     "month": null,
     "day": 4,
@@ -889,14 +889,14 @@
     "text": "Good Friday"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 21,
     "month": null,
     "day": 5,
     "text": "Is. 52:13-53:12"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 21,
     "month": null,
     "day": 5,
@@ -924,14 +924,14 @@
     "text": "Holy Saturday"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 21,
     "month": null,
     "day": 6,
     "text": "Dan. 6:1-24"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 21,
     "month": null,
     "day": 6,
@@ -959,14 +959,14 @@
     "text": "Easter Day"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 22,
     "month": null,
     "day": 0,
     "text": "Acts 10:34-43"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 22,
     "month": null,
     "day": 0,
@@ -994,14 +994,14 @@
     "text": "Easter Evening/Monday"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 22,
     "month": null,
     "day": 1,
     "text": "Ex. 15:1-18"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 22,
     "month": null,
     "day": 1,
@@ -1029,14 +1029,14 @@
     "text": "Easter Tuesday"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 22,
     "month": null,
     "day": 2,
     "text": "Dan. 3:8-28"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 22,
     "month": null,
     "day": 2,
@@ -1064,14 +1064,14 @@
     "text": "Easter Wednesday"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 22,
     "month": null,
     "day": 3,
     "text": "Acts 3:13-15, 17-19"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 22,
     "month": null,
     "day": 3,
@@ -1099,14 +1099,14 @@
     "text": "Easter 2"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 23,
     "month": null,
     "day": 0,
     "text": "Acts 5:12-20"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 23,
     "month": null,
     "day": 0,
@@ -1134,14 +1134,14 @@
     "text": "Easter 3"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 24,
     "month": null,
     "day": 0,
     "text": "Acts 5:27-32"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 24,
     "month": null,
     "day": 0,
@@ -1169,14 +1169,14 @@
     "text": "Easter 4"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 25,
     "month": null,
     "day": 0,
     "text": "Acts 13:15-16, 26-33"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 25,
     "month": null,
     "day": 0,
@@ -1204,14 +1204,14 @@
     "text": "Easter 5"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 26,
     "month": null,
     "day": 0,
     "text": "Acts 11:1-18"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 26,
     "month": null,
     "day": 0,
@@ -1239,14 +1239,14 @@
     "text": "Easter 6"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 27,
     "month": null,
     "day": 0,
     "text": "Acts 16:9-15"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 27,
     "month": null,
     "day": 0,
@@ -1274,14 +1274,14 @@
     "text": "Ascension"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 27,
     "month": null,
     "day": 4,
     "text": "Acts 1:1-11"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 27,
     "month": null,
     "day": 4,
@@ -1309,14 +1309,14 @@
     "text": "Easter 7"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 28,
     "month": null,
     "day": 0,
     "text": "Acts 16:16-34"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 28,
     "month": null,
     "day": 0,
@@ -1344,14 +1344,14 @@
     "text": "Day of Pentecost"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 29,
     "month": null,
     "day": 0,
     "text": "Acts 2:1-21"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 29,
     "month": null,
     "day": 0,
@@ -1379,14 +1379,14 @@
     "text": "Pentecost Evening/Monday"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 29,
     "month": null,
     "day": 1,
     "text": "Is. 57:15-21"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 29,
     "month": null,
     "day": 1,
@@ -1414,14 +1414,14 @@
     "text": "Pentecost Tuesday"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 29,
     "month": null,
     "day": 2,
     "text": "Is. 32:14-20"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 29,
     "month": null,
     "day": 2,
@@ -1449,14 +1449,14 @@
     "text": "Holy Trinity"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 30,
     "month": null,
     "day": 0,
     "text": "Prov. 8:1-4, 22-31"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 30,
     "month": null,
     "day": 0,
@@ -1484,14 +1484,14 @@
     "text": "Proper 4 (May 29–June 4)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 59,
     "month": null,
     "day": 0,
     "text": "1 Kings 8:22-24, 27-29, 41-43"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 59,
     "month": null,
     "day": 0,
@@ -1519,14 +1519,14 @@
     "text": "Proper 5 (June 5–11)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 60,
     "month": null,
     "day": 0,
     "text": "1 Kings 17:17-24"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 60,
     "month": null,
     "day": 0,
@@ -1554,14 +1554,14 @@
     "text": "Proper 6 (June 12–18)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 61,
     "month": null,
     "day": 0,
     "text": "2 Sam. 11:26–12:10, 13-15"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 61,
     "month": null,
     "day": 0,
@@ -1589,14 +1589,14 @@
     "text": "Proper 7 (June 19–25)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 62,
     "month": null,
     "day": 0,
     "text": "Is. 65:1-9"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 62,
     "month": null,
     "day": 0,
@@ -1624,14 +1624,14 @@
     "text": "Proper 8 (June 26–July 2)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 63,
     "month": null,
     "day": 0,
     "text": "Lam. 3:22-33"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 63,
     "month": null,
     "day": 0,
@@ -1659,14 +1659,14 @@
     "text": "Proper 9 (July 3–9)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 64,
     "month": null,
     "day": 0,
     "text": "Is. 66:10-14"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 64,
     "month": null,
     "day": 0,
@@ -1694,14 +1694,14 @@
     "text": "Proper 10 (July 10–16)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 65,
     "month": null,
     "day": 0,
     "text": "Lev. 18:1-5; 19:9-18"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 65,
     "month": null,
     "day": 0,
@@ -1729,14 +1729,14 @@
     "text": "Proper 11 (July 17–23)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 66,
     "month": null,
     "day": 0,
     "text": "Gen. 18:1-14"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 66,
     "month": null,
     "day": 0,
@@ -1764,14 +1764,14 @@
     "text": "Proper 12 (July 24–30)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 67,
     "month": null,
     "day": 0,
     "text": "Gen. 18:20-32"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 67,
     "month": null,
     "day": 0,
@@ -1799,14 +1799,14 @@
     "text": "Proper 13 (July 31–Aug. 6)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 68,
     "month": null,
     "day": 0,
     "text": "Eccl. 1:2; 2:18-26"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 68,
     "month": null,
     "day": 0,
@@ -1834,14 +1834,14 @@
     "text": "Proper 14 (Aug. 7–13)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 69,
     "month": null,
     "day": 0,
     "text": "Gen. 15:1-6"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 69,
     "month": null,
     "day": 0,
@@ -1869,14 +1869,14 @@
     "text": "Proper 15 (Aug. 14–20)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 70,
     "month": null,
     "day": 0,
     "text": "Jer. 23:16-29"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 70,
     "month": null,
     "day": 0,
@@ -1904,14 +1904,14 @@
     "text": "Proper 16 (Aug. 21–27)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 71,
     "month": null,
     "day": 0,
     "text": "Is. 66:18-23"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 71,
     "month": null,
     "day": 0,
@@ -1939,14 +1939,14 @@
     "text": "Proper 17 (Aug. 28–Sept. 3)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 72,
     "month": null,
     "day": 0,
     "text": "Prov. 25:2-7"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 72,
     "month": null,
     "day": 0,
@@ -1974,14 +1974,14 @@
     "text": "Proper 18 (Sept. 4–10)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 73,
     "month": null,
     "day": 0,
     "text": "Deut. 30:15-20"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 73,
     "month": null,
     "day": 0,
@@ -2009,14 +2009,14 @@
     "text": "Proper 19 (Sept. 11–17)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 74,
     "month": null,
     "day": 0,
     "text": "Ex. 32:7-14"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 74,
     "month": null,
     "day": 0,
@@ -2044,14 +2044,14 @@
     "text": "Proper 20 (Sept. 18–24)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 75,
     "month": null,
     "day": 0,
     "text": "Amos 8:4-7"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 75,
     "month": null,
     "day": 0,
@@ -2079,14 +2079,14 @@
     "text": "Proper 21 (Sept. 25–Oct. 1)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 76,
     "month": null,
     "day": 0,
     "text": "Amos 6:1-7"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 76,
     "month": null,
     "day": 0,
@@ -2114,14 +2114,14 @@
     "text": "Proper 22 (Oct. 2–8)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 77,
     "month": null,
     "day": 0,
     "text": "Hab. 1:1-4; 2:1-4"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 77,
     "month": null,
     "day": 0,
@@ -2149,14 +2149,14 @@
     "text": "Proper 23 (Oct. 9–15)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 78,
     "month": null,
     "day": 0,
     "text": "Ruth 1:1-19a"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 78,
     "month": null,
     "day": 0,
@@ -2184,14 +2184,14 @@
     "text": "Proper 24 (Oct. 16–22)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 79,
     "month": null,
     "day": 0,
     "text": "Gen. 32:22-30"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 79,
     "month": null,
     "day": 0,
@@ -2219,14 +2219,14 @@
     "text": "Proper 25 (Oct. 23–29)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 80,
     "month": null,
     "day": 0,
     "text": "Jer. 14:7-10, 19-22"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 80,
     "month": null,
     "day": 0,
@@ -2254,14 +2254,14 @@
     "text": "Proper 26 (Oct. 30–Nov. 5)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 81,
     "month": null,
     "day": 0,
     "text": "Is. 1:10-18"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 81,
     "month": null,
     "day": 0,
@@ -2289,14 +2289,14 @@
     "text": "Proper 27 (Nov. 6–12)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 82,
     "month": null,
     "day": 0,
     "text": "Ex. 3:1-15"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 82,
     "month": null,
     "day": 0,
@@ -2324,14 +2324,14 @@
     "text": "Proper 28 (Nov. 13–19)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 83,
     "month": null,
     "day": 0,
     "text": "Mal. 4:1-6"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 83,
     "month": null,
     "day": 0,
@@ -2359,14 +2359,14 @@
     "text": "Proper 29 (Nov. 20–26)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 84,
     "month": null,
     "day": 0,
     "text": "Jer. 23:2-8"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 84,
     "month": null,
     "day": 0,
@@ -2394,14 +2394,14 @@
     "text": "Proper 3 (May 24–28)"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": 58,
     "month": null,
     "day": 0,
     "text": "Gen. 50:15–21"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": 58,
     "month": null,
     "day": 0,
@@ -2429,14 +2429,14 @@
     "text": "Christmas Eve"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": null,
     "month": 12,
     "day": 24,
     "text": "Is. 7:10-14"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": null,
     "month": 12,
     "day": 24,
@@ -2464,14 +2464,14 @@
     "text": "Christmas Day"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": null,
     "month": 12,
     "day": 25,
     "text": "Is. 52:7-10"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": null,
     "month": 12,
     "day": 25,
@@ -2499,14 +2499,14 @@
     "text": "The Epiphany of Our Lord"
   },
   {
-    "type": 38,
+    "type": 19,
     "week": null,
     "month": 1,
     "day": 6,
     "text": "Is. 60:1-6"
   },
   {
-    "type": 39,
+    "type": 1,
     "week": null,
     "month": 1,
     "day": 6,
