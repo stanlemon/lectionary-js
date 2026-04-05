@@ -412,6 +412,14 @@ sup {
 
 /* Liturgical Colors */
 
+.highlight-blue {
+  background-color: #4169e1;
+}
+
+.blue {
+  color: #4169e1;
+}
+
 .highlight-violet {
   background-color: #ee82ee;
 }
