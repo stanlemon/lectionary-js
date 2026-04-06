@@ -607,6 +607,16 @@ sup {
   #calendar {
     color: #000;
   }
+
+  .white {
+    color: #fff;
+  }
+
+  .parament-pill-white {
+    background-color: #000;
+    border-color: #fff;
+    color: #fff;
+  }
 }
 
 @media (prefers-color-scheme: dark) and (hover: hover) and (pointer: fine) {
@@ -633,5 +643,40 @@ sup {
 
   #calendar td.today {
     border: 5px #fff solid;
+  }
+}
+
+@media only screen and (prefers-color-scheme: dark) and (max-width: 480px) {
+  footer {
+    background: #000;
+    border-top-color: #333;
+  }
+
+  td.today {
+    outline-color: #fff;
+  }
+
+  td.selected {
+    outline-color: #fff;
+  }
+
+  .day-detail-panel {
+    border-top-color: #333;
+  }
+
+  .day-detail-panel .day-detail-date {
+    color: #aaa;
+  }
+
+  .day-detail-panel .day-detail-title {
+    color: #fff;
+  }
+
+  .day-detail-panel .day-detail-readings {
+    color: #ddd;
+  }
+
+  .day-detail-panel a.day-detail-link {
+    color: #007db5;
   }
 }
