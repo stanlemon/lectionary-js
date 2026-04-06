@@ -607,6 +607,16 @@ sup {
   #calendar {
     color: #000;
   }
+
+  .white {
+    color: #fff;
+  }
+
+  .parament-pill-white {
+    background-color: #000;
+    border-color: #fff;
+    color: #fff;
+  }
 }
 
 @media (prefers-color-scheme: dark) and (hover: hover) and (pointer: fine) {
