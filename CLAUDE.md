@@ -86,6 +86,22 @@ Tests live alongside source files (`*.test.js` / `*.test.jsx`). Coverage runs at
 
 **`App.jsx` is importable in tests** because the `createRoot` mount is guarded by `if (container)`. Import the named `App` export, not the default module side-effect.
 
+## Styling & Dark Mode
+
+All styles live in `app/App.css`. The app supports `prefers-color-scheme: dark` and must remain fully legible in both light and dark mode across two layout breakpoints:
+
+- **Desktop (≥ 481px)** — full calendar grid with readings inside cells; day detail navigated via route change.
+- **Mobile (≤ 480px)** — compact grid (date number only); selected day shown in a `.day-detail-panel` below the table; footer is fixed to the bottom of the viewport.
+
+### Dark mode rules
+
+When adding or changing any color, background, border, or outline:
+
+1. **Always provide a dark mode counterpart.** If a style sets a hardcoded light color (e.g. `color: #000`, `background: #fff`), add an override inside the appropriate `@media (prefers-color-scheme: dark)` block.
+2. **Mobile-specific overrides go in their own block.** Styles scoped to `max-width: 480px` (e.g. `.day-detail-panel` text colors, the fixed footer background, `td.today`/`td.selected` outlines) require a combined `@media only screen and (prefers-color-scheme: dark) and (max-width: 480px)` block — the general dark mode block does not cover them.
+3. **Liturgical color classes need both modes.** Classes like `.white` (used on headings and the parament pill) are set to `color: black` for light mode legibility. Dark mode must invert these (e.g. `color: #fff`). The `.parament-pill-white` similarly inverts to a black background with a white border and white text in dark mode.
+4. **Never rely on inheritance alone.** The `#calendar { color: #000 }` dark mode rule keeps calendar cell text dark (cells have colored backgrounds). Elements outside or overlapping that scope (detail panel, footer, propers view) do not inherit this and must be styled explicitly.
+
 ## Key Domain Notes
 
 - The church year runs ~57 weeks starting with Advent 1 (4th Sunday before Christmas).
