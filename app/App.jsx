@@ -7,12 +7,33 @@ import { useHashLocation } from "wouter/use-hash-location";
 
 import Calendar from "./Calendar";
 import Day from "./Day";
+import {
+  LECTIONARY_1YR,
+  LectionaryProvider,
+  useLectionary,
+} from "./LectionaryContext";
+
+function LectionaryToggle() {
+  const { lectionaryType, toggleLectionary } = useLectionary();
+  const label = lectionaryType === LECTIONARY_1YR ? "1 Year" : "3 Year";
+  return (
+    <button
+      type="button"
+      className="lectionary-toggle"
+      onClick={toggleLectionary}
+      aria-label={`Switch lectionary: currently ${label}`}
+    >
+      {label}
+    </button>
+  );
+}
 
 export function App() {
   return (
-    <>
+    <LectionaryProvider>
       <header className="title-bar">
         <h1>Lutheran Lectionary</h1>
+        <LectionaryToggle />
       </header>
       <Router hook={useHashLocation}>
         <Switch>
@@ -53,7 +74,7 @@ export function App() {
           Check out the source code.
         </a>
       </footer>
-    </>
+    </LectionaryProvider>
   );
 }
 
