@@ -1,41 +1,128 @@
 # Lectionary Calculator & Calendar
 
-This is a library for calculating the weeks of the Western Christian church calendar. This Christian calendar is also called the liturgical year.  Each Sunday has a set of appointed readings called pericopes. The lectionary has pericopes as well as prayers, which together are the propers.
+JavaScript tools for calculating the Western Christian liturgical calendar and rendering Lutheran lectionary data.
 
-This library comes from I first build with friends while at college. It was first built to help my friends and I organize our dorm devotions. When the Lutheran Church Missouri Synod began work on a new hymnal we added it to the site. The hymnal committee put a Microsoft Word doc with the propers online for review.  It included a revision of the one year lectionary and a new daily lectionary.
+This repository contains:
 
-I am amazed that so many years later people still use the site. I open sourced the calculator used by the website in PHP before. This JavaScript library includes a similar calculator as well as calendar building tooling. It also includes structured data of the various propers. I hope that by open sourcing this library it will enable other to build new tools and applications.
+- an ES module library consumable directly from GitHub
+- a React web app built with Vite
+- bundled lectionary data files used by the app
 
-_All of the code in this repository is available free under the [MIT](LICENSE) license. Lectionary data belongs to the church at large throughout time._
+The codebase currently supports both major lectionary modes:
 
-## Getting Started
+- **1-year lectionary** — the historic 57-week cycle with Gesima Sundays and Trinity numbering
+- **3-year lectionary** — Series A/B/C with Epiphany 6-8 support and Proper Sundays in Ordinary Time
 
-This repository includes the calculator library and a [React](http://reactjs.org) web app.
+Source: <https://github.com/stanlemon/lectionary-js>
 
-You can see the app in action at:
+## Features
+
+- Calculate anchor dates such as Advent, Epiphany, Easter, Pentecost, and Transfiguration
+- Determine one-year liturgical week numbers with `Week`
+- Determine three-year series and week/proper assignments with `Series` and `ThreeYearWeek`
+- Build month grids for calendar UIs with `CalendarBuilder`
+- Load and merge lectionary, festival, daily, and commemoration propers in the bundled app
+
+## Install
+
+This package is not currently published to the npm registry. Install it directly from GitHub:
+
+```bash
+npm install github:stanlemon/lectionary-js
+```
+
+The package name remains `@stanlemon/lectionary`, so imports still look like:
+
+```js
+import { Week } from "@stanlemon/lectionary";
+```
+
+Node `24.14.1+` is the current supported runtime for this repository.
+
+## Usage
+
+Most calendar classes accept either a JavaScript `Date` or a Luxon `DateTime`.
+
+### One-Year Calendar
+
+```js
+import { Week, Year } from "@stanlemon/lectionary";
+
+const date = new Date(2026, 5, 14); // June 14, 2026
+
+const week = new Week(date).getWeek();
+const easter = new Year(2026).getEaster().toISODate();
+
+console.log({ week, easter });
+```
+
+### Three-Year Calendar
+
+```js
+import { Series, Sundays, ThreeYearWeek } from "@stanlemon/lectionary";
+
+const date = new Date(2026, 5, 7); // June 7, 2026
+
+const series = new Series(date).getSeries();
+const week = new ThreeYearWeek(date).getWeek();
+
+console.log(series); // "A"
+console.log(week === Sundays.PROPER_5); // true
+```
+
+## Repository Development
+
+This repository includes the calculator library and a React app for browsing the lectionary.
 
 Install dependencies:
 
-```shell
+```bash
 npm install
+```
+
+Start the Vite dev server:
+
+```bash
+npm run start
+```
+
+Build the production app:
+
+```bash
+npm run build
 ```
 
 Run tests:
 
-```shell
+```bash
 npm run test
 ```
 
-Run the web app:
+Check formatting and linting:
 
-```shell
-npm run start
+```bash
+npm run lint
+npm run lint:format
 ```
+
+## Repository Layout
+
+- `lib/` — core calendar logic and public library exports
+- `lib/3year/` — three-year series, week, year, and loader logic
+- `app/` — React app, routing, and presentation
+- `data/` — bundled lectionary, festival, daily, and commemoration JSON files used by the app
 
 ## Contributing
 
-The data in this repository was been entered by hand. If you spot an error, let me know or submit a pull request with the fix.
+The propers data in this repository has largely been entered and maintained by hand. If you spot an error, open an issue or submit a pull request.
 
-This repository is **not** intended to be an exhaustive set of Christian lectionaries. If you're interested in using this project with another tradition's lectionary that's great. However, it does not mean I will incorporate that lectionary into this repository. This codebase is reusable so that you can incorporate it in your own project.
+This repository is **not** intended to be an exhaustive catalog of Christian lectionaries. If you want to adapt the code for another tradition, the library is reusable, but that does not imply those lectionaries will be added here.
 
-Any functional change **must** include a thorough description, be _linted_ and have tests.
+Functional changes should include a clear description and pass:
+
+- `npm run lint:format`
+- `npm run test`
+
+## License
+
+Code in this repository is available under the [MIT](LICENSE) license. Lectionary data belongs to the church at large throughout time.
