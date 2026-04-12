@@ -4,10 +4,19 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 
 import Calendar from "./Calendar";
+import { LectionaryProvider } from "./LectionaryContext";
+
+function renderCalendar(props) {
+  return render(
+    <LectionaryProvider>
+      <Calendar {...props} />
+    </LectionaryProvider>
+  );
+}
 
 describe("Calendar", () => {
   it("renders", () => {
-    render(<Calendar year={2021} month={12} />);
+    renderCalendar({ year: 2021, month: 12 });
 
     expect(screen.queryAllByText("December 2021")).toHaveLength(1);
 
@@ -24,35 +33,35 @@ describe("Calendar", () => {
   });
 
   it("shows navigation link to previous month", () => {
-    render(<Calendar year={2021} month={12} />);
+    renderCalendar({ year: 2021, month: 12 });
     expect(screen.getByText("« November 2021")).toBeInTheDocument();
   });
 
   it("shows navigation link to next month", () => {
-    render(<Calendar year={2021} month={12} />);
+    renderCalendar({ year: 2021, month: 12 });
     expect(screen.getByText("January 2022 »")).toBeInTheDocument();
   });
 
   it("wraps year backward when navigating from January", () => {
-    render(<Calendar year={2021} month={1} />);
+    renderCalendar({ year: 2021, month: 1 });
     expect(screen.getByText("« December 2020")).toBeInTheDocument();
   });
 
   it("wraps year forward when navigating from December", () => {
-    render(<Calendar year={2020} month={12} />);
+    renderCalendar({ year: 2020, month: 12 });
     expect(screen.getByText("January 2021 »")).toBeInTheDocument();
   });
 
   it("renders correctly when the month starts on Sunday", () => {
     // August 2021 starts on a Sunday — first day should appear in the first cell
-    render(<Calendar year={2021} month={8} />);
+    renderCalendar({ year: 2021, month: 8 });
     expect(screen.queryAllByText("August 2021")).toHaveLength(1);
     const dayOnes = screen.queryAllByText("1", { selector: "h3" });
     expect(dayOnes).toHaveLength(1);
   });
 
   it("renders responsive day-of-week headers", () => {
-    render(<Calendar year={2021} month={12} />);
+    renderCalendar({ year: 2021, month: 12 });
 
     [
       ["Sunday", "Su"],
@@ -69,7 +78,7 @@ describe("Calendar", () => {
   });
 
   it("applies bold classes to Sundays and festival weekdays", () => {
-    render(<Calendar year={2021} month={12} />);
+    renderCalendar({ year: 2021, month: 12 });
 
     // Dec 5 2021 is a Sunday — gets sunday-day class
     const sundayNumber = screen.getByText("5", { selector: "h3" });
@@ -87,6 +96,37 @@ describe("Calendar", () => {
     expect(festivalWeekdayNumber).not.toHaveClass("sunday-day");
   });
 
+  it("renders a festival in the month grid even when its OT is missing", () => {
+    renderCalendar({ year: 2021, month: 1 });
+
+    const dayCell = screen.getByText("24", { selector: "h3" }).closest("td");
+
+    expect(
+      within(dayCell).getByText("St. Timothy, Pastor", { selector: "h4" })
+    ).toBeInTheDocument();
+    expect(
+      within(dayCell).getByText("Epistle: 1 Tim.6:11-16")
+    ).toBeInTheDocument();
+    expect(
+      within(dayCell).getByText("Gospel: Matt. 24:42-47")
+    ).toBeInTheDocument();
+    expect(dayCell).toHaveClass("highlight-red");
+  });
+
+  it("renders Holy Cross Day with its OT lesson in the month grid", () => {
+    renderCalendar({ year: 2027, month: 9 });
+
+    const dayCell = screen.getByText("14", { selector: "h3" }).closest("td");
+
+    expect(
+      within(dayCell).getByText("Holy Cross Day", { selector: "h4" })
+    ).toBeInTheDocument();
+    expect(
+      within(dayCell).getByText("Old Test: Num. 21:4-9")
+    ).toBeInTheDocument();
+    expect(dayCell).toHaveClass("highlight-red");
+  });
+
   it("shows a detail panel below the calendar when a date is tapped on mobile", () => {
     const originalInnerWidth = window.innerWidth;
     // Simulate mobile viewport
@@ -96,7 +136,7 @@ describe("Calendar", () => {
       value: 400,
     });
 
-    render(<Calendar year={2021} month={12} />);
+    renderCalendar({ year: 2021, month: 12 });
 
     // Tap Dec 5 (Sunday — Advent 2 "Populus Zion")
     const dayCell = screen.getByText("5", { selector: "h3" }).closest("td");
@@ -135,7 +175,7 @@ describe("Calendar", () => {
       value: 400,
     });
 
-    render(<Calendar year={2027} month={3} />);
+    renderCalendar({ year: 2027, month: 3 });
 
     const dayCell = screen.getByText("25", { selector: "h3" }).closest("td");
     fireEvent.click(dayCell);
@@ -161,7 +201,7 @@ describe("Calendar", () => {
       value: 400,
     });
 
-    render(<Calendar year={2026} month={11} />);
+    renderCalendar({ year: 2026, month: 11 });
 
     const dayCell = screen.getByText("1", { selector: "h3" }).closest("td");
     fireEvent.click(dayCell);
@@ -177,7 +217,7 @@ describe("Calendar", () => {
     });
   });
 
-  it("uses the secondary readings when the primary festival has no full set", () => {
+  it("shows festival readings in the mobile detail panel when OT is missing", () => {
     const originalInnerWidth = window.innerWidth;
     Object.defineProperty(window, "innerWidth", {
       writable: true,
@@ -185,13 +225,15 @@ describe("Calendar", () => {
       value: 400,
     });
 
-    render(<Calendar year={2021} month={1} />);
+    renderCalendar({ year: 2021, month: 1 });
 
     const dayCell = screen.getByText("24", { selector: "h3" }).closest("td");
     fireEvent.click(dayCell);
 
     const panel = document.querySelector(".day-detail-panel");
     expect(within(panel).getByText("St. Timothy, Pastor")).toBeInTheDocument();
+    expect(within(panel).getByText(/1 Tim\.6:11-16/)).toBeInTheDocument();
+    expect(within(panel).getByText(/Matt\. 24:42-47/)).toBeInTheDocument();
     expect(within(panel).getByText("Transfiguration")).toBeInTheDocument();
     expect(within(panel).getByText(/Matt\. 17:1-9/)).toBeInTheDocument();
 

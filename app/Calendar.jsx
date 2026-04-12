@@ -2,20 +2,16 @@ import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 
-import lectionary from "../data/lsb-1yr.json";
-import commemorations from "../data/lsb-commemorations.json";
-import daily from "../data/lsb-daily.json";
-import festivals from "../data/lsb-festivals.json";
 import { CalendarBuilder } from "../lib/CalendarBuilder";
-import { KeyLoader } from "../lib/KeyLoader";
 import {
   findColor,
-  findProperByType,
+  findPropersByType,
+  getDisplayPropers,
   getPrecedence,
   hasReadings,
 } from "../lib/utils";
+import { useLectionary } from "./LectionaryContext";
 
-const loader = new KeyLoader({ lectionary, festivals, daily, commemorations });
 const weekdayHeaders = [
   { full: "Sunday", short: "Su" },
   { full: "Monday", short: "Mo" },
@@ -59,15 +55,14 @@ function getMonthKey(year, month) {
 }
 
 function getDayClassName(day, selectedDay) {
-  const { primary, secondary } = getPrecedence({
+  const displayPropers = getDisplayPropers({
     week: day?.week,
     lectionary: day?.propers.lectionary,
     festivals: day?.propers.festivals,
   });
   const color =
     findColor(
-      primary,
-      secondary,
+      ...displayPropers,
       day?.sunday?.propers.lectionary
     )?.toLowerCase() ?? "none";
   const isToday = day?.date ? DateTime.local().hasSame(day.date, "day") : false;
@@ -85,12 +80,19 @@ function getDayClassName(day, selectedDay) {
 
 function getDayNumberClassName(day) {
   const isSunday = day.date.weekday === 7;
-  const hasFestivalPropers =
-    day.propers.festivals.length > 0 ||
-    (!isSunday && day.propers.lectionary.length > 0);
+  const hasDisplayedPropers =
+    !isSunday &&
+    getDisplayPropers({
+      week: day?.week,
+      lectionary: day?.propers.lectionary,
+      festivals: day?.propers.festivals,
+    }).length > 0;
 
   return (
-    [isSunday ? "sunday-day" : null, hasFestivalPropers ? "festival-day" : null]
+    [
+      isSunday ? "sunday-day" : null,
+      hasDisplayedPropers ? "festival-day" : null,
+    ]
       .filter(Boolean)
       .join(" ") || undefined
   );
@@ -114,15 +116,16 @@ function CalendarDay({ day, selectedDay, onSelectDay }) {
     return <td className={className} />;
   }
 
-  const { primary, secondary } = getPrecedence({
+  const readingSections = getDisplayPropers({
     week: day.week,
     lectionary: day.propers.lectionary,
     festivals: day.propers.festivals,
-  });
-  const readingSections = [
-    getReadingSection(primary, day.propers.festivals),
-    getReadingSection(secondary, day.propers.festivals),
-  ].filter((section) => section && hasReadings(section.propers));
+  }).map((propers) => getReadingSection(propers, day.propers.festivals));
+  const commemorationTitle = findPropersByType(
+    day.propers.commemorations,
+    [37]
+  )[37]?.text;
+  const dailyPropers = findPropersByType(day.propers.daily, [38, 39]);
 
   function handleKeyDown(event) {
     if (event.key === "Enter" || event.key === " ") {
@@ -142,20 +145,28 @@ function CalendarDay({ day, selectedDay, onSelectDay }) {
       <div>
         <h3 className={getDayNumberClassName(day)}>{day.date.day}</h3>
         <div className="day-readings">
-          {readingSections.map(({ propers, id }) => (
-            <div key={id}>
-              <h4>{findProperByType(propers, 0)?.text}</h4>
-              <div>Old Test: {findProperByType(propers, 19)?.text}</div>
-              <div>Epistle: {findProperByType(propers, 1)?.text}</div>
-              <div>Gospel: {findProperByType(propers, 2)?.text}</div>
-              <br />
-            </div>
-          ))}
-          {findProperByType(day.propers.commemorations, 37) && (
-            <h5>{findProperByType(day.propers.commemorations, 37)?.text}</h5>
-          )}
-          <div>{findProperByType(day.propers.daily, 38)?.text}</div>
-          <div>{findProperByType(day.propers.daily, 39)?.text}</div>
+          {readingSections.map(({ propers, id }) => {
+            const displayedPropers = findPropersByType(propers, [0, 19, 1, 2]);
+
+            return (
+              <div key={id}>
+                <h4>{displayedPropers[0]?.text}</h4>
+                {displayedPropers[19]?.text && (
+                  <div>Old Test: {displayedPropers[19].text}</div>
+                )}
+                {displayedPropers[1]?.text && (
+                  <div>Epistle: {displayedPropers[1].text}</div>
+                )}
+                {displayedPropers[2]?.text && (
+                  <div>Gospel: {displayedPropers[2].text}</div>
+                )}
+                <br />
+              </div>
+            );
+          })}
+          {commemorationTitle && <h5>{commemorationTitle}</h5>}
+          <div>{dailyPropers[38]?.text}</div>
+          <div>{dailyPropers[39]?.text}</div>
         </div>
       </div>
     </td>
@@ -173,19 +184,22 @@ function DayDetailPanel({ selectedDay, year, month }) {
     lectionary: propers.lectionary,
     festivals: propers.festivals,
   });
-  const title =
-    findProperByType(primary, 0)?.text ||
-    findProperByType(sunday?.propers.lectionary, 0)?.text;
+  const primaryTitle = findPropersByType(primary, [0])[0]?.text;
+  const sundayTitle = findPropersByType(sunday?.propers.lectionary, [0])[0]
+    ?.text;
+  const title = primaryTitle || sundayTitle;
 
   const detailSections = [];
-  const secondaryTitle = findProperByType(secondary, 0)?.text;
+  const secondarySummary = findPropersByType(secondary, [0, 19, 38]);
+  const secondaryTitle = secondarySummary[0]?.text;
+  const primarySummary = findPropersByType(primary, [0, 19, 38]);
 
   if (hasReadings(primary)) {
     detailSections.push({
       key:
-        findProperByType(primary, 0)?.text ||
-        findProperByType(primary, 19)?.text ||
-        findProperByType(primary, 38)?.text,
+        primarySummary[0]?.text ||
+        primarySummary[19]?.text ||
+        primarySummary[38]?.text,
       label: null,
       propers: primary,
     });
@@ -195,8 +209,8 @@ function DayDetailPanel({ selectedDay, year, month }) {
     detailSections.push({
       key:
         secondaryTitle ||
-        findProperByType(secondary, 19)?.text ||
-        findProperByType(secondary, 38)?.text,
+        secondarySummary[19]?.text ||
+        secondarySummary[38]?.text,
       label: secondaryTitle,
       propers: secondary,
     });
@@ -207,11 +221,9 @@ function DayDetailPanel({ selectedDay, year, month }) {
       propers.daily.length > 0
         ? propers.daily
         : (sunday?.propers.lectionary ?? []);
+    const fallbackSummary = findPropersByType(fallbackPropers, [38, 19]);
     detailSections.push({
-      key:
-        findProperByType(fallbackPropers, 38)?.text ||
-        findProperByType(fallbackPropers, 19)?.text ||
-        "fallback",
+      key: fallbackSummary[38]?.text || fallbackSummary[19]?.text || "fallback",
       label: null,
       propers: fallbackPropers,
     });
@@ -229,11 +241,12 @@ function DayDetailPanel({ selectedDay, year, month }) {
       <div className="day-detail-title">{title}</div>
       <div className="day-detail-readings">
         {detailSections.map(({ key, label, propers: section }, index) => {
-          const ot = findProperByType(section, 19)?.text;
-          const epistle = findProperByType(section, 1)?.text;
-          const gospel = findProperByType(section, 2)?.text;
-          const daily1 = findProperByType(section, 38)?.text;
-          const daily2 = findProperByType(section, 39)?.text;
+          const sectionPropers = findPropersByType(section, [19, 1, 2, 38, 39]);
+          const ot = sectionPropers[19]?.text;
+          const epistle = sectionPropers[1]?.text;
+          const gospel = sectionPropers[2]?.text;
+          const daily1 = sectionPropers[38]?.text;
+          const daily2 = sectionPropers[39]?.text;
 
           return (
             <div key={key}>
@@ -260,11 +273,16 @@ export default function Calendar({ year: yearProp, month: monthProp }) {
   const month = parseInt(monthProp, 10);
   const monthKey = getMonthKey(year, month);
   const [selectedDayState, setSelectedDayState] = useState(null);
+  const { loader } = useLectionary();
 
-  const selectedDay =
-    selectedDayState?.monthKey === monthKey ? selectedDayState.day : null;
   const builder = new CalendarBuilder(year, month);
   const grid = builder.build(loader);
+
+  const selectedDay =
+    selectedDayState?.monthKey === monthKey
+      ? (grid.flat().find((d) => d?.date?.day === selectedDayState.dayNumber) ??
+        null)
+      : null;
   const previousMonth = getLastMonth(year, month);
   const nextMonth = getNextMonth(year, month);
 
@@ -287,7 +305,7 @@ export default function Calendar({ year: yearProp, month: monthProp }) {
 
   function selectDay(day) {
     if (window.innerWidth <= 480) {
-      setSelectedDayState({ monthKey, day });
+      setSelectedDayState({ monthKey, dayNumber: day.date.day });
     } else {
       window.location.hash = `/${year}/${month}/${day.date.day}/`;
     }

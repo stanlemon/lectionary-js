@@ -2,25 +2,14 @@ import { DateTime } from "luxon";
 import { Fragment, useEffect } from "react";
 import { Link } from "wouter";
 
-import lectionary from "../data/lsb-1yr.json";
-import commemorations from "../data/lsb-commemorations.json";
-import daily from "../data/lsb-daily.json";
-import festivals from "../data/lsb-festivals.json";
 import types from "../data/types.json";
-import { KeyLoader } from "../lib/KeyLoader";
 import { findColor, findProperByType, getPrecedence } from "../lib/utils";
 import { Week } from "../lib/Week";
+import { useLectionary } from "./LectionaryContext";
 
 const typesById = {};
 types.forEach((type) => {
   typesById[type.type] = type;
-});
-
-const loader = new KeyLoader({
-  lectionary,
-  festivals,
-  daily,
-  commemorations,
 });
 
 function getSectionId(i, type) {
@@ -71,6 +60,7 @@ function getSection(propers, festivalsPropers) {
 }
 
 export default function Day({ year, month, day: dayProp }) {
+  const { loader } = useLectionary();
   const date = DateTime.fromObject({ year, month, day: dayProp });
   const yesterday = date.minus({ days: 1 });
   const tomorrow = date.plus({ days: 1 });

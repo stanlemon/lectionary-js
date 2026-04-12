@@ -16,6 +16,10 @@ npm run lint         # ESLint check
 npm run lint:format  # ESLint with --fix
 ```
 
+**After every code change you MUST:**
+1. Run `npm run lint:format` to auto-format with Biome
+2. Run `npm run test` to verify all tests pass
+
 Run a single test file:
 ```bash
 npm run test -- Year.test.js

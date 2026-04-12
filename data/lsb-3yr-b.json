@@ -1,0 +1,2522 @@
+[
+  {
+    "type": 25,
+    "week": 1,
+    "month": null,
+    "day": 0,
+    "text": "Blue"
+  },
+  {
+    "type": 0,
+    "week": 1,
+    "month": null,
+    "day": 0,
+    "text": "Advent 1"
+  },
+  {
+    "type": 19,
+    "week": 1,
+    "month": null,
+    "day": 0,
+    "text": "Isaiah 64:1-9"
+  },
+  {
+    "type": 1,
+    "week": 1,
+    "month": null,
+    "day": 0,
+    "text": "1 Cor. 1:3-9"
+  },
+  {
+    "type": 2,
+    "week": 1,
+    "month": null,
+    "day": 0,
+    "text": "Mark 13:24-37"
+  },
+  {
+    "type": 25,
+    "week": 2,
+    "month": null,
+    "day": 0,
+    "text": "Blue"
+  },
+  {
+    "type": 0,
+    "week": 2,
+    "month": null,
+    "day": 0,
+    "text": "Advent 2"
+  },
+  {
+    "type": 19,
+    "week": 2,
+    "month": null,
+    "day": 0,
+    "text": "Isaiah 40:1-11"
+  },
+  {
+    "type": 1,
+    "week": 2,
+    "month": null,
+    "day": 0,
+    "text": "2 Pet. 3:8-14"
+  },
+  {
+    "type": 2,
+    "week": 2,
+    "month": null,
+    "day": 0,
+    "text": "Mark 1:1-8"
+  },
+  {
+    "type": 25,
+    "week": 3,
+    "month": null,
+    "day": 0,
+    "text": "Blue"
+  },
+  {
+    "type": 0,
+    "week": 3,
+    "month": null,
+    "day": 0,
+    "text": "Advent 3"
+  },
+  {
+    "type": 19,
+    "week": 3,
+    "month": null,
+    "day": 0,
+    "text": "Isaiah 61:1-4, 8-11"
+  },
+  {
+    "type": 1,
+    "week": 3,
+    "month": null,
+    "day": 0,
+    "text": "1 Thess. 5:16-24"
+  },
+  {
+    "type": 2,
+    "week": 3,
+    "month": null,
+    "day": 0,
+    "text": "John 1:6-8, 19-28"
+  },
+  {
+    "type": 25,
+    "week": 4,
+    "month": null,
+    "day": 0,
+    "text": "Blue"
+  },
+  {
+    "type": 0,
+    "week": 4,
+    "month": null,
+    "day": 0,
+    "text": "Advent 4"
+  },
+  {
+    "type": 19,
+    "week": 4,
+    "month": null,
+    "day": 0,
+    "text": "2 Sam. 7:1-11, 16"
+  },
+  {
+    "type": 1,
+    "week": 4,
+    "month": null,
+    "day": 0,
+    "text": "Rom. 16:25-27"
+  },
+  {
+    "type": 2,
+    "week": 4,
+    "month": null,
+    "day": 0,
+    "text": "Luke 1:26-38"
+  },
+  {
+    "type": 25,
+    "week": 5,
+    "month": null,
+    "day": 0,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 5,
+    "month": null,
+    "day": 0,
+    "text": "Sunday after Christmas"
+  },
+  {
+    "type": 19,
+    "week": 5,
+    "month": null,
+    "day": 0,
+    "text": "Isaiah 61:10–62:3"
+  },
+  {
+    "type": 1,
+    "week": 5,
+    "month": null,
+    "day": 0,
+    "text": "Gal. 4:4-7"
+  },
+  {
+    "type": 2,
+    "week": 5,
+    "month": null,
+    "day": 0,
+    "text": "Luke 2:22-40"
+  },
+  {
+    "type": 25,
+    "week": 7,
+    "month": null,
+    "day": 0,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 7,
+    "month": null,
+    "day": 0,
+    "text": "Baptism of Our Lord"
+  },
+  {
+    "type": 19,
+    "week": 7,
+    "month": null,
+    "day": 0,
+    "text": "Isaiah 42:1-7"
+  },
+  {
+    "type": 1,
+    "week": 7,
+    "month": null,
+    "day": 0,
+    "text": "Rom. 6:1-11"
+  },
+  {
+    "type": 2,
+    "week": 7,
+    "month": null,
+    "day": 0,
+    "text": "Mark 1:4-11"
+  },
+  {
+    "type": 25,
+    "week": 8,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 8,
+    "month": null,
+    "day": 0,
+    "text": "Epiphany 2"
+  },
+  {
+    "type": 19,
+    "week": 8,
+    "month": null,
+    "day": 0,
+    "text": "1 Sam. 3:1-10"
+  },
+  {
+    "type": 1,
+    "week": 8,
+    "month": null,
+    "day": 0,
+    "text": "1 Cor. 6:12-20"
+  },
+  {
+    "type": 2,
+    "week": 8,
+    "month": null,
+    "day": 0,
+    "text": "John 1:43-51"
+  },
+  {
+    "type": 25,
+    "week": 9,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 9,
+    "month": null,
+    "day": 0,
+    "text": "Epiphany 3"
+  },
+  {
+    "type": 19,
+    "week": 9,
+    "month": null,
+    "day": 0,
+    "text": "Jonah 3:1-5, 10"
+  },
+  {
+    "type": 1,
+    "week": 9,
+    "month": null,
+    "day": 0,
+    "text": "1 Cor. 7:29-35"
+  },
+  {
+    "type": 2,
+    "week": 9,
+    "month": null,
+    "day": 0,
+    "text": "Mark 1:14-20"
+  },
+  {
+    "type": 25,
+    "week": 10,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 10,
+    "month": null,
+    "day": 0,
+    "text": "Epiphany 4"
+  },
+  {
+    "type": 19,
+    "week": 10,
+    "month": null,
+    "day": 0,
+    "text": "Deut. 18:15-20"
+  },
+  {
+    "type": 1,
+    "week": 10,
+    "month": null,
+    "day": 0,
+    "text": "1 Cor. 8:1-13"
+  },
+  {
+    "type": 2,
+    "week": 10,
+    "month": null,
+    "day": 0,
+    "text": "Mark 1:21-28"
+  },
+  {
+    "type": 25,
+    "week": 11,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 11,
+    "month": null,
+    "day": 0,
+    "text": "Epiphany 5"
+  },
+  {
+    "type": 19,
+    "week": 11,
+    "month": null,
+    "day": 0,
+    "text": "Isaiah 40:21-31"
+  },
+  {
+    "type": 1,
+    "week": 11,
+    "month": null,
+    "day": 0,
+    "text": "1 Cor. 9:16-27"
+  },
+  {
+    "type": 2,
+    "week": 11,
+    "month": null,
+    "day": 0,
+    "text": "Mark 1:29-39"
+  },
+  {
+    "type": 25,
+    "week": 13,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 13,
+    "month": null,
+    "day": 0,
+    "text": "Epiphany 6"
+  },
+  {
+    "type": 19,
+    "week": 13,
+    "month": null,
+    "day": 0,
+    "text": "2 Kings 5:1-14"
+  },
+  {
+    "type": 1,
+    "week": 13,
+    "month": null,
+    "day": 0,
+    "text": "1 Cor. 10:31–11:1"
+  },
+  {
+    "type": 2,
+    "week": 13,
+    "month": null,
+    "day": 0,
+    "text": "Mark 1:40-45"
+  },
+  {
+    "type": 25,
+    "week": 14,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 14,
+    "month": null,
+    "day": 0,
+    "text": "Epiphany 7"
+  },
+  {
+    "type": 19,
+    "week": 14,
+    "month": null,
+    "day": 0,
+    "text": "Isaiah 43:18-25"
+  },
+  {
+    "type": 1,
+    "week": 14,
+    "month": null,
+    "day": 0,
+    "text": "2 Cor. 1:18-22"
+  },
+  {
+    "type": 2,
+    "week": 14,
+    "month": null,
+    "day": 0,
+    "text": "Mark 2:1-12"
+  },
+  {
+    "type": 25,
+    "week": 15,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 15,
+    "month": null,
+    "day": 0,
+    "text": "Epiphany 8"
+  },
+  {
+    "type": 19,
+    "week": 15,
+    "month": null,
+    "day": 0,
+    "text": "Hos. 2:14-16 (17-18) 19-20"
+  },
+  {
+    "type": 1,
+    "week": 15,
+    "month": null,
+    "day": 0,
+    "text": "2 Cor. 3:1-6"
+  },
+  {
+    "type": 2,
+    "week": 15,
+    "month": null,
+    "day": 0,
+    "text": "Mark 2:18-22"
+  },
+  {
+    "type": 25,
+    "week": 12,
+    "month": null,
+    "day": 0,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 12,
+    "month": null,
+    "day": 0,
+    "text": "Transfiguration"
+  },
+  {
+    "type": 19,
+    "week": 12,
+    "month": null,
+    "day": 0,
+    "text": "2 Kings 2:1-12"
+  },
+  {
+    "type": 1,
+    "week": 12,
+    "month": null,
+    "day": 0,
+    "text": "2 Cor. 3:12-13; 4:1-6"
+  },
+  {
+    "type": 2,
+    "week": 12,
+    "month": null,
+    "day": 0,
+    "text": "Mark 9:2-9"
+  },
+  {
+    "type": 25,
+    "week": 15,
+    "month": null,
+    "day": 3,
+    "text": "Violet"
+  },
+  {
+    "type": 0,
+    "week": 15,
+    "month": null,
+    "day": 3,
+    "text": "Ash Wednesday"
+  },
+  {
+    "type": 19,
+    "week": 15,
+    "month": null,
+    "day": 3,
+    "text": "Joel 2:12-19"
+  },
+  {
+    "type": 1,
+    "week": 15,
+    "month": null,
+    "day": 3,
+    "text": "2 Cor. 5:20b-6:10"
+  },
+  {
+    "type": 2,
+    "week": 15,
+    "month": null,
+    "day": 3,
+    "text": "Matt. 6:1-6, 16-21"
+  },
+  {
+    "type": 25,
+    "week": 16,
+    "month": null,
+    "day": 0,
+    "text": "Violet"
+  },
+  {
+    "type": 0,
+    "week": 16,
+    "month": null,
+    "day": 0,
+    "text": "Lent 1"
+  },
+  {
+    "type": 19,
+    "week": 16,
+    "month": null,
+    "day": 0,
+    "text": "Gen. 22:1-18"
+  },
+  {
+    "type": 1,
+    "week": 16,
+    "month": null,
+    "day": 0,
+    "text": "Rom. 8:31-39"
+  },
+  {
+    "type": 2,
+    "week": 16,
+    "month": null,
+    "day": 0,
+    "text": "Mark 1:9-15"
+  },
+  {
+    "type": 25,
+    "week": 17,
+    "month": null,
+    "day": 0,
+    "text": "Violet"
+  },
+  {
+    "type": 0,
+    "week": 17,
+    "month": null,
+    "day": 0,
+    "text": "Lent 2"
+  },
+  {
+    "type": 19,
+    "week": 17,
+    "month": null,
+    "day": 0,
+    "text": "Gen. 17:1-7, 15-16"
+  },
+  {
+    "type": 1,
+    "week": 17,
+    "month": null,
+    "day": 0,
+    "text": "Rom. 5:1-11"
+  },
+  {
+    "type": 2,
+    "week": 17,
+    "month": null,
+    "day": 0,
+    "text": "Mark 8:27-38"
+  },
+  {
+    "type": 25,
+    "week": 18,
+    "month": null,
+    "day": 0,
+    "text": "Violet"
+  },
+  {
+    "type": 0,
+    "week": 18,
+    "month": null,
+    "day": 0,
+    "text": "Lent 3"
+  },
+  {
+    "type": 19,
+    "week": 18,
+    "month": null,
+    "day": 0,
+    "text": "Ex. 20:1-17"
+  },
+  {
+    "type": 1,
+    "week": 18,
+    "month": null,
+    "day": 0,
+    "text": "1 Cor. 1:18-25"
+  },
+  {
+    "type": 2,
+    "week": 18,
+    "month": null,
+    "day": 0,
+    "text": "John 2:13-22 (23-25)"
+  },
+  {
+    "type": 25,
+    "week": 19,
+    "month": null,
+    "day": 0,
+    "text": "Violet"
+  },
+  {
+    "type": 0,
+    "week": 19,
+    "month": null,
+    "day": 0,
+    "text": "Lent 4"
+  },
+  {
+    "type": 19,
+    "week": 19,
+    "month": null,
+    "day": 0,
+    "text": "Num. 21:4-9"
+  },
+  {
+    "type": 1,
+    "week": 19,
+    "month": null,
+    "day": 0,
+    "text": "Eph. 2:4-10"
+  },
+  {
+    "type": 2,
+    "week": 19,
+    "month": null,
+    "day": 0,
+    "text": "John 3:14-21"
+  },
+  {
+    "type": 25,
+    "week": 20,
+    "month": null,
+    "day": 0,
+    "text": "Violet"
+  },
+  {
+    "type": 0,
+    "week": 20,
+    "month": null,
+    "day": 0,
+    "text": "Lent 5"
+  },
+  {
+    "type": 19,
+    "week": 20,
+    "month": null,
+    "day": 0,
+    "text": "Jer. 31:31-34"
+  },
+  {
+    "type": 1,
+    "week": 20,
+    "month": null,
+    "day": 0,
+    "text": "Heb. 5:7-9"
+  },
+  {
+    "type": 2,
+    "week": 20,
+    "month": null,
+    "day": 0,
+    "text": "John 12:20-33"
+  },
+  {
+    "type": 25,
+    "week": 21,
+    "month": null,
+    "day": 0,
+    "text": "Violet"
+  },
+  {
+    "type": 0,
+    "week": 21,
+    "month": null,
+    "day": 0,
+    "text": "Palm Sunday"
+  },
+  {
+    "type": 19,
+    "week": 21,
+    "month": null,
+    "day": 0,
+    "text": "Isaiah 50:4-9a"
+  },
+  {
+    "type": 1,
+    "week": 21,
+    "month": null,
+    "day": 0,
+    "text": "Phil. 2:5-11"
+  },
+  {
+    "type": 2,
+    "week": 21,
+    "month": null,
+    "day": 0,
+    "text": "Mark 14:1–15:47"
+  },
+  {
+    "type": 25,
+    "week": 21,
+    "month": null,
+    "day": 1,
+    "text": "Violet"
+  },
+  {
+    "type": 0,
+    "week": 21,
+    "month": null,
+    "day": 1,
+    "text": "Monday of Holy Week"
+  },
+  {
+    "type": 19,
+    "week": 21,
+    "month": null,
+    "day": 1,
+    "text": "Isaiah 50:5-10"
+  },
+  {
+    "type": 1,
+    "week": 21,
+    "month": null,
+    "day": 1,
+    "text": "Heb. 9:11-15"
+  },
+  {
+    "type": 2,
+    "week": 21,
+    "month": null,
+    "day": 1,
+    "text": "Matt. 26:1-27:66"
+  },
+  {
+    "type": 25,
+    "week": 21,
+    "month": null,
+    "day": 2,
+    "text": "Violet"
+  },
+  {
+    "type": 0,
+    "week": 21,
+    "month": null,
+    "day": 2,
+    "text": "Tuesday of Holy Week"
+  },
+  {
+    "type": 19,
+    "week": 21,
+    "month": null,
+    "day": 2,
+    "text": "Isaiah 49:1-7"
+  },
+  {
+    "type": 1,
+    "week": 21,
+    "month": null,
+    "day": 2,
+    "text": "1 Cor. 1:18-25"
+  },
+  {
+    "type": 2,
+    "week": 21,
+    "month": null,
+    "day": 2,
+    "text": "Mark 14:1-15:47"
+  },
+  {
+    "type": 25,
+    "week": 21,
+    "month": null,
+    "day": 3,
+    "text": "Violet"
+  },
+  {
+    "type": 0,
+    "week": 21,
+    "month": null,
+    "day": 3,
+    "text": "Wednesday of Holy Week"
+  },
+  {
+    "type": 19,
+    "week": 21,
+    "month": null,
+    "day": 3,
+    "text": "Isaiah 62:11-63:7"
+  },
+  {
+    "type": 1,
+    "week": 21,
+    "month": null,
+    "day": 3,
+    "text": "Rom. 5:6-11"
+  },
+  {
+    "type": 2,
+    "week": 21,
+    "month": null,
+    "day": 3,
+    "text": "Luke 22:1-23:56"
+  },
+  {
+    "type": 25,
+    "week": 21,
+    "month": null,
+    "day": 4,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 21,
+    "month": null,
+    "day": 4,
+    "text": "Maundy Thursday"
+  },
+  {
+    "type": 19,
+    "week": 21,
+    "month": null,
+    "day": 4,
+    "text": "Ex. 24:3-11"
+  },
+  {
+    "type": 1,
+    "week": 21,
+    "month": null,
+    "day": 4,
+    "text": "1 Cor. 10:16-17"
+  },
+  {
+    "type": 2,
+    "week": 21,
+    "month": null,
+    "day": 4,
+    "text": "Mark 14:12-26"
+  },
+  {
+    "type": 25,
+    "week": 21,
+    "month": null,
+    "day": 5,
+    "text": "Black"
+  },
+  {
+    "type": 0,
+    "week": 21,
+    "month": null,
+    "day": 5,
+    "text": "Good Friday"
+  },
+  {
+    "type": 19,
+    "week": 21,
+    "month": null,
+    "day": 5,
+    "text": "Isaiah 52:13-53:12"
+  },
+  {
+    "type": 1,
+    "week": 21,
+    "month": null,
+    "day": 5,
+    "text": "Heb. 4:14-16; 5:7-9"
+  },
+  {
+    "type": 2,
+    "week": 21,
+    "month": null,
+    "day": 5,
+    "text": "John 18:1-19:42"
+  },
+  {
+    "type": 25,
+    "week": 21,
+    "month": null,
+    "day": 6,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 21,
+    "month": null,
+    "day": 6,
+    "text": "Holy Saturday"
+  },
+  {
+    "type": 19,
+    "week": 21,
+    "month": null,
+    "day": 6,
+    "text": "Dan. 6:1-24"
+  },
+  {
+    "type": 1,
+    "week": 21,
+    "month": null,
+    "day": 6,
+    "text": "1 Pet. 4:1-8"
+  },
+  {
+    "type": 2,
+    "week": 21,
+    "month": null,
+    "day": 6,
+    "text": "Matt. 27:57-66"
+  },
+  {
+    "type": 25,
+    "week": 22,
+    "month": null,
+    "day": 0,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 22,
+    "month": null,
+    "day": 0,
+    "text": "Easter Day"
+  },
+  {
+    "type": 19,
+    "week": 22,
+    "month": null,
+    "day": 0,
+    "text": "Acts 10:34-43"
+  },
+  {
+    "type": 1,
+    "week": 22,
+    "month": null,
+    "day": 0,
+    "text": "1 Cor. 15:1-11"
+  },
+  {
+    "type": 2,
+    "week": 22,
+    "month": null,
+    "day": 0,
+    "text": "Mark 16:1-8"
+  },
+  {
+    "type": 25,
+    "week": 22,
+    "month": null,
+    "day": 1,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 22,
+    "month": null,
+    "day": 1,
+    "text": "Easter Evening/Monday"
+  },
+  {
+    "type": 19,
+    "week": 22,
+    "month": null,
+    "day": 1,
+    "text": "Ex. 15:1-18"
+  },
+  {
+    "type": 1,
+    "week": 22,
+    "month": null,
+    "day": 1,
+    "text": "Acts 10:34-43"
+  },
+  {
+    "type": 2,
+    "week": 22,
+    "month": null,
+    "day": 1,
+    "text": "Luke 24:13-35"
+  },
+  {
+    "type": 25,
+    "week": 22,
+    "month": null,
+    "day": 2,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 22,
+    "month": null,
+    "day": 2,
+    "text": "Easter Tuesday"
+  },
+  {
+    "type": 19,
+    "week": 22,
+    "month": null,
+    "day": 2,
+    "text": "Dan. 3:8-28"
+  },
+  {
+    "type": 1,
+    "week": 22,
+    "month": null,
+    "day": 2,
+    "text": "Acts 13:26-33"
+  },
+  {
+    "type": 2,
+    "week": 22,
+    "month": null,
+    "day": 2,
+    "text": "Luke 24:36-49"
+  },
+  {
+    "type": 25,
+    "week": 22,
+    "month": null,
+    "day": 3,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 22,
+    "month": null,
+    "day": 3,
+    "text": "Easter Wednesday"
+  },
+  {
+    "type": 19,
+    "week": 22,
+    "month": null,
+    "day": 3,
+    "text": "Acts 3:13-15, 17-19"
+  },
+  {
+    "type": 1,
+    "week": 22,
+    "month": null,
+    "day": 3,
+    "text": "Col. 3:1-7"
+  },
+  {
+    "type": 2,
+    "week": 22,
+    "month": null,
+    "day": 3,
+    "text": "John 21:1-14"
+  },
+  {
+    "type": 25,
+    "week": 23,
+    "month": null,
+    "day": 0,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 23,
+    "month": null,
+    "day": 0,
+    "text": "Easter 2"
+  },
+  {
+    "type": 19,
+    "week": 23,
+    "month": null,
+    "day": 0,
+    "text": "Acts 4:32-35"
+  },
+  {
+    "type": 1,
+    "week": 23,
+    "month": null,
+    "day": 0,
+    "text": "1 John 1:1–2:2"
+  },
+  {
+    "type": 2,
+    "week": 23,
+    "month": null,
+    "day": 0,
+    "text": "John 20:19-31"
+  },
+  {
+    "type": 25,
+    "week": 24,
+    "month": null,
+    "day": 0,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 24,
+    "month": null,
+    "day": 0,
+    "text": "Easter 3"
+  },
+  {
+    "type": 19,
+    "week": 24,
+    "month": null,
+    "day": 0,
+    "text": "Acts 3:11-21"
+  },
+  {
+    "type": 1,
+    "week": 24,
+    "month": null,
+    "day": 0,
+    "text": "1 John 3:1-7"
+  },
+  {
+    "type": 2,
+    "week": 24,
+    "month": null,
+    "day": 0,
+    "text": "Luke 24:36-49"
+  },
+  {
+    "type": 25,
+    "week": 25,
+    "month": null,
+    "day": 0,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 25,
+    "month": null,
+    "day": 0,
+    "text": "Easter 4"
+  },
+  {
+    "type": 19,
+    "week": 25,
+    "month": null,
+    "day": 0,
+    "text": "Acts 4:1-12"
+  },
+  {
+    "type": 1,
+    "week": 25,
+    "month": null,
+    "day": 0,
+    "text": "1 John 3:16-24"
+  },
+  {
+    "type": 2,
+    "week": 25,
+    "month": null,
+    "day": 0,
+    "text": "John 10:11-18"
+  },
+  {
+    "type": 25,
+    "week": 26,
+    "month": null,
+    "day": 0,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 26,
+    "month": null,
+    "day": 0,
+    "text": "Easter 5"
+  },
+  {
+    "type": 19,
+    "week": 26,
+    "month": null,
+    "day": 0,
+    "text": "Acts 8:26-40"
+  },
+  {
+    "type": 1,
+    "week": 26,
+    "month": null,
+    "day": 0,
+    "text": "1 John 4:1-11 (12-21)"
+  },
+  {
+    "type": 2,
+    "week": 26,
+    "month": null,
+    "day": 0,
+    "text": "John 15:1-8"
+  },
+  {
+    "type": 25,
+    "week": 27,
+    "month": null,
+    "day": 0,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 27,
+    "month": null,
+    "day": 0,
+    "text": "Easter 6"
+  },
+  {
+    "type": 19,
+    "week": 27,
+    "month": null,
+    "day": 0,
+    "text": "Acts 10:34-48"
+  },
+  {
+    "type": 1,
+    "week": 27,
+    "month": null,
+    "day": 0,
+    "text": "1 John 5:1-8"
+  },
+  {
+    "type": 2,
+    "week": 27,
+    "month": null,
+    "day": 0,
+    "text": "John 15:9-17"
+  },
+  {
+    "type": 25,
+    "week": 27,
+    "month": null,
+    "day": 4,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 27,
+    "month": null,
+    "day": 4,
+    "text": "Ascension"
+  },
+  {
+    "type": 19,
+    "week": 27,
+    "month": null,
+    "day": 4,
+    "text": "Acts 1:1-11"
+  },
+  {
+    "type": 1,
+    "week": 27,
+    "month": null,
+    "day": 4,
+    "text": "Eph. 1:15-23"
+  },
+  {
+    "type": 2,
+    "week": 27,
+    "month": null,
+    "day": 4,
+    "text": "Luke 24:44-53"
+  },
+  {
+    "type": 25,
+    "week": 28,
+    "month": null,
+    "day": 0,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 28,
+    "month": null,
+    "day": 0,
+    "text": "Easter 7"
+  },
+  {
+    "type": 19,
+    "week": 28,
+    "month": null,
+    "day": 0,
+    "text": "Acts 1:12-26"
+  },
+  {
+    "type": 1,
+    "week": 28,
+    "month": null,
+    "day": 0,
+    "text": "1 John 5:9-15"
+  },
+  {
+    "type": 2,
+    "week": 28,
+    "month": null,
+    "day": 0,
+    "text": "John 17:11b-19"
+  },
+  {
+    "type": 25,
+    "week": 29,
+    "month": null,
+    "day": 0,
+    "text": "Red"
+  },
+  {
+    "type": 0,
+    "week": 29,
+    "month": null,
+    "day": 0,
+    "text": "Pentecost"
+  },
+  {
+    "type": 19,
+    "week": 29,
+    "month": null,
+    "day": 0,
+    "text": "Acts 2:1-21"
+  },
+  {
+    "type": 1,
+    "week": 29,
+    "month": null,
+    "day": 0,
+    "text": "Rom. 8:22-27"
+  },
+  {
+    "type": 2,
+    "week": 29,
+    "month": null,
+    "day": 0,
+    "text": "John 15:26-27; 16:4b-15"
+  },
+  {
+    "type": 25,
+    "week": 29,
+    "month": null,
+    "day": 1,
+    "text": "Red"
+  },
+  {
+    "type": 0,
+    "week": 29,
+    "month": null,
+    "day": 1,
+    "text": "Pentecost Evening/Monday"
+  },
+  {
+    "type": 19,
+    "week": 29,
+    "month": null,
+    "day": 1,
+    "text": "Isaiah 57:15-21"
+  },
+  {
+    "type": 1,
+    "week": 29,
+    "month": null,
+    "day": 1,
+    "text": "Acts 10:34a, 42-48"
+  },
+  {
+    "type": 2,
+    "week": 29,
+    "month": null,
+    "day": 1,
+    "text": "John 3:16-21"
+  },
+  {
+    "type": 25,
+    "week": 29,
+    "month": null,
+    "day": 2,
+    "text": "Red"
+  },
+  {
+    "type": 0,
+    "week": 29,
+    "month": null,
+    "day": 2,
+    "text": "Pentecost Tuesday"
+  },
+  {
+    "type": 19,
+    "week": 29,
+    "month": null,
+    "day": 2,
+    "text": "Isaiah 32:14-20"
+  },
+  {
+    "type": 1,
+    "week": 29,
+    "month": null,
+    "day": 2,
+    "text": "Acts 8:14-17"
+  },
+  {
+    "type": 2,
+    "week": 29,
+    "month": null,
+    "day": 2,
+    "text": "John 10:1-10"
+  },
+  {
+    "type": 25,
+    "week": 30,
+    "month": null,
+    "day": 0,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": 30,
+    "month": null,
+    "day": 0,
+    "text": "Holy Trinity"
+  },
+  {
+    "type": 19,
+    "week": 30,
+    "month": null,
+    "day": 0,
+    "text": "Isaiah 6:1-8"
+  },
+  {
+    "type": 1,
+    "week": 30,
+    "month": null,
+    "day": 0,
+    "text": "Rom. 8:12-17"
+  },
+  {
+    "type": 2,
+    "week": 30,
+    "month": null,
+    "day": 0,
+    "text": "John 3:1-17"
+  },
+  {
+    "type": 25,
+    "week": 59,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 59,
+    "month": null,
+    "day": 0,
+    "text": "Proper 4"
+  },
+  {
+    "type": 19,
+    "week": 59,
+    "month": null,
+    "day": 0,
+    "text": "Deut. 5:12-15"
+  },
+  {
+    "type": 1,
+    "week": 59,
+    "month": null,
+    "day": 0,
+    "text": "2 Cor. 4:5-12"
+  },
+  {
+    "type": 2,
+    "week": 59,
+    "month": null,
+    "day": 0,
+    "text": "Mark 2:23-28"
+  },
+  {
+    "type": 25,
+    "week": 60,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 60,
+    "month": null,
+    "day": 0,
+    "text": "Proper 5"
+  },
+  {
+    "type": 19,
+    "week": 60,
+    "month": null,
+    "day": 0,
+    "text": "Gen. 3:9-15"
+  },
+  {
+    "type": 1,
+    "week": 60,
+    "month": null,
+    "day": 0,
+    "text": "2 Cor. 4:13–5:1"
+  },
+  {
+    "type": 2,
+    "week": 60,
+    "month": null,
+    "day": 0,
+    "text": "Mark 3:20-35"
+  },
+  {
+    "type": 25,
+    "week": 61,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 61,
+    "month": null,
+    "day": 0,
+    "text": "Proper 6"
+  },
+  {
+    "type": 19,
+    "week": 61,
+    "month": null,
+    "day": 0,
+    "text": "Ezk. 17:22-24"
+  },
+  {
+    "type": 1,
+    "week": 61,
+    "month": null,
+    "day": 0,
+    "text": "2 Cor. 5:1-10 (11-17)"
+  },
+  {
+    "type": 2,
+    "week": 61,
+    "month": null,
+    "day": 0,
+    "text": "Mark 4:26-34"
+  },
+  {
+    "type": 25,
+    "week": 62,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 62,
+    "month": null,
+    "day": 0,
+    "text": "Proper 7"
+  },
+  {
+    "type": 19,
+    "week": 62,
+    "month": null,
+    "day": 0,
+    "text": "Job 38:1-11"
+  },
+  {
+    "type": 1,
+    "week": 62,
+    "month": null,
+    "day": 0,
+    "text": "2 Cor. 6:1-13"
+  },
+  {
+    "type": 2,
+    "week": 62,
+    "month": null,
+    "day": 0,
+    "text": "Mark 4:35-41"
+  },
+  {
+    "type": 25,
+    "week": 63,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 63,
+    "month": null,
+    "day": 0,
+    "text": "Proper 8"
+  },
+  {
+    "type": 19,
+    "week": 63,
+    "month": null,
+    "day": 0,
+    "text": "Lam. 3:22-33"
+  },
+  {
+    "type": 1,
+    "week": 63,
+    "month": null,
+    "day": 0,
+    "text": "2 Cor. 8:1-9, 13-15"
+  },
+  {
+    "type": 2,
+    "week": 63,
+    "month": null,
+    "day": 0,
+    "text": "Mark 5:21-43"
+  },
+  {
+    "type": 25,
+    "week": 64,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 64,
+    "month": null,
+    "day": 0,
+    "text": "Proper 9"
+  },
+  {
+    "type": 19,
+    "week": 64,
+    "month": null,
+    "day": 0,
+    "text": "Ezk. 2:1-5"
+  },
+  {
+    "type": 1,
+    "week": 64,
+    "month": null,
+    "day": 0,
+    "text": "2 Cor. 12:1-10"
+  },
+  {
+    "type": 2,
+    "week": 64,
+    "month": null,
+    "day": 0,
+    "text": "Mark 6:1-13"
+  },
+  {
+    "type": 25,
+    "week": 65,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 65,
+    "month": null,
+    "day": 0,
+    "text": "Proper 10"
+  },
+  {
+    "type": 19,
+    "week": 65,
+    "month": null,
+    "day": 0,
+    "text": "Amos 7:10-15"
+  },
+  {
+    "type": 1,
+    "week": 65,
+    "month": null,
+    "day": 0,
+    "text": "Eph. 1:3-14"
+  },
+  {
+    "type": 2,
+    "week": 65,
+    "month": null,
+    "day": 0,
+    "text": "Mark 6:14-29"
+  },
+  {
+    "type": 25,
+    "week": 66,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 66,
+    "month": null,
+    "day": 0,
+    "text": "Proper 11"
+  },
+  {
+    "type": 19,
+    "week": 66,
+    "month": null,
+    "day": 0,
+    "text": "Isaiah 57:14b-21"
+  },
+  {
+    "type": 1,
+    "week": 66,
+    "month": null,
+    "day": 0,
+    "text": "Eph. 2:11-22"
+  },
+  {
+    "type": 2,
+    "week": 66,
+    "month": null,
+    "day": 0,
+    "text": "Mark 6:30-44"
+  },
+  {
+    "type": 25,
+    "week": 67,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 67,
+    "month": null,
+    "day": 0,
+    "text": "Proper 12"
+  },
+  {
+    "type": 19,
+    "week": 67,
+    "month": null,
+    "day": 0,
+    "text": "Gen. 9:8-15"
+  },
+  {
+    "type": 1,
+    "week": 67,
+    "month": null,
+    "day": 0,
+    "text": "Eph. 3:14-21"
+  },
+  {
+    "type": 2,
+    "week": 67,
+    "month": null,
+    "day": 0,
+    "text": "Mark 6:45-56"
+  },
+  {
+    "type": 25,
+    "week": 68,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 68,
+    "month": null,
+    "day": 0,
+    "text": "Proper 13"
+  },
+  {
+    "type": 19,
+    "week": 68,
+    "month": null,
+    "day": 0,
+    "text": "Ex. 16:2-15"
+  },
+  {
+    "type": 1,
+    "week": 68,
+    "month": null,
+    "day": 0,
+    "text": "Eph. 4:1-16"
+  },
+  {
+    "type": 2,
+    "week": 68,
+    "month": null,
+    "day": 0,
+    "text": "John 6:22-35"
+  },
+  {
+    "type": 25,
+    "week": 69,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 69,
+    "month": null,
+    "day": 0,
+    "text": "Proper 14"
+  },
+  {
+    "type": 19,
+    "week": 69,
+    "month": null,
+    "day": 0,
+    "text": "1 Kings 19:1-8"
+  },
+  {
+    "type": 1,
+    "week": 69,
+    "month": null,
+    "day": 0,
+    "text": "Eph. 4:17–5:2"
+  },
+  {
+    "type": 2,
+    "week": 69,
+    "month": null,
+    "day": 0,
+    "text": "John 6:35-51"
+  },
+  {
+    "type": 25,
+    "week": 70,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 70,
+    "month": null,
+    "day": 0,
+    "text": "Proper 15"
+  },
+  {
+    "type": 19,
+    "week": 70,
+    "month": null,
+    "day": 0,
+    "text": "Prov. 9:1-10"
+  },
+  {
+    "type": 1,
+    "week": 70,
+    "month": null,
+    "day": 0,
+    "text": "Eph. 5:6-21"
+  },
+  {
+    "type": 2,
+    "week": 70,
+    "month": null,
+    "day": 0,
+    "text": "John 6:51-69"
+  },
+  {
+    "type": 25,
+    "week": 71,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 71,
+    "month": null,
+    "day": 0,
+    "text": "Proper 16"
+  },
+  {
+    "type": 19,
+    "week": 71,
+    "month": null,
+    "day": 0,
+    "text": "Isaiah 29:11-19"
+  },
+  {
+    "type": 1,
+    "week": 71,
+    "month": null,
+    "day": 0,
+    "text": "Eph. 5:22-33"
+  },
+  {
+    "type": 2,
+    "week": 71,
+    "month": null,
+    "day": 0,
+    "text": "Mark 7:1-13"
+  },
+  {
+    "type": 25,
+    "week": 72,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 72,
+    "month": null,
+    "day": 0,
+    "text": "Proper 17"
+  },
+  {
+    "type": 19,
+    "week": 72,
+    "month": null,
+    "day": 0,
+    "text": "Deut. 4:1-2, 6-9"
+  },
+  {
+    "type": 1,
+    "week": 72,
+    "month": null,
+    "day": 0,
+    "text": "Eph. 6:10-20"
+  },
+  {
+    "type": 2,
+    "week": 72,
+    "month": null,
+    "day": 0,
+    "text": "Mark 7:14-23"
+  },
+  {
+    "type": 25,
+    "week": 73,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 73,
+    "month": null,
+    "day": 0,
+    "text": "Proper 18"
+  },
+  {
+    "type": 19,
+    "week": 73,
+    "month": null,
+    "day": 0,
+    "text": "Isaiah 35:4-7a"
+  },
+  {
+    "type": 1,
+    "week": 73,
+    "month": null,
+    "day": 0,
+    "text": "Jas. 1:17-27"
+  },
+  {
+    "type": 2,
+    "week": 73,
+    "month": null,
+    "day": 0,
+    "text": "Mark 7:31-37"
+  },
+  {
+    "type": 25,
+    "week": 74,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 74,
+    "month": null,
+    "day": 0,
+    "text": "Proper 19"
+  },
+  {
+    "type": 19,
+    "week": 74,
+    "month": null,
+    "day": 0,
+    "text": "Isaiah 50:4-10"
+  },
+  {
+    "type": 1,
+    "week": 74,
+    "month": null,
+    "day": 0,
+    "text": "Jas. 2:1-10, 14-18"
+  },
+  {
+    "type": 2,
+    "week": 74,
+    "month": null,
+    "day": 0,
+    "text": "Mark 8:27-35"
+  },
+  {
+    "type": 25,
+    "week": 75,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 75,
+    "month": null,
+    "day": 0,
+    "text": "Proper 20"
+  },
+  {
+    "type": 19,
+    "week": 75,
+    "month": null,
+    "day": 0,
+    "text": "Jer. 11:18-20"
+  },
+  {
+    "type": 1,
+    "week": 75,
+    "month": null,
+    "day": 0,
+    "text": "Jas. 3:13–4:3, 7-8a"
+  },
+  {
+    "type": 2,
+    "week": 75,
+    "month": null,
+    "day": 0,
+    "text": "Mark 9:30-37"
+  },
+  {
+    "type": 25,
+    "week": 76,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 76,
+    "month": null,
+    "day": 0,
+    "text": "Proper 21"
+  },
+  {
+    "type": 19,
+    "week": 76,
+    "month": null,
+    "day": 0,
+    "text": "Num. 11:4-6, 10-16, 24-29"
+  },
+  {
+    "type": 1,
+    "week": 76,
+    "month": null,
+    "day": 0,
+    "text": "Jas. 4:7-12 (13–5:6)"
+  },
+  {
+    "type": 2,
+    "week": 76,
+    "month": null,
+    "day": 0,
+    "text": "Mark 9:38-50"
+  },
+  {
+    "type": 25,
+    "week": 77,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 77,
+    "month": null,
+    "day": 0,
+    "text": "Proper 22"
+  },
+  {
+    "type": 19,
+    "week": 77,
+    "month": null,
+    "day": 0,
+    "text": "Gen. 2:18-25"
+  },
+  {
+    "type": 1,
+    "week": 77,
+    "month": null,
+    "day": 0,
+    "text": "Heb. 2:1-13 (14-18)"
+  },
+  {
+    "type": 2,
+    "week": 77,
+    "month": null,
+    "day": 0,
+    "text": "Mark 10:2-16"
+  },
+  {
+    "type": 25,
+    "week": 78,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 78,
+    "month": null,
+    "day": 0,
+    "text": "Proper 23"
+  },
+  {
+    "type": 19,
+    "week": 78,
+    "month": null,
+    "day": 0,
+    "text": "Amos 5:6-7, 10-15"
+  },
+  {
+    "type": 1,
+    "week": 78,
+    "month": null,
+    "day": 0,
+    "text": "Heb. 3:12-19"
+  },
+  {
+    "type": 2,
+    "week": 78,
+    "month": null,
+    "day": 0,
+    "text": "Mark 10:17-22"
+  },
+  {
+    "type": 25,
+    "week": 79,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 79,
+    "month": null,
+    "day": 0,
+    "text": "Proper 24"
+  },
+  {
+    "type": 19,
+    "week": 79,
+    "month": null,
+    "day": 0,
+    "text": "Isaiah 53:4-12"
+  },
+  {
+    "type": 1,
+    "week": 79,
+    "month": null,
+    "day": 0,
+    "text": "Heb. 4:1-13 (14-16)"
+  },
+  {
+    "type": 2,
+    "week": 79,
+    "month": null,
+    "day": 0,
+    "text": "Mark 10:23-31"
+  },
+  {
+    "type": 25,
+    "week": 80,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 80,
+    "month": null,
+    "day": 0,
+    "text": "Proper 25"
+  },
+  {
+    "type": 19,
+    "week": 80,
+    "month": null,
+    "day": 0,
+    "text": "Isaiah 59:(1-2) 9-19"
+  },
+  {
+    "type": 1,
+    "week": 80,
+    "month": null,
+    "day": 0,
+    "text": "Heb. 5:1-10"
+  },
+  {
+    "type": 2,
+    "week": 80,
+    "month": null,
+    "day": 0,
+    "text": "Mark 10:46-52"
+  },
+  {
+    "type": 25,
+    "week": 81,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 81,
+    "month": null,
+    "day": 0,
+    "text": "Proper 26"
+  },
+  {
+    "type": 19,
+    "week": 81,
+    "month": null,
+    "day": 0,
+    "text": "Deut. 6:1-9"
+  },
+  {
+    "type": 1,
+    "week": 81,
+    "month": null,
+    "day": 0,
+    "text": "Heb. 9:11-14 (15-22)"
+  },
+  {
+    "type": 2,
+    "week": 81,
+    "month": null,
+    "day": 0,
+    "text": "Mark 12:28-37"
+  },
+  {
+    "type": 25,
+    "week": 82,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 82,
+    "month": null,
+    "day": 0,
+    "text": "Proper 27"
+  },
+  {
+    "type": 19,
+    "week": 82,
+    "month": null,
+    "day": 0,
+    "text": "1 Kings 17:8-16"
+  },
+  {
+    "type": 1,
+    "week": 82,
+    "month": null,
+    "day": 0,
+    "text": "Heb. 9:24-28"
+  },
+  {
+    "type": 2,
+    "week": 82,
+    "month": null,
+    "day": 0,
+    "text": "Mark 12:38-44"
+  },
+  {
+    "type": 25,
+    "week": 83,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 83,
+    "month": null,
+    "day": 0,
+    "text": "Proper 28"
+  },
+  {
+    "type": 19,
+    "week": 83,
+    "month": null,
+    "day": 0,
+    "text": "Dan. 12:1-3"
+  },
+  {
+    "type": 1,
+    "week": 83,
+    "month": null,
+    "day": 0,
+    "text": "Heb. 10:11-25"
+  },
+  {
+    "type": 2,
+    "week": 83,
+    "month": null,
+    "day": 0,
+    "text": "Mark 13:1-13"
+  },
+  {
+    "type": 25,
+    "week": 84,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 84,
+    "month": null,
+    "day": 0,
+    "text": "Proper 29"
+  },
+  {
+    "type": 19,
+    "week": 84,
+    "month": null,
+    "day": 0,
+    "text": "Dan. 7:13-14"
+  },
+  {
+    "type": 1,
+    "week": 84,
+    "month": null,
+    "day": 0,
+    "text": "Rev. 1:4b-8"
+  },
+  {
+    "type": 2,
+    "week": 84,
+    "month": null,
+    "day": 0,
+    "text": "John 18:33-37"
+  },
+  {
+    "type": 25,
+    "week": 58,
+    "month": null,
+    "day": 0,
+    "text": "Green"
+  },
+  {
+    "type": 0,
+    "week": 58,
+    "month": null,
+    "day": 0,
+    "text": "Proper 3"
+  },
+  {
+    "type": 19,
+    "week": 58,
+    "month": null,
+    "day": 0,
+    "text": "Hos. 2:14–20"
+  },
+  {
+    "type": 1,
+    "week": 58,
+    "month": null,
+    "day": 0,
+    "text": "Acts 2:14a, 36–47"
+  },
+  {
+    "type": 2,
+    "week": 58,
+    "month": null,
+    "day": 0,
+    "text": "Mark 2:(13–17) 18–22"
+  },
+  {
+    "type": 25,
+    "week": null,
+    "month": 12,
+    "day": 24,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": null,
+    "month": 12,
+    "day": 24,
+    "text": "Christmas Eve"
+  },
+  {
+    "type": 19,
+    "week": null,
+    "month": 12,
+    "day": 24,
+    "text": "Isaiah 7:10-14"
+  },
+  {
+    "type": 1,
+    "week": null,
+    "month": 12,
+    "day": 24,
+    "text": "1 John 4:7-16"
+  },
+  {
+    "type": 2,
+    "week": null,
+    "month": 12,
+    "day": 24,
+    "text": "Matt. 1:18-25"
+  },
+  {
+    "type": 25,
+    "week": null,
+    "month": 12,
+    "day": 25,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": null,
+    "month": 12,
+    "day": 25,
+    "text": "Christmas Day"
+  },
+  {
+    "type": 19,
+    "week": null,
+    "month": 12,
+    "day": 25,
+    "text": "Isaiah 52:7-10"
+  },
+  {
+    "type": 1,
+    "week": null,
+    "month": 12,
+    "day": 25,
+    "text": "Heb. 1:1-6 (7-12)"
+  },
+  {
+    "type": 2,
+    "week": null,
+    "month": 12,
+    "day": 25,
+    "text": "John 1:1-14 (15-18)"
+  },
+  {
+    "type": 25,
+    "week": null,
+    "month": 1,
+    "day": 6,
+    "text": "White"
+  },
+  {
+    "type": 0,
+    "week": null,
+    "month": 1,
+    "day": 6,
+    "text": "The Epiphany of Our Lord"
+  },
+  {
+    "type": 19,
+    "week": null,
+    "month": 1,
+    "day": 6,
+    "text": "Isaiah 60:1-6"
+  },
+  {
+    "type": 1,
+    "week": null,
+    "month": 1,
+    "day": 6,
+    "text": "Eph. 3:1-12"
+  },
+  {
+    "type": 2,
+    "week": null,
+    "month": 1,
+    "day": 6,
+    "text": "Matt. 2:1-12"
+  }
+]
