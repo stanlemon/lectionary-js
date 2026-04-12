@@ -40,6 +40,11 @@ Coverage report:
 npm run test -- --coverage
 ```
 
+## Code Quality
+
+- Prefer JSDoc for public APIs, shared library helpers, and non-trivial internal functions so the JavaScript code remains easier to understand and safer to refactor.
+- Add useful explanatory comments when the logic is domain-specific, subtle, or performance-motivated. Avoid comments that only restate the code literally.
+
 ## Architecture
 
 ### Core Library (`/lib`)
