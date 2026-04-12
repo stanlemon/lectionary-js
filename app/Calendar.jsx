@@ -1,5 +1,5 @@
 import { DateTime } from "luxon";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 
 import { CalendarBuilder } from "../lib/CalendarBuilder";
@@ -275,8 +275,10 @@ export default function Calendar({ year: yearProp, month: monthProp }) {
   const [selectedDayState, setSelectedDayState] = useState(null);
   const { loader } = useLectionary();
 
-  const builder = new CalendarBuilder(year, month);
-  const grid = builder.build(loader);
+  const grid = useMemo(() => {
+    const builder = new CalendarBuilder(year, month);
+    return builder.build(loader);
+  }, [year, month, loader]);
 
   const selectedDay =
     selectedDayState?.monthKey === monthKey
