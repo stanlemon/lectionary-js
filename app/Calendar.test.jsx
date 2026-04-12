@@ -96,6 +96,37 @@ describe("Calendar", () => {
     expect(festivalWeekdayNumber).not.toHaveClass("sunday-day");
   });
 
+  it("renders a festival in the month grid even when its OT is missing", () => {
+    renderCalendar({ year: 2021, month: 1 });
+
+    const dayCell = screen.getByText("24", { selector: "h3" }).closest("td");
+
+    expect(
+      within(dayCell).getByText("St. Timothy, Pastor", { selector: "h4" })
+    ).toBeInTheDocument();
+    expect(
+      within(dayCell).getByText("Epistle: 1 Tim.6:11-16")
+    ).toBeInTheDocument();
+    expect(
+      within(dayCell).getByText("Gospel: Matt. 24:42-47")
+    ).toBeInTheDocument();
+    expect(dayCell).toHaveClass("highlight-red");
+  });
+
+  it("renders Holy Cross Day with its OT lesson in the month grid", () => {
+    renderCalendar({ year: 2027, month: 9 });
+
+    const dayCell = screen.getByText("14", { selector: "h3" }).closest("td");
+
+    expect(
+      within(dayCell).getByText("Holy Cross Day", { selector: "h4" })
+    ).toBeInTheDocument();
+    expect(
+      within(dayCell).getByText("Old Test: Num. 21:4-9")
+    ).toBeInTheDocument();
+    expect(dayCell).toHaveClass("highlight-red");
+  });
+
   it("shows a detail panel below the calendar when a date is tapped on mobile", () => {
     const originalInnerWidth = window.innerWidth;
     // Simulate mobile viewport
@@ -186,7 +217,7 @@ describe("Calendar", () => {
     });
   });
 
-  it("uses the secondary readings when the primary festival has no full set", () => {
+  it("shows festival readings in the mobile detail panel when OT is missing", () => {
     const originalInnerWidth = window.innerWidth;
     Object.defineProperty(window, "innerWidth", {
       writable: true,
@@ -201,6 +232,8 @@ describe("Calendar", () => {
 
     const panel = document.querySelector(".day-detail-panel");
     expect(within(panel).getByText("St. Timothy, Pastor")).toBeInTheDocument();
+    expect(within(panel).getByText(/1 Tim\.6:11-16/)).toBeInTheDocument();
+    expect(within(panel).getByText(/Matt\. 24:42-47/)).toBeInTheDocument();
     expect(within(panel).getByText("Transfiguration")).toBeInTheDocument();
     expect(within(panel).getByText(/Matt\. 17:1-9/)).toBeInTheDocument();
 
