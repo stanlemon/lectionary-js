@@ -80,7 +80,7 @@ describe("Day", () => {
   });
 
   it("gives Maundy Thursday precedence over the Annunciation in 2027", () => {
-    render(<Day year={2027} month={3} day={25} />);
+    renderDay({ year: 2027, month: 3, day: 25 });
 
     expect(
       screen.queryAllByText("Maundy Thursday", { selector: "h3" })
@@ -89,7 +89,7 @@ describe("Day", () => {
   });
 
   it("gives All Saints Day precedence over Trinity 22 in 2026", () => {
-    render(<Day year={2026} month={11} day={1} />);
+    renderDay({ year: 2026, month: 11, day: 1 });
 
     expect(
       screen.queryAllByText("All Saints Day", { selector: "h3" })
@@ -101,7 +101,7 @@ describe("Day", () => {
   });
 
   it("keeps Sunday after New Years ahead of Circumcision and Name of Jesus", () => {
-    render(<Day year={2023} month={1} day={1} />);
+    renderDay({ year: 2023, month: 1, day: 1 });
 
     expect(
       screen.queryAllByText("Sunday after New Years", { selector: "h3" })

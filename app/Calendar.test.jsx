@@ -144,7 +144,7 @@ describe("Calendar", () => {
       value: 400,
     });
 
-    render(<Calendar year={2027} month={3} />);
+    renderCalendar({ year: 2027, month: 3 });
 
     const dayCell = screen.getByText("25", { selector: "h3" }).closest("td");
     fireEvent.click(dayCell);
@@ -170,7 +170,7 @@ describe("Calendar", () => {
       value: 400,
     });
 
-    render(<Calendar year={2026} month={11} />);
+    renderCalendar({ year: 2026, month: 11 });
 
     const dayCell = screen.getByText("1", { selector: "h3" }).closest("td");
     fireEvent.click(dayCell);
@@ -194,7 +194,7 @@ describe("Calendar", () => {
       value: 400,
     });
 
-    render(<Calendar year={2021} month={1} />);
+    renderCalendar({ year: 2021, month: 1 });
 
     const dayCell = screen.getByText("24", { selector: "h3" }).closest("td");
     fireEvent.click(dayCell);
