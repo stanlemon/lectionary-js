@@ -69,4 +69,36 @@ describe("Day", () => {
 
     expect(screen.getByText("December")).toBeInTheDocument();
   });
+
+  it("gives Maundy Thursday precedence over the Annunciation in 2027", () => {
+    render(<Day year={2027} month={3} day={25} />);
+
+    expect(
+      screen.queryAllByText("Maundy Thursday", { selector: "h3" })
+    ).toHaveLength(1);
+    expect(screen.queryAllByText("Annunciation of our Lord").length).toBe(2);
+  });
+
+  it("gives All Saints Day precedence over Trinity 22 in 2026", () => {
+    render(<Day year={2026} month={11} day={1} />);
+
+    expect(
+      screen.queryAllByText("All Saints Day", { selector: "h3" })
+    ).toHaveLength(1);
+    expect(screen.queryAllByText("Trinity 22").length).toBe(2);
+    expect(
+      screen.getByText("White", { selector: ".parament-pill" })
+    ).toHaveClass("parament-pill-white");
+  });
+
+  it("keeps Sunday after New Years ahead of Circumcision and Name of Jesus", () => {
+    render(<Day year={2023} month={1} day={1} />);
+
+    expect(
+      screen.queryAllByText("Sunday after New Years", { selector: "h3" })
+    ).toHaveLength(1);
+    expect(screen.queryAllByText("Circumcision and Name of Jesus").length).toBe(
+      2
+    );
+  });
 });

@@ -8,7 +8,7 @@ import daily from "../data/lsb-daily.json";
 import festivals from "../data/lsb-festivals.json";
 import types from "../data/types.json";
 import { KeyLoader } from "../lib/KeyLoader";
-import { findColor, findProperByType } from "../lib/utils";
+import { findColor, findProperByType, getPrecedence } from "../lib/utils";
 import { Week } from "../lib/Week";
 
 const typesById = {};
@@ -38,12 +38,16 @@ function handleScrollToTop() {
 }
 
 function getTitle(day) {
-  const festivalTitle = findProperByType(day.propers.festivals, 0)?.text;
-  const lectionaryTitle = findProperByType(day.propers.lectionary, 0)?.text;
+  const { primary } = getPrecedence({
+    week: day.week,
+    lectionary: day.propers.lectionary,
+    festivals: day.propers.festivals,
+  });
+  const primaryTitle = findProperByType(primary, 0)?.text;
   const sundayTitle = findProperByType(day.sunday.lectionary, 0)?.text;
   const weekdayTitle =
     day.date.weekday === 7 ? null : `${day.date.weekdayLong} of ${sundayTitle}`;
-  return festivalTitle || lectionaryTitle || weekdayTitle || sundayTitle;
+  return primaryTitle || weekdayTitle || sundayTitle;
 }
 
 function scrollToSection(i, type) {
@@ -52,6 +56,17 @@ function scrollToSection(i, type) {
       top: document.getElementById(getSectionId(i, type)).offsetTop - 60,
       behavior: "smooth",
     });
+  };
+}
+
+function getSection(propers, festivalsPropers) {
+  if (propers.length === 0) {
+    return null;
+  }
+
+  return {
+    propers,
+    id: propers === festivalsPropers ? "festivals" : "lectionary",
   };
 }
 
@@ -96,11 +111,12 @@ export default function Day({ year, month, day: dayProp }) {
   }
 
   const title = getTitle(day);
-  const colorName = findColor(
-    day.propers.festivals,
-    day.propers.lectionary,
-    day.sunday.lectionary
-  );
+  const { primary, secondary } = getPrecedence({
+    week,
+    lectionary: day.propers.lectionary,
+    festivals: day.propers.festivals,
+  });
+  const colorName = findColor(primary, secondary, day.sunday.lectionary);
   const colorClassName = colorName?.toLowerCase();
 
   useEffect(() => {
@@ -108,10 +124,10 @@ export default function Day({ year, month, day: dayProp }) {
   }, [title]);
 
   const propersSections = [
-    { propers: day.propers.lectionary, id: "lectionary" },
-    { propers: day.propers.festivals, id: "festivals" },
+    getSection(primary, day.propers.festivals),
+    getSection(secondary, day.propers.festivals),
     { propers: day.propers.daily, id: "daily" },
-  ].filter(({ propers: p }) => p.length > 0);
+  ].filter((section) => section && section.propers.length > 0);
 
   return (
     <div className="propers">

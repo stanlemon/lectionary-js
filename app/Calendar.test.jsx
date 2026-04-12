@@ -126,4 +126,79 @@ describe("Calendar", () => {
       value: originalInnerWidth,
     });
   });
+
+  it("keeps lectionary propers primary in the mobile detail panel during festival collisions", () => {
+    const originalInnerWidth = window.innerWidth;
+    Object.defineProperty(window, "innerWidth", {
+      writable: true,
+      configurable: true,
+      value: 400,
+    });
+
+    render(<Calendar year={2027} month={3} />);
+
+    const dayCell = screen.getByText("25", { selector: "h3" }).closest("td");
+    fireEvent.click(dayCell);
+
+    const panel = document.querySelector(".day-detail-panel");
+    expect(within(panel).getByText("Maundy Thursday")).toBeInTheDocument();
+    expect(
+      within(panel).getByText("Annunciation of our Lord")
+    ).toBeInTheDocument();
+
+    Object.defineProperty(window, "innerWidth", {
+      writable: true,
+      configurable: true,
+      value: originalInnerWidth,
+    });
+  });
+
+  it("gives festivals precedence in the mobile detail panel during Trinity season collisions", () => {
+    const originalInnerWidth = window.innerWidth;
+    Object.defineProperty(window, "innerWidth", {
+      writable: true,
+      configurable: true,
+      value: 400,
+    });
+
+    render(<Calendar year={2026} month={11} />);
+
+    const dayCell = screen.getByText("1", { selector: "h3" }).closest("td");
+    fireEvent.click(dayCell);
+
+    const panel = document.querySelector(".day-detail-panel");
+    expect(within(panel).getByText("All Saints Day")).toBeInTheDocument();
+    expect(within(panel).getByText("Trinity 22")).toBeInTheDocument();
+
+    Object.defineProperty(window, "innerWidth", {
+      writable: true,
+      configurable: true,
+      value: originalInnerWidth,
+    });
+  });
+
+  it("uses the secondary readings when the primary festival has no full set", () => {
+    const originalInnerWidth = window.innerWidth;
+    Object.defineProperty(window, "innerWidth", {
+      writable: true,
+      configurable: true,
+      value: 400,
+    });
+
+    render(<Calendar year={2021} month={1} />);
+
+    const dayCell = screen.getByText("24", { selector: "h3" }).closest("td");
+    fireEvent.click(dayCell);
+
+    const panel = document.querySelector(".day-detail-panel");
+    expect(within(panel).getByText("St. Timothy, Pastor")).toBeInTheDocument();
+    expect(within(panel).getByText("Transfiguration")).toBeInTheDocument();
+    expect(within(panel).getByText(/Matt\. 17:1-9/)).toBeInTheDocument();
+
+    Object.defineProperty(window, "innerWidth", {
+      writable: true,
+      configurable: true,
+      value: originalInnerWidth,
+    });
+  });
 });
