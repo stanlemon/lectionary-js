@@ -54,23 +54,7 @@ function getMonthKey(year, month) {
   return `${year}-${padNumber(month)}`;
 }
 
-function getDayClassName(day, selectedDay) {
-  const displayPropers = getDisplayPropers({
-    week: day?.week,
-    lectionary: day?.propers.lectionary,
-    festivals: day?.propers.festivals,
-  });
-  const color =
-    findColor(
-      ...displayPropers,
-      day?.sunday?.propers.lectionary
-    )?.toLowerCase() ?? "none";
-  const isToday = day?.date ? DateTime.local().hasSame(day.date, "day") : false;
-  const isSelected =
-    selectedDay?.date && day?.date
-      ? selectedDay.date.hasSame(day.date, "day")
-      : false;
-
+function getDayClassName({ color, isToday, isSelected }) {
   return (
     `highlight-${color}` +
     (isToday ? " today" : "") +
@@ -78,16 +62,7 @@ function getDayClassName(day, selectedDay) {
   );
 }
 
-function getDayNumberClassName(day) {
-  const isSunday = day.date.weekday === 7;
-  const hasDisplayedPropers =
-    !isSunday &&
-    getDisplayPropers({
-      week: day?.week,
-      lectionary: day?.propers.lectionary,
-      festivals: day?.propers.festivals,
-    }).length > 0;
-
+function getDayNumberClassName({ isSunday, hasDisplayedPropers }) {
   return (
     [
       isSunday ? "sunday-day" : null,
@@ -110,17 +85,42 @@ function getReadingSection(propers, festivalsPropers) {
 }
 
 function CalendarDay({ day, selectedDay, onSelectDay }) {
-  const className = getDayClassName(day, selectedDay);
+  const isToday = day?.date ? DateTime.local().hasSame(day.date, "day") : false;
+  const isSelected =
+    selectedDay?.date && day?.date
+      ? selectedDay.date.hasSame(day.date, "day")
+      : false;
 
   if (!day?.date) {
-    return <td className={className} />;
+    return (
+      <td
+        className={getDayClassName({
+          color: "none",
+          isToday,
+          isSelected,
+        })}
+      />
+    );
   }
 
-  const readingSections = getDisplayPropers({
+  const displayPropers = getDisplayPropers({
     week: day.week,
     lectionary: day.propers.lectionary,
     festivals: day.propers.festivals,
-  }).map((propers) => getReadingSection(propers, day.propers.festivals));
+  });
+  const color =
+    findColor(...displayPropers, day.sunday?.propers.lectionary)?.toLowerCase() ??
+    "none";
+  const className = getDayClassName({ color, isToday, isSelected });
+  const isSunday = day.date.weekday === 7;
+  const dayNumberClassName = getDayNumberClassName({
+    isSunday,
+    hasDisplayedPropers: !isSunday && displayPropers.length > 0,
+  });
+  const readingSections = displayPropers.map((propers) => ({
+    ...getReadingSection(propers, day.propers.festivals),
+    summary: findPropersByType(propers, [0, 19, 1, 2]),
+  }));
   const commemorationTitle = findPropersByType(
     day.propers.commemorations,
     [37]
@@ -143,22 +143,20 @@ function CalendarDay({ day, selectedDay, onSelectDay }) {
       tabIndex={0}
     >
       <div>
-        <h3 className={getDayNumberClassName(day)}>{day.date.day}</h3>
+        <h3 className={dayNumberClassName}>{day.date.day}</h3>
         <div className="day-readings">
-          {readingSections.map(({ propers, id }) => {
-            const displayedPropers = findPropersByType(propers, [0, 19, 1, 2]);
-
+          {readingSections.map(({ id, summary }) => {
             return (
               <div key={id}>
-                <h4>{displayedPropers[0]?.text}</h4>
-                {displayedPropers[19]?.text && (
-                  <div>Old Test: {displayedPropers[19].text}</div>
+                <h4>{summary[0]?.text}</h4>
+                {summary[19]?.text && (
+                  <div>Old Test: {summary[19].text}</div>
                 )}
-                {displayedPropers[1]?.text && (
-                  <div>Epistle: {displayedPropers[1].text}</div>
+                {summary[1]?.text && (
+                  <div>Epistle: {summary[1].text}</div>
                 )}
-                {displayedPropers[2]?.text && (
-                  <div>Gospel: {displayedPropers[2].text}</div>
+                {summary[2]?.text && (
+                  <div>Gospel: {summary[2].text}</div>
                 )}
                 <br />
               </div>
