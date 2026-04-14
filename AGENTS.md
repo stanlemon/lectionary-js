@@ -51,6 +51,7 @@ npm run test -- --coverage
 
 The library is the primary artifact. Key pieces:
 
+- **`BaseYear.js` / `BaseWeek.js`** — Shared runtime contracts for year and week calculators.
 - **`Year.js` / `Week.js` / `CalendarBuilder.js`** — One-year calendar calculations and month grid generation.
 - **`YearFactory.js`** — Memoized factory/cache for `Year`-like calculators. `Week` and `Series` use this to avoid recomputing anchor dates.
 - **`lib/3year/Year.js` / `lib/3year/Week.js` / `lib/3year/Series.js` / `ProperSundays.js`** — Three-year logic: Advent-based Series A/B/C, the Transfiguration-before-Lent rule, and Proper 3-29 mapping for Ordinary Time.
@@ -126,3 +127,12 @@ When adding or changing any color, background, border, or outline:
 - The one-year lectionary uses the historic 57-week cycle. The three-year lectionary uses Series A/B/C, removes the pre-Lent Gesima season, and maps post-Pentecost Sundays to Proper 3-29 (`58`-`84`).
 - Propers can be week-based or fixed-date. Two dates in the same liturgical week share movable propers; festivals and commemorations can also match directly by month/day.
 - Liturgical color is stored as a proper entry (type 25) alongside readings.
+
+## Caching Notes
+
+- Keep caching **outside** `Year` and `ThreeYear`. The year implementations should stay focused on liturgical business logic.
+- `YearFactory` only memoizes the prescribed **`BaseYear` zero-argument API**. If a method is not on `BaseYear`, it is intentionally not cached.
+- `BaseYear` methods are expected to be **pure** and **zero-argument**. If that changes, revisit `YearFactory`.
+- `ThreeYear` participates through inheritance (`ThreeYear -> Year -> BaseYear`). Do not build a separate 3-year cache path.
+- Cached Luxon `DateTime`s are rehydrated from plain object data instead of stored raw so ambient Luxon settings like zone do not leak between callers.
+- Prefer small, explicit cache rules over generalized cache frameworks unless the rest of the repo actually needs broader abstraction.
