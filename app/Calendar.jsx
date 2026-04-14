@@ -109,8 +109,10 @@ function CalendarDay({ day, selectedDay, onSelectDay }) {
     festivals: day.propers.festivals,
   });
   const color =
-    findColor(...displayPropers, day.sunday?.propers.lectionary)?.toLowerCase() ??
-    "none";
+    findColor(
+      ...displayPropers,
+      day.sunday?.propers.lectionary
+    )?.toLowerCase() ?? "none";
   const className = getDayClassName({ color, isToday, isSelected });
   const isSunday = day.date.weekday === 7;
   const dayNumberClassName = getDayNumberClassName({
@@ -149,15 +151,9 @@ function CalendarDay({ day, selectedDay, onSelectDay }) {
             return (
               <div key={id}>
                 <h4>{summary[0]?.text}</h4>
-                {summary[19]?.text && (
-                  <div>Old Test: {summary[19].text}</div>
-                )}
-                {summary[1]?.text && (
-                  <div>Epistle: {summary[1].text}</div>
-                )}
-                {summary[2]?.text && (
-                  <div>Gospel: {summary[2].text}</div>
-                )}
+                {summary[19]?.text && <div>Old Test: {summary[19].text}</div>}
+                {summary[1]?.text && <div>Epistle: {summary[1].text}</div>}
+                {summary[2]?.text && <div>Gospel: {summary[2].text}</div>}
                 <br />
               </div>
             );
