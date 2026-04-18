@@ -40,6 +40,14 @@ Coverage report:
 npm run test -- --coverage
 ```
 
+## JavaScript Conventions
+
+- Prefer language-level privacy for internals. Use `#privateField` and
+  `#privateMethod()` for class internals instead of underscore naming
+  conventions like `_helper()`.
+- Only use underscore-prefixed names when true privacy is not possible or when
+  preserving an existing public API shape is intentional.
+
 ## Architecture
 
 ### Core Library (`/lib`)
