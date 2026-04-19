@@ -1,8 +1,8 @@
-import { DateTime } from "luxon";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 
 import { CalendarBuilder } from "../lib/CalendarBuilder";
+import { createLocalDate, isSameDay } from "../lib/date";
 import {
   findColor,
   findPropersByType,
@@ -10,6 +10,11 @@ import {
   getPrecedence,
   hasReadings,
 } from "../lib/utils";
+import {
+  formatDateKey,
+  formatLongDateNoPadding,
+  formatMonthYear,
+} from "./dateFormatting";
 import { useLectionary } from "./LectionaryContext";
 
 const weekdayHeaders = [
@@ -23,7 +28,7 @@ const weekdayHeaders = [
 ];
 
 function getYearAndMonthLabel({ year, month }) {
-  return DateTime.fromObject({ year, month, day: 1 }).toFormat("MMMM y");
+  return formatMonthYear(createLocalDate(year, month, 1));
 }
 
 function padNumber(v) {
@@ -85,10 +90,19 @@ function getReadingSection(propers, festivalsPropers) {
 }
 
 function CalendarDay({ day, selectedDay, onSelectDay }) {
-  const isToday = day?.date ? DateTime.local().hasSame(day.date, "day") : false;
+  const isToday = day?.date
+    ? isSameDay(
+        createLocalDate(
+          new Date().getFullYear(),
+          new Date().getMonth() + 1,
+          new Date().getDate()
+        ),
+        day.date
+      )
+    : false;
   const isSelected =
     selectedDay?.date && day?.date
-      ? selectedDay.date.hasSame(day.date, "day")
+      ? isSameDay(selectedDay.date, day.date)
       : false;
 
   if (!day?.date) {
@@ -114,7 +128,7 @@ function CalendarDay({ day, selectedDay, onSelectDay }) {
       day.sunday?.propers.lectionary
     )?.toLowerCase() ?? "none";
   const className = getDayClassName({ color, isToday, isSelected });
-  const isSunday = day.date.weekday === 7;
+  const isSunday = day.date.getDay() === 0;
   const dayNumberClassName = getDayNumberClassName({
     isSunday,
     hasDisplayedPropers: !isSunday && displayPropers.length > 0,
@@ -145,7 +159,7 @@ function CalendarDay({ day, selectedDay, onSelectDay }) {
       tabIndex={0}
     >
       <div>
-        <h3 className={dayNumberClassName}>{day.date.day}</h3>
+        <h3 className={dayNumberClassName}>{day.date.getDate()}</h3>
         <div className="day-readings">
           {readingSections.map(({ id, summary }) => {
             return (
@@ -223,11 +237,7 @@ function DayDetailPanel({ selectedDay, year, month }) {
     });
   }
 
-  const dateLabel = date.toLocaleString({
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
+  const dateLabel = formatLongDateNoPadding(date);
 
   return (
     <div className="day-detail-panel">
@@ -255,7 +265,10 @@ function DayDetailPanel({ selectedDay, year, month }) {
           );
         })}
       </div>
-      <Link className="day-detail-link" to={`/${year}/${month}/${date.day}/`}>
+      <Link
+        className="day-detail-link"
+        to={`/${year}/${month}/${date.getDate()}/`}
+      >
         View full readings →
       </Link>
     </div>
@@ -276,7 +289,9 @@ export default function Calendar({ year: yearProp, month: monthProp }) {
 
   const selectedDay =
     selectedDayState?.monthKey === monthKey
-      ? (grid.flat().find((d) => d?.date?.day === selectedDayState.dayNumber) ??
+      ? (grid
+          .flat()
+          .find((d) => d?.date?.getDate() === selectedDayState.dayNumber) ??
         null)
       : null;
   const previousMonth = getLastMonth(year, month);
@@ -301,9 +316,9 @@ export default function Calendar({ year: yearProp, month: monthProp }) {
 
   function selectDay(day) {
     if (window.innerWidth <= 480) {
-      setSelectedDayState({ monthKey, dayNumber: day.date.day });
+      setSelectedDayState({ monthKey, dayNumber: day.date.getDate() });
     } else {
-      window.location.hash = `/${year}/${month}/${day.date.day}/`;
+      window.location.hash = `/${year}/${month}/${day.date.getDate()}/`;
     }
   }
 
@@ -337,11 +352,13 @@ export default function Calendar({ year: yearProp, month: monthProp }) {
           {grid.map((week) => {
             const firstDay = week.find((d) => d?.date);
             return (
-              <tr key={firstDay ? firstDay.date.toISODate() : "empty"}>
+              <tr key={firstDay ? formatDateKey(firstDay.date) : "empty"}>
                 {week.map((day, weekDay) => (
                   <CalendarDay
                     day={day}
-                    key={day?.date?.toISODate() ?? `empty-${weekDay}`}
+                    key={
+                      day?.date ? formatDateKey(day.date) : `empty-${weekDay}`
+                    }
                     onSelectDay={selectDay}
                     selectedDay={selectedDay}
                   />
