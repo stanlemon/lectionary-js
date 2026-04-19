@@ -1,6 +1,5 @@
 import "./App.css";
 
-import { DateTime } from "luxon";
 import { createRoot } from "react-dom/client";
 import { Route, Router, Switch } from "wouter";
 import { useHashLocation } from "wouter/use-hash-location";
@@ -29,6 +28,8 @@ function LectionaryToggle() {
 }
 
 export function App() {
+  const today = new Date();
+
   return (
     <LectionaryProvider>
       <header className="title-bar">
@@ -47,16 +48,13 @@ export function App() {
           </Route>
           <Route exact path="/today">
             <Day
-              year={DateTime.local().year}
-              month={DateTime.local().month}
-              day={DateTime.local().day}
+              year={today.getFullYear()}
+              month={today.getMonth() + 1}
+              day={today.getDate()}
             />
           </Route>
           <Route>
-            <Calendar
-              year={DateTime.local().year}
-              month={DateTime.local().month}
-            />
+            <Calendar year={today.getFullYear()} month={today.getMonth() + 1} />
           </Route>
         </Switch>
       </Router>
