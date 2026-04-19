@@ -37,11 +37,18 @@ The package name remains `@stanlemon/lectionary`, so imports still look like:
 import { Week } from "@stanlemon/lectionary";
 ```
 
-Node `24.14.1+` is the current supported runtime for this repository.
+Node `24.15.0+` is the current supported runtime for this repository.
 
 ## Usage
 
-Most calendar classes accept either a JavaScript `Date` or a Luxon `DateTime`.
+The public library contract is `Date`-only at the boundary:
+
+- exported APIs accept JavaScript `Date` values where they take dates
+- exported date-returning APIs return fresh JavaScript `Date` instances
+- all returned dates represent local calendar dates at local midnight
+
+Day.js remains an internal implementation detail and is not part of the public
+contract.
 
 ### One-Year Calendar
 
@@ -49,9 +56,15 @@ Most calendar classes accept either a JavaScript `Date` or a Luxon `DateTime`.
 import { Week, Year } from "@stanlemon/lectionary";
 
 const date = new Date(2026, 5, 14); // June 14, 2026
+const toDateKey = (value) =>
+  [
+    value.getFullYear(),
+    String(value.getMonth() + 1).padStart(2, "0"),
+    String(value.getDate()).padStart(2, "0"),
+  ].join("-");
 
 const week = new Week(date).getWeek();
-const easter = new Year(2026).getEaster().toISODate();
+const easter = toDateKey(new Year(2026).getEaster());
 
 console.log({ week, easter });
 ```
