@@ -1,6 +1,6 @@
 {
   "name": "@stanlemon/lectionary",
-  "version": "1.1.64",
+  "version": "1.1.65",
   "description": "A calculator for the Western Christian church calendar.",
   "keywords": [
     "christian",
@@ -40,7 +40,7 @@
     "@vitejs/plugin-react": "6.0.1",
     "@vitest/coverage-v8": "4.1.4",
     "jsdom": "29.0.2",
-    "vite": "8.0.8",
+    "vite": "8.0.9",
     "vitest": "4.1.4"
   }
 }
