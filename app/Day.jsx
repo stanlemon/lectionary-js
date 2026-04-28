@@ -1,10 +1,19 @@
-import { DateTime } from "luxon";
 import { Fragment, useEffect } from "react";
 import { Link } from "wouter";
 
 import types from "../data/types.json";
+import { createLocalDate } from "../lib/date";
 import { findColor, findProperByType, getPrecedence } from "../lib/utils";
 import { Week } from "../lib/Week";
+import {
+  addDays,
+  formatDatePath,
+  formatLongDate,
+  formatLongDateNoPadding,
+  formatMonthName,
+  formatMonthPath,
+  formatWeekdayName,
+} from "./dateFormatting";
 import { useLectionary } from "./LectionaryContext";
 
 const typesById = {};
@@ -35,7 +44,9 @@ function getTitle(day) {
   const primaryTitle = findProperByType(primary, 0)?.text;
   const sundayTitle = findProperByType(day.sunday.lectionary, 0)?.text;
   const weekdayTitle =
-    day.date.weekday === 7 ? null : `${day.date.weekdayLong} of ${sundayTitle}`;
+    day.date.getDay() === 0
+      ? null
+      : `${formatWeekdayName(day.date)} of ${sundayTitle}`;
   return primaryTitle || weekdayTitle || sundayTitle;
 }
 
@@ -61,9 +72,9 @@ function getSection(propers, festivalsPropers) {
 
 export default function Day({ year, month, day: dayProp }) {
   const { loader } = useLectionary();
-  const date = DateTime.fromObject({ year, month, day: dayProp });
-  const yesterday = date.minus({ days: 1 });
-  const tomorrow = date.plus({ days: 1 });
+  const date = createLocalDate(year, month, dayProp);
+  const yesterday = addDays(date, -1);
+  const tomorrow = addDays(date, 1);
   const weekCalculator = new Week(date);
   const week = weekCalculator.getWeek();
   const sunday = weekCalculator.getSunday();
@@ -122,28 +133,21 @@ export default function Day({ year, month, day: dayProp }) {
   return (
     <div className="propers">
       <nav>
-        <Link to={`/${yesterday.toFormat("y/LL/dd")}/`}>
-          &laquo; {yesterday.toFormat("LLLL d, y")}
+        <Link to={`/${formatDatePath(yesterday)}/`}>
+          &laquo; {formatLongDateNoPadding(yesterday)}
         </Link>
-        <Link className="text-center" to={`/${date.toFormat("y/LL")}/`}>
-          {date.toFormat("LLLL")}
+        <Link className="text-center" to={`/${formatMonthPath(date)}/`}>
+          {formatMonthName(date)}
         </Link>
-        <Link to={`/${tomorrow.toFormat("y/LL/dd")}/`}>
-          {tomorrow.toFormat("LLLL d, y")} &raquo;
+        <Link to={`/${formatDatePath(tomorrow)}/`}>
+          {formatLongDateNoPadding(tomorrow)} &raquo;
         </Link>
       </nav>
 
       <br />
 
       <div className="day-date-row">
-        <h2 className={colorClassName}>
-          {date.toLocaleString({
-            // weekday: "long",
-            month: "long",
-            day: "2-digit",
-            year: "numeric",
-          })}
-        </h2>
+        <h2 className={colorClassName}>{formatLongDate(date)}</h2>
         {colorName && (
           <span className={`parament-pill parament-pill-${colorClassName}`}>
             {colorName}

@@ -14,30 +14,30 @@ The codebase now supports two lectionary modes:
 ## Commands
 
 ```bash
-npm run start        # Vite dev server
-npm run build        # Production build
-npm run test         # Run Vitest tests
-npm run lint         # Biome check
-npm run lint:format  # Biome check with --write
+pnpm start        # Vite dev server
+pnpm build        # Production build
+pnpm test         # Run Vitest tests
+pnpm lint         # Biome check
+pnpm lint:format  # Biome check with --write
 ```
 
 **After every code change you MUST:**
-1. Run `npm run lint:format` to auto-format with Biome
-2. Run `npm run test` to verify all tests pass
+1. Run `pnpm lint:format` to auto-format with Biome
+2. Run `pnpm test` to verify all tests pass
 
 Run a single test file:
 ```bash
-npm run test -- Year.test.js
+pnpm test -- Year.test.js
 ```
 
 Watch mode:
 ```bash
-npm run test -- --watch
+pnpm test -- --watch
 ```
 
 Coverage report:
 ```bash
-npm run test -- --coverage
+pnpm test -- --coverage
 ```
 
 ## JavaScript Conventions
@@ -98,7 +98,13 @@ Tests live alongside source files (`*.test.js` / `*.test.jsx`).
 
 **Date string format matters.** `new Date("2022-12-25")` parses as **UTC midnight**, which in US timezones resolves to Dec 24 locally. Always use `MM/DD/YYYY` format (`new Date("12/25/2022")`) when constructing dates for `Week` in tests — this matches the format used throughout `data/tests.json`.
 
-**Luxon Sunday is weekday 7, not 0.** The codebase normalizes Sunday to `0` in loader and week logic, but Luxon's `.weekday` returns `7` for Sunday. Tests that verify Sunday matching should account for this.
+**Public APIs are Date-only.** Exported library APIs accept JavaScript `Date`
+values and return fresh JavaScript `Date` instances at local midnight. Day.js
+is internal only.
+
+**Internal weekday matching uses Sunday = 0.** Day.js's `.day()` returns `0`
+for Sunday, and the lectionary datasets use that same convention. Tests that
+verify Sunday-matching behavior should assert against `0`.
 
 **Three-year series rolls over at Advent, not January 1.** `Series` is anchored to the liturgical year, so dates before Advent belong to the previous series even if the calendar year has changed.
 
@@ -125,7 +131,9 @@ When adding or changing any color, background, border, or outline:
 ## Key Domain Notes
 
 - The one-year calendar uses ~57 named liturgical weeks starting with Advent 1. The three-year calendar keeps the same Advent-through-Easter shape, then switches post-Pentecost Sundays to Proper 3-29.
-- Dates use **Luxon** (`DateTime`); Luxon treats Sunday as weekday `7`, which the codebase adjusts to `0` in some places.
+- Public library boundaries use **JavaScript `Date`** values. Internal
+  calculations use **Day.js**, whose `.day()` returns `0` for Sunday, matching
+  the lectionary datasets directly.
 - The one-year lectionary uses the historic 57-week cycle. The three-year lectionary uses Series A/B/C, removes the pre-Lent Gesima season, and maps post-Pentecost Sundays to Proper 3-29 (`58`-`84`).
 - Propers can be week-based or fixed-date. Two dates in the same liturgical week share movable propers; festivals and commemorations can also match directly by month/day.
 - Liturgical color is stored as a proper entry (type 25) alongside readings.
