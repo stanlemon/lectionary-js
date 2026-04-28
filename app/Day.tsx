@@ -3,6 +3,7 @@ import { Link } from "wouter";
 
 import types from "../data/types.json";
 import { createLocalDate } from "../lib/date";
+import type { Proper, ProperDatasetMap } from "../lib/Loader.js";
 import { findColor, findProperByType, getPrecedence } from "../lib/utils";
 import { Week } from "../lib/Week";
 import {
@@ -16,16 +17,42 @@ import {
 } from "./dateFormatting";
 import { useLectionary } from "./LectionaryContext";
 
-const typesById = {};
+type ProperType = {
+  type: number;
+  name: string;
+  is_reading: boolean;
+  is_viewable?: boolean;
+};
+
+type DayPropers = ProperDatasetMap & {
+  lectionary: Proper[];
+  festivals: Proper[];
+  daily: Proper[];
+  commemorations: Proper[];
+};
+
+type LoadedDay = {
+  date: Date;
+  week: number | null;
+  propers: DayPropers;
+  sunday: DayPropers;
+};
+
+type ProperSection = {
+  propers: Proper[];
+  id: string;
+};
+
+const typesById: Record<number, ProperType> = {};
 types.forEach((type) => {
-  typesById[type.type] = type;
+  typesById[type.type] = type as ProperType;
 });
 
-function getSectionId(i, type) {
+function getSectionId(i: number, type: number): string {
   return `proper_${i}_${typesById[type].name.toLowerCase().replace(" ", "_")}`;
 }
 
-function getAccordanceUrl(text) {
+function getAccordanceUrl(text: string): string {
   const end = text.indexOf("-") === -1 ? text.length : text.indexOf("-");
   const passage = text.replace(" ", "_").substring(0, end);
   return `accord://read/?#${passage}`;
@@ -35,14 +62,23 @@ function handleScrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function getTitle(day) {
+function StaticProperText({ html }: { html: string }) {
+  // biome-ignore lint/security/noDangerouslySetInnerHtml: bundled static liturgical text includes safe markup.
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+}
+
+function getTitle(day: LoadedDay): string | undefined {
   const { primary } = getPrecedence({
     week: day.week,
     lectionary: day.propers.lectionary,
     festivals: day.propers.festivals,
   });
-  const primaryTitle = findProperByType(primary, 0)?.text;
-  const sundayTitle = findProperByType(day.sunday.lectionary, 0)?.text;
+  const rawPrimaryTitle = findProperByType(primary, 0)?.text;
+  const rawSundayTitle = findProperByType(day.sunday.lectionary, 0)?.text;
+  const primaryTitle =
+    typeof rawPrimaryTitle === "string" ? rawPrimaryTitle : undefined;
+  const sundayTitle =
+    typeof rawSundayTitle === "string" ? rawSundayTitle : undefined;
   const weekdayTitle =
     day.date.getDay() === 0
       ? null
@@ -50,16 +86,23 @@ function getTitle(day) {
   return primaryTitle || weekdayTitle || sundayTitle;
 }
 
-function scrollToSection(i, type) {
+function scrollToSection(i: number, type: number) {
   return () => {
+    const section = document.getElementById(getSectionId(i, type));
+    if (!section) {
+      return;
+    }
     window.scrollTo({
-      top: document.getElementById(getSectionId(i, type)).offsetTop - 60,
+      top: section.offsetTop - 60,
       behavior: "smooth",
     });
   };
 }
 
-function getSection(propers, festivalsPropers) {
+function getSection(
+  propers: Proper[],
+  festivalsPropers: Proper[]
+): ProperSection | null {
   if (propers.length === 0) {
     return null;
   }
@@ -70,7 +113,21 @@ function getSection(propers, festivalsPropers) {
   };
 }
 
-export default function Day({ year, month, day: dayProp }) {
+function isProperSection(
+  section: ProperSection | null
+): section is ProperSection {
+  return section !== null;
+}
+
+export default function Day({
+  year,
+  month,
+  day: dayProp,
+}: {
+  year: number | string;
+  month: number | string;
+  day: number | string;
+}) {
   const { loader } = useLectionary();
   const date = createLocalDate(year, month, dayProp);
   const yesterday = addDays(date, -1);
@@ -79,11 +136,11 @@ export default function Day({ year, month, day: dayProp }) {
   const week = weekCalculator.getWeek();
   const sunday = weekCalculator.getSunday();
 
-  const day = {
+  const day: LoadedDay = {
     date,
     week,
-    propers: loader.load(date, week),
-    sunday: loader.load(sunday, week),
+    propers: loader.load(date, week) as DayPropers,
+    sunday: loader.load(sunday, week) as DayPropers,
   };
 
   day.propers.daily = [
@@ -128,7 +185,9 @@ export default function Day({ year, month, day: dayProp }) {
     getSection(primary, day.propers.festivals),
     getSection(secondary, day.propers.festivals),
     { propers: day.propers.daily, id: "daily" },
-  ].filter((section) => section && section.propers.length > 0);
+  ]
+    .filter(isProperSection)
+    .filter((section) => section.propers.length > 0);
 
   return (
     <div className="propers">
@@ -211,7 +270,7 @@ export default function Day({ year, month, day: dayProp }) {
                       &nbsp;
                       <a
                         title="Open this reading using Accordance, if you don't have it check it out at http://accordancebible.com"
-                        href={getAccordanceUrl(proper.text)}
+                        href={getAccordanceUrl(String(proper.text))}
                       >
                         <i className="accordance-icon" />
                       </a>
@@ -219,14 +278,9 @@ export default function Day({ year, month, day: dayProp }) {
                   )}
                 </h3>
                 {!typesById[proper.type].is_reading && (
-                  // proper.text contains HTML markup (e.g. <i>, <b>, <br />,
-                  // &nbsp;) used to format liturgical texts such as introits,
-                  // graduals, and collects. This content comes exclusively from
-                  // static JSON files bundled with the app at build time — there
-                  // is no user input or external data source involved, so there
-                  // is no XSS risk here.
-                  // biome-ignore lint/security/noDangerouslySetInnerHtml: proper.text comes from bundled static JSON data, not user input.
-                  <div dangerouslySetInnerHTML={{ __html: proper.text }} />
+                  // proper.text contains HTML markup (e.g. <i>, <b>, <br />)
+                  // from bundled static JSON files, not user input.
+                  <StaticProperText html={String(proper.text)} />
                 )}
                 <div className="text-right">
                   <button

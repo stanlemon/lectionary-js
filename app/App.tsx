@@ -38,15 +38,15 @@ export function App() {
       </header>
       <Router hook={useHashLocation}>
         <Switch>
-          <Route exact path="/:year/:month/">
+          <Route path="/:year/:month/">
             {({ month, year }) => <Calendar year={year} month={month} />}
           </Route>
-          <Route exact path="/:year/:month/:day/">
+          <Route path="/:year/:month/:day/">
             {({ month, year, day }) => (
               <Day year={year} month={month} day={day} />
             )}
           </Route>
-          <Route exact path="/today">
+          <Route path="/today">
             <Day
               year={today.getFullYear()}
               month={today.getMonth() + 1}
