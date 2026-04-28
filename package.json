@@ -11,6 +11,7 @@
   ],
   "author": "Stan Lemon <stanlemon@users.github.com>",
   "license": "MIT",
+  "packageManager": "pnpm@10.33.2",
   "repository": {
     "type": "git",
     "url": "git@github.com:stanlemon/lectionary-js.git"

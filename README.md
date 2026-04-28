@@ -28,7 +28,7 @@ Source: <https://github.com/stanlemon/lectionary-js>
 This package is not currently published to the npm registry. Install it directly from GitHub:
 
 ```bash
-npm install github:stanlemon/lectionary-js
+pnpm add github:stanlemon/lectionary-js
 ```
 
 The package name remains `@stanlemon/lectionary`, so imports still look like:

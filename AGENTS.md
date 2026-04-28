@@ -13,6 +13,9 @@ The codebase now supports two lectionary modes:
 
 ## Commands
 
+This project uses **pnpm** for dependency management. Do not use `npm install`,
+`npm ci`, or `npm run` for repository tasks.
+
 ```bash
 pnpm start        # Vite dev server
 pnpm build        # Production build
