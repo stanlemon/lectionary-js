@@ -1,4 +1,6 @@
 import { toInternalDayjs } from "./date.js";
+import type Loader from "./Loader.js";
+import type { ProperDatasetMap } from "./Loader.js";
 import { matchesProperDate } from "./matchesProperDate.js";
 
 /**
@@ -7,16 +9,14 @@ import { matchesProperDate } from "./matchesProperDate.js";
  * Each dataset key such as `lectionary`, `festivals`, or `daily` is filtered
  * independently so callers can apply precedence rules after loading.
  *
- * @implements {import("./Loader.js").default}
  */
-export class KeyLoader {
-  /** @type {import("./Loader.js").ProperDatasetMap} */
-  #data;
+export class KeyLoader implements Loader {
+  #data: ProperDatasetMap;
 
   /**
    * @param {import("./Loader.js").ProperDatasetMap} data
    */
-  constructor(data) {
+  constructor(data: ProperDatasetMap) {
     this.#data = data;
   }
 
@@ -27,11 +27,11 @@ export class KeyLoader {
    * @param {number | null} weekOfLectionary
    * @returns {import("./Loader.js").ProperDatasetMap}
    */
-  load(date, weekOfLectionary) {
+  load(date: Date, weekOfLectionary: number | null): ProperDatasetMap {
     const internalDate = toInternalDayjs(date, "KeyLoader.load");
 
     /** @type {import("./Loader.js").ProperDatasetMap} */
-    const data = {};
+    const data: ProperDatasetMap = {};
     for (const [key, value] of Object.entries(this.#data)) {
       data[key] = value
         .filter((proper) =>

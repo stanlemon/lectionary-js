@@ -15,7 +15,7 @@ export class BaseYear {
    * @param {string} methodName
    * @returns {never}
    */
-  #notImplemented(methodName) {
+  #notImplemented(methodName: string): never {
     throw new Error(
       `${this.constructor.name}.${methodName}() must be implemented`
     );
@@ -24,84 +24,84 @@ export class BaseYear {
   /**
    * @returns {Date}
    */
-  getAdvent() {
+  getAdvent(): Date {
     return this.#notImplemented("getAdvent");
   }
 
   /**
    * @returns {Date}
    */
-  getChristmas() {
+  getChristmas(): Date {
     return this.#notImplemented("getChristmas");
   }
 
   /**
    * @returns {Date}
    */
-  getEpiphany() {
+  getEpiphany(): Date {
     return this.#notImplemented("getEpiphany");
   }
 
   /**
    * @returns {Date}
    */
-  getEpiphanySunday() {
+  getEpiphanySunday(): Date {
     return this.#notImplemented("getEpiphanySunday");
   }
 
   /**
    * @returns {Date}
    */
-  getTransfiguration() {
+  getTransfiguration(): Date {
     return this.#notImplemented("getTransfiguration");
   }
 
   /**
    * @returns {Date}
    */
-  getAshWednesday() {
+  getAshWednesday(): Date {
     return this.#notImplemented("getAshWednesday");
   }
 
   /**
    * @returns {Date}
    */
-  getLent() {
+  getLent(): Date {
     return this.#notImplemented("getLent");
   }
 
   /**
    * @returns {Date}
    */
-  getEaster() {
+  getEaster(): Date {
     return this.#notImplemented("getEaster");
   }
 
   /**
    * @returns {Date}
    */
-  getTrinity() {
+  getTrinity(): Date {
     return this.#notImplemented("getTrinity");
   }
 
   /**
    * @returns {Date}
    */
-  getPentecost() {
+  getPentecost(): Date {
     return this.#notImplemented("getPentecost");
   }
 
   /**
    * @returns {Date}
    */
-  getLastSunday() {
+  getLastSunday(): Date {
     return this.#notImplemented("getLastSunday");
   }
 
   /**
    * @returns {Date}
    */
-  getEndOfYear() {
+  getEndOfYear(): Date {
     return this.#notImplemented("getEndOfYear");
   }
 }

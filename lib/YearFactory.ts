@@ -2,14 +2,14 @@ import { isDayjsValue } from "./date.js";
 
 /**
  * Accepted inputs for deriving a calendar year.
- * @typedef {number | string | Date} YearLikeValue
  */
+export type YearLikeValue = number | string | Date;
 
 /**
  * Constructor shape for Year-like calculators.
  * @template T
- * @typedef {new (year: number) => T} YearType
  */
+export type YearType<T> = new (year: number) => T;
 
 /**
  * Normalize the different "year-like" inputs callers pass into the factory.
@@ -21,7 +21,7 @@ import { isDayjsValue } from "./date.js";
  * @param {YearLikeValue} value
  * @returns {number}
  */
-function getYear(value) {
+function getYear(value: YearLikeValue): number {
   if (isDayjsValue(value)) {
     throw new TypeError(
       "YearFactory.get() expects a year number, string, or JavaScript Date"
@@ -32,7 +32,7 @@ function getYear(value) {
     return value.getFullYear();
   }
 
-  return parseInt(value, 10);
+  return parseInt(String(value), 10);
 }
 
 /**
@@ -54,7 +54,7 @@ export const YearFactory = {
    * @param {YearType<T>} Type
    * @returns {T}
    */
-  get(value, Type) {
+  get<T>(value: YearLikeValue, Type: YearType<T>): T {
     const year = getYear(value);
     if (Number.isNaN(year)) {
       throw new TypeError(`Unable to derive year from value: ${value}`);

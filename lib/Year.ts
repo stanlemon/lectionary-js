@@ -11,18 +11,18 @@ import {
  */
 export class Year extends BaseYear {
   /** @type {number} */
-  #year;
+  #year: number;
 
   /**
    * Calculates important liturgical days for a given calendar year.
    * @param {number | string} year Year to calculate dates for.
    */
-  constructor(year) {
+  constructor(year: number | string) {
     super();
-    this.#year = parseInt(year, 10);
+    this.#year = parseInt(String(year), 10);
   }
 
-  getAdvent() {
+  getAdvent(): Date {
     const christmas = toInternalDayjs(
       this.getChristmas(),
       "Year.getChristmas()"
@@ -31,37 +31,37 @@ export class Year extends BaseYear {
     return toPublicDate(christmas.subtract(3, "week").subtract(weekday, "day"));
   }
 
-  getChristmas() {
+  getChristmas(): Date {
     return createLocalDate(this.#year, 12, 25);
   }
 
-  getEpiphany() {
+  getEpiphany(): Date {
     return createLocalDate(this.#year, 1, 6);
   }
 
-  getEpiphanySunday() {
+  getEpiphanySunday(): Date {
     const epiphany = toInternalDayjs(this.getEpiphany(), "Year.getEpiphany()");
     return toPublicDate(
       epiphany.day() === 0 ? epiphany : epiphany.subtract(epiphany.day(), "day")
     );
   }
 
-  getTransfiguration() {
+  getTransfiguration(): Date {
     const easter = toInternalDayjs(this.getEaster(), "Year.getEaster()");
     return toPublicDate(easter.subtract(10, "week"));
   }
 
-  getAshWednesday() {
+  getAshWednesday(): Date {
     const lent = toInternalDayjs(this.getLent(), "Year.getLent()");
     return toPublicDate(lent.subtract(4, "day"));
   }
 
-  getLent() {
+  getLent(): Date {
     const easter = toInternalDayjs(this.getEaster(), "Year.getEaster()");
     return toPublicDate(easter.subtract(6, "week"));
   }
 
-  getEaster() {
+  getEaster(): Date {
     const year = this.#year;
 
     const a = year % 19;
@@ -84,22 +84,22 @@ export class Year extends BaseYear {
     return createLocalDate(year, month, day);
   }
 
-  getTrinity() {
+  getTrinity(): Date {
     const easter = toInternalDayjs(this.getEaster(), "Year.getEaster()");
     return toPublicDate(easter.add(6, "week"));
   }
 
-  getPentecost() {
+  getPentecost(): Date {
     const easter = toInternalDayjs(this.getEaster(), "Year.getEaster()");
     return toPublicDate(easter.add(7, "week"));
   }
 
-  getLastSunday() {
+  getLastSunday(): Date {
     const advent = toInternalDayjs(this.getAdvent(), "Year.getAdvent()");
     return toPublicDate(advent.subtract(1, "week"));
   }
 
-  getEndOfYear() {
+  getEndOfYear(): Date {
     const advent = toInternalDayjs(this.getAdvent(), "Year.getAdvent()");
     return toPublicDate(advent.subtract(3, "week"));
   }

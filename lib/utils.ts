@@ -1,14 +1,21 @@
+import type { Proper } from "./Loader.js";
 import Sundays from "./Sundays.js";
 
-/** @typedef {import("./Loader.js").Proper} Proper */
-/** @typedef {import("./Loader.js").ProperDatasetMap} ProperDatasetMap */
+type ProperBuckets = {
+  week?: number | null;
+  lectionary?: Proper[];
+  festivals?: Proper[];
+};
 
 /**
  * @param {Proper[] | undefined | null} propers
  * @param {number} type
  * @returns {Proper | null}
  */
-export function findProperByType(propers, type) {
+export function findProperByType(
+  propers: Proper[] | undefined | null,
+  type: number
+): Proper | null {
   if (!Array.isArray(propers)) {
     return null;
   }
@@ -20,9 +27,11 @@ export function findProperByType(propers, type) {
  * @param {number[]} types
  * @returns {Partial<Record<number, Proper>>}
  */
-export function findPropersByType(propers, types) {
-  /** @type {Partial<Record<number, Proper>>} */
-  const matches = {};
+export function findPropersByType(
+  propers: Proper[] | undefined | null,
+  types: number[]
+): Partial<Record<number, Proper>> {
+  const matches: Partial<Record<number, Proper>> = {};
 
   if (!Array.isArray(propers) || !Array.isArray(types)) {
     return matches;
@@ -50,7 +59,7 @@ export function findPropersByType(propers, types) {
  * @param {Proper[] | undefined | null} propers
  * @returns {boolean}
  */
-export function hasReadings(propers) {
+export function hasReadings(propers: Proper[] | undefined | null): boolean {
   const matches = findPropersByType(propers, [1, 2]);
   return Boolean(matches[1] && matches[2]);
 }
@@ -66,7 +75,9 @@ export function hasReadings(propers) {
  * @param {number | null | undefined} week
  * @returns {boolean}
  */
-export function festivalHasPrecedence(week) {
+export function festivalHasPrecedence(
+  week: number | null | undefined
+): boolean {
   if (week === null || week === undefined) {
     return false;
   }
@@ -85,7 +96,10 @@ export function festivalHasPrecedence(week) {
  * @param {{ week?: number | null, lectionary?: Proper[], festivals?: Proper[] }} day
  * @returns {{ primary: Proper[], secondary: Proper[] }}
  */
-export function getPrecedence(day) {
+export function getPrecedence(day: ProperBuckets): {
+  primary: Proper[];
+  secondary: Proper[];
+} {
   const lectionary = day?.lectionary ?? [];
   const festivals = day?.festivals ?? [];
   const festivalFirst = festivalHasPrecedence(day?.week);
@@ -118,7 +132,7 @@ export function getPrecedence(day) {
  * @param {{ week?: number | null, lectionary?: Proper[], festivals?: Proper[] }} day
  * @returns {Proper[][]}
  */
-export function getDisplayPropers(day) {
+export function getDisplayPropers(day: ProperBuckets): Proper[][] {
   const { primary, secondary } = getPrecedence(day);
   return [primary, secondary].filter(hasReadings);
 }
@@ -128,8 +142,11 @@ export function getDisplayPropers(day) {
  * @param  {...(Proper[] | undefined | null)} allPropers
  * @returns {string | undefined}
  */
-export function findColor(...allPropers) {
-  return allPropers.reduce((prev, current) => {
+export function findColor(
+  ...allPropers: (Proper[] | undefined | null)[]
+): string | undefined {
+  const color = allPropers.reduce<Proper | null>((prev, current) => {
     return prev ?? findProperByType(current, 25);
-  }, null)?.text;
+  }, null);
+  return typeof color?.text === "string" ? color.text : undefined;
 }

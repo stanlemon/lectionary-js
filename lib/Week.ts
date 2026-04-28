@@ -1,3 +1,5 @@
+import type { Dayjs } from "dayjs";
+import type { BaseWeek } from "./BaseWeek.js";
 import { toInternalDayjs, toPublicDate } from "./date.js";
 import { getSunday, getWeekDifference } from "./weekHelpers.js";
 import { Year } from "./Year.js";
@@ -6,18 +8,15 @@ import { YearFactory } from "./YearFactory.js";
 /**
  * Calculates the historic one-year lectionary week number for a date.
  */
-/** @implements {import("./BaseWeek.js").BaseWeek} */
-export class Week {
-  /** @type {import("dayjs").Dayjs} */
-  #date;
+export class Week implements BaseWeek {
+  #date: Dayjs;
 
-  /** @type {Year} */
-  #year;
+  #year: Year;
 
   /**
    * @param {Date} date
    */
-  constructor(date) {
+  constructor(date: Date) {
     this.#date = toInternalDayjs(date, "Week");
     this.#year = YearFactory.get(this.#date.year(), Year);
   }
@@ -26,7 +25,7 @@ export class Week {
    * Find the Sunday closest to the date we're calculating off. If that day is a Sunday, it just returns that date.
    * @returns {Date}
    */
-  getSunday() {
+  getSunday(): Date {
     return toPublicDate(getSunday(this.#date));
   }
 
@@ -36,7 +35,7 @@ export class Week {
    *
    * @returns {number | null}
    */
-  getWeek() {
+  getWeek(): number | null {
     const advent = toInternalDayjs(this.#year.getAdvent(), "Year.getAdvent()");
     const epiphany = toInternalDayjs(
       this.#year.getEpiphany(),

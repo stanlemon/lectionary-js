@@ -1,4 +1,4 @@
-export default {
+const Sundays = {
   ADVENT_1: 1,
   ADVENT_2: 2,
   ADVENT_3: 3,
@@ -88,4 +88,6 @@ export default {
   PROPER_27: 82,
   PROPER_28: 83,
   PROPER_29: 84,
-};
+} as const;
+
+export default Sundays;
