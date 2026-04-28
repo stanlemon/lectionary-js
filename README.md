@@ -1,6 +1,6 @@
 # Lectionary Calculator & Calendar
 
-JavaScript tools for calculating the Western Christian liturgical calendar and rendering Lutheran lectionary data.
+TypeScript tools for calculating the Western Christian liturgical calendar and rendering Lutheran lectionary data.
 
 This repository contains:
 
@@ -90,37 +90,43 @@ This repository includes the calculator library and a React app for browsing the
 Install dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
 Start the Vite dev server:
 
 ```bash
-npm run start
+pnpm start
 ```
 
 Build the production app:
 
 ```bash
-npm run build
+pnpm build
 ```
 
 Run tests:
 
 ```bash
-npm run test
+pnpm test
 ```
 
 Check formatting and linting:
 
 ```bash
-npm run lint
-npm run lint:format
+pnpm lint
+pnpm lint:format
+```
+
+Run the TypeScript type checker:
+
+```bash
+pnpm typecheck
 ```
 
 ## Repository Layout
 
-- `lib/` — core calendar logic and public library exports
+- `lib/` — TypeScript core calendar logic and public library exports
 - `lib/3year/` — three-year series, week, year, and loader logic
 - `app/` — React app, routing, and presentation
 - `data/` — bundled lectionary, festival, daily, and commemoration JSON files used by the app
@@ -133,8 +139,9 @@ This repository is **not** intended to be an exhaustive catalog of Christian lec
 
 Functional changes should include a clear description and pass:
 
-- `npm run lint:format`
-- `npm run test`
+- `pnpm lint:format`
+- `pnpm typecheck`
+- `pnpm test`
 
 ## License
 
