@@ -14,30 +14,30 @@ The codebase now supports two lectionary modes:
 ## Commands
 
 ```bash
-npm run start        # Vite dev server
-npm run build        # Production build
-npm run test         # Run Vitest tests
-npm run lint         # Biome check
-npm run lint:format  # Biome check with --write
+pnpm start        # Vite dev server
+pnpm build        # Production build
+pnpm test         # Run Vitest tests
+pnpm lint         # Biome check
+pnpm lint:format  # Biome check with --write
 ```
 
 **After every code change you MUST:**
-1. Run `npm run lint:format` to auto-format with Biome
-2. Run `npm run test` to verify all tests pass
+1. Run `pnpm lint:format` to auto-format with Biome
+2. Run `pnpm test` to verify all tests pass
 
 Run a single test file:
 ```bash
-npm run test -- Year.test.js
+pnpm test -- Year.test.js
 ```
 
 Watch mode:
 ```bash
-npm run test -- --watch
+pnpm test -- --watch
 ```
 
 Coverage report:
 ```bash
-npm run test -- --coverage
+pnpm test -- --coverage
 ```
 
 ## JavaScript Conventions
