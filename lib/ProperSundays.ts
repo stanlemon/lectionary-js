@@ -13,7 +13,12 @@
  * Proper 3 (May 22–28) is included but rarely observed — it requires an
  * unusually early Easter and is skipped in most years.
  */
-export default {
+type ProperSundayRange = {
+  START: string;
+  END: string;
+};
+
+const ProperSundays: Record<number, ProperSundayRange> = {
   58: { START: "05-24", END: "05-28" }, // Proper 3
   59: { START: "05-29", END: "06-04" }, // Proper 4
   60: { START: "06-05", END: "06-11" }, // Proper 5
@@ -42,3 +47,5 @@ export default {
   83: { START: "11-13", END: "11-19" }, // Proper 28
   84: { START: "11-20", END: "11-26" }, // Proper 29
 };
+
+export default ProperSundays;

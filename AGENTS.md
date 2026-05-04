@@ -13,9 +13,13 @@ The codebase now supports two lectionary modes:
 
 ## Commands
 
+This project uses **pnpm** for dependency management. Do not use `npm install`,
+`npm ci`, or `npm run` for repository tasks.
+
 ```bash
 pnpm start        # Vite dev server
 pnpm build        # Production build
+pnpm typecheck    # TypeScript type check
 pnpm test         # Run Vitest tests
 pnpm lint         # Biome check
 pnpm lint:format  # Biome check with --write
@@ -54,20 +58,20 @@ pnpm test -- --coverage
 
 The library is the primary artifact. Key pieces:
 
-- **`Year.js` / `Week.js` / `CalendarBuilder.js`** — One-year calendar calculations and month grid generation.
-- **`YearFactory.js`** — Memoized factory/cache for `Year`-like calculators. `Week` and `Series` use this to avoid recomputing anchor dates.
-- **`lib/3year/Year.js` / `lib/3year/Week.js` / `lib/3year/Series.js` / `ProperSundays.js`** — Three-year logic: Advent-based Series A/B/C, the Transfiguration-before-Lent rule, and Proper 3-29 mapping for Ordinary Time.
-- **`Loader.js` / `SimpleLoader.js` / `KeyLoader.js` / `lib/3year/KeyLoader.js` / `matchesProperDate.js`** — Proper-loading pipeline. One-year loading keys off `Week`; three-year loading keys off `Series` plus `ThreeYearWeek`.
-- **`Sundays.js`** — Shared week constants for both modes. Three-year mode reuses the historic Gesima slots for Epiphany 6-8 and adds `PROPER_3`-`PROPER_29` as `58`-`84`.
-- **`utils.js`** — Lookup helpers plus precedence rules (`getPrecedence`, `getDisplayPropers`) for lectionary-versus-festival collisions.
-- **`index.js`** — Public exports for both one-year and three-year APIs.
+- **`Year.ts` / `Week.ts` / `CalendarBuilder.ts`** — One-year calendar calculations and month grid generation.
+- **`YearFactory.ts`** — Memoized factory/cache for `Year`-like calculators. `Week` and `Series` use this to avoid recomputing anchor dates.
+- **`lib/3year/Year.ts` / `lib/3year/Week.ts` / `lib/3year/Series.ts` / `ProperSundays.ts`** — Three-year logic: Advent-based Series A/B/C, the Transfiguration-before-Lent rule, and Proper 3-29 mapping for Ordinary Time.
+- **`Loader.ts` / `SimpleLoader.ts` / `KeyLoader.ts` / `lib/3year/KeyLoader.ts` / `matchesProperDate.ts`** — Proper-loading pipeline. One-year loading keys off `Week`; three-year loading keys off `Series` plus `ThreeYearWeek`.
+- **`Sundays.ts`** — Shared week constants for both modes. Three-year mode reuses the historic Gesima slots for Epiphany 6-8 and adds `PROPER_3`-`PROPER_29` as `58`-`84`.
+- **`utils.ts`** — Lookup helpers plus precedence rules (`getPrecedence`, `getDisplayPropers`) for lectionary-versus-festival collisions.
+- **`index.ts`** — Public exports for both one-year and three-year APIs. `pnpm build` emits the package entrypoint and declarations to `dist/lib`.
 
 ### React App (`/app`)
 
-- **`App.jsx`** — Root router (wouter, hash-based). Routes: `/`, `/:year/:month/`, `/:year/:month/:day/`, `/today`.
-- **`LectionaryContext.jsx`** — Owns the active lectionary type, persists it in `localStorage`, and provides the active loader through React context.
-- **`Calendar.jsx`** — Monthly grid view built from `CalendarBuilder` and the active loader.
-- **`Day.jsx`** — Single-day detail view showing full readings text, including precedence-aware primary, secondary, and daily sections.
+- **`App.tsx`** — Root router (wouter, hash-based). Routes: `/`, `/:year/:month/`, `/:year/:month/:day/`, `/today`.
+- **`LectionaryContext.tsx`** — Owns the active lectionary type, persists it in `localStorage`, and provides the active loader through React context.
+- **`Calendar.tsx`** — Monthly grid view built from `CalendarBuilder` and the active loader.
+- **`Day.tsx`** — Single-day detail view showing full readings text, including precedence-aware primary, secondary, and daily sections.
 
 ### Data (`/data`)
 
@@ -82,15 +86,15 @@ JSON files for propers (appointed readings). Entries use either liturgical keys 
 
 ### Build & Config
 
-Build tooling uses Vite (`vite.config.js`). Tests run via Vitest with jsdom. Biome is configured in `biome.json`.
+Build tooling uses Vite (`vite.config.ts`) and TypeScript (`tsconfig.json`, `tsconfig.build.json`). Tests run via Vitest with jsdom. Biome is configured in `biome.json`.
 
 ## Testing
 
-Tests live alongside source files (`*.test.js` / `*.test.jsx`).
+Tests live alongside source files (`*.test.ts` / `*.test.tsx`).
 
 ### Structure
 
-- `lib/` — Unit tests for the one-year core. `Week.test.js` is data-driven from `data/tests.json` and covers 10,000+ date/week combinations from the original PHP implementation.
+- `lib/` — Unit tests for the one-year core. `Week.test.ts` is data-driven from `data/tests.json` and covers 10,000+ date/week combinations from the original PHP implementation.
 - `lib/3year/` — Unit tests for `Series`, `ThreeYear`, `ThreeYearWeek`, and `ThreeYearKeyLoader`.
 - `app/` — React tests for routing, calendar/day rendering, and lectionary toggle behavior.
 
@@ -110,7 +114,7 @@ verify Sunday-matching behavior should assert against `0`.
 
 **Three-year Ordinary Time is date-ranged Propers, not Trinity week math.** For three-year work, use `ThreeYearWeek`/`ThreeYearKeyLoader` rather than assuming the one-year `Week` numbering can be reused after Pentecost.
 
-**`App.jsx` is importable in tests** because the `createRoot` mount is guarded by `if (container)`. Import the named `App` export, not the default side-effect module.
+**`App.tsx` is importable in tests** because the `createRoot` mount is guarded by `if (container)`. Import the named `App` export, not the default side-effect module.
 
 ## Styling & Dark Mode
 

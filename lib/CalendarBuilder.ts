@@ -1,7 +1,24 @@
 import { cloneDate, createLocalDayjs, toPublicDate } from "./date.js";
+import type { ProperDatasetMap } from "./Loader.js";
 import { Week } from "./Week.js";
 
-function createSundaySnapshot(day) {
+export type CalendarDay<TPropers = ProperDatasetMap> = {
+  date: Date;
+  day: number;
+  week: number | null;
+  propers: TPropers;
+  sunday: CalendarDay<TPropers> | null;
+};
+
+type CalendarCell<TPropers = ProperDatasetMap> = CalendarDay<TPropers> | null;
+
+type CalendarLoader<TPropers> = {
+  load(date: Date, weekOfLectionary: number | null): TPropers;
+};
+
+function createSundaySnapshot<TPropers>(
+  day: CalendarDay<TPropers>
+): CalendarDay<TPropers> {
   return {
     ...day,
     date: cloneDate(day.date),
@@ -9,7 +26,9 @@ function createSundaySnapshot(day) {
   };
 }
 
-function cloneSundaySnapshot(day) {
+function cloneSundaySnapshot<TPropers>(
+  day: CalendarDay<TPropers>
+): CalendarDay<TPropers> {
   return {
     ...day,
     date: cloneDate(day.date),
@@ -22,16 +41,15 @@ function cloneSundaySnapshot(day) {
  */
 export class CalendarBuilder {
   /** @type {number} */
-  #year;
+  #year: number;
 
-  /** @type {number} */
-  #month;
+  #month: number;
 
   /**
    * @param {number} year
    * @param {number} month
    */
-  constructor(year, month) {
+  constructor(year: number, month: number) {
     this.#year = year;
     this.#month = month;
   }
@@ -47,7 +65,9 @@ export class CalendarBuilder {
    *   sunday: object | null,
    * } | null>>}
    */
-  build(loader) {
+  build<TPropers>(
+    loader: CalendarLoader<TPropers>
+  ): CalendarCell<TPropers>[][] {
     const first = createLocalDayjs(this.#year, this.#month, 1);
     const last = createLocalDayjs(this.#year, this.#month, first.daysInMonth());
 
@@ -65,17 +85,17 @@ export class CalendarBuilder {
      *   propers: TPropers,
      *   sunday: object | null,
      * } | null>>} */
-    const grid = [];
+    const grid: CalendarCell<TPropers>[][] = [];
 
     let row = 0;
     while (current.valueOf() <= last.valueOf()) {
       // Each row spans a single Sunday-through-Saturday liturgical week.
       const weekOfLectionary = new Week(toPublicDate(current)).getWeek();
-      let sunday = null;
+      let sunday: CalendarDay<TPropers> | null = null;
 
       for (let col = 0; col <= 6; col++) {
         const publicDate = toPublicDate(current);
-        const day = {
+        const day: CalendarDay<TPropers> = {
           date: cloneDate(publicDate),
           day: col + 1,
           week: weekOfLectionary,

@@ -1,4 +1,6 @@
+import type { Dayjs } from "dayjs";
 import { toInternalDayjs } from "../date.js";
+import type { SeriesKey } from "../Loader.js";
 import { Year } from "../Year.js";
 import { YearFactory } from "../YearFactory.js";
 
@@ -7,12 +9,12 @@ import { YearFactory } from "../YearFactory.js";
  */
 export class Series {
   /** @type {import("dayjs").Dayjs} */
-  #date;
+  #date: Dayjs;
 
   /**
    * @param {Date} date
    */
-  constructor(date) {
+  constructor(date: Date) {
     this.#date = toInternalDayjs(date, "Series");
   }
 
@@ -25,7 +27,7 @@ export class Series {
    *
    * @returns {"A"|"B"|"C"}
    */
-  getSeries() {
+  getSeries(): SeriesKey {
     const advent = toInternalDayjs(
       YearFactory.get(this.#date.year(), Year).getAdvent(),
       "Year.getAdvent()"
@@ -34,6 +36,6 @@ export class Series {
       this.#date.valueOf() >= advent.valueOf()
         ? this.#date.year()
         : this.#date.year() - 1;
-    return ["A", "B", "C"][adventYear % 3];
+    return ["A", "B", "C"][adventYear % 3] as SeriesKey;
   }
 }

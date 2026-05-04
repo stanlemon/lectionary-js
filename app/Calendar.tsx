@@ -1,8 +1,12 @@
-import { useEffect, useMemo, useState } from "react";
+import { type KeyboardEvent, useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 
-import { CalendarBuilder } from "../lib/CalendarBuilder";
+import {
+  CalendarBuilder,
+  type CalendarDay as CalendarDayData,
+} from "../lib/CalendarBuilder";
 import { createLocalDate, isSameDay } from "../lib/date";
+import type { Proper, ProperDatasetMap } from "../lib/Loader.js";
 import {
   findColor,
   findPropersByType,
@@ -17,6 +21,18 @@ import {
 } from "./dateFormatting";
 import { useLectionary } from "./LectionaryContext";
 
+type MonthLink = {
+  year: number;
+  month: number | string;
+};
+
+type CalendarDayWithPropers = CalendarDayData<ProperDatasetMap>;
+
+type SelectedDayState = {
+  monthKey: string;
+  dayNumber: number;
+};
+
 const weekdayHeaders = [
   { full: "Sunday", short: "Su" },
   { full: "Monday", short: "Mo" },
@@ -27,11 +43,11 @@ const weekdayHeaders = [
   { full: "Saturday", short: "Sa" },
 ];
 
-function getYearAndMonthLabel({ year, month }) {
+function getYearAndMonthLabel({ year, month }: MonthLink): string {
   return formatMonthYear(createLocalDate(year, month, 1));
 }
 
-function padNumber(v) {
+function padNumber(v: number): string {
   if (v < 10) {
     return `0${v}`;
   } else {
@@ -39,7 +55,7 @@ function padNumber(v) {
   }
 }
 
-function getNextMonth(year, month) {
+function getNextMonth(year: number, month: number): MonthLink {
   if (month === 12) {
     return { year: year + 1, month: "01" };
   } else {
@@ -47,7 +63,7 @@ function getNextMonth(year, month) {
   }
 }
 
-function getLastMonth(year, month) {
+function getLastMonth(year: number, month: number): MonthLink {
   if (month === 1) {
     return { year: year - 1, month: 12 };
   } else {
@@ -55,11 +71,19 @@ function getLastMonth(year, month) {
   }
 }
 
-function getMonthKey(year, month) {
+function getMonthKey(year: number, month: number): string {
   return `${year}-${padNumber(month)}`;
 }
 
-function getDayClassName({ color, isToday, isSelected }) {
+function getDayClassName({
+  color,
+  isToday,
+  isSelected,
+}: {
+  color: string;
+  isToday: boolean;
+  isSelected: boolean;
+}): string {
   return (
     `highlight-${color}` +
     (isToday ? " today" : "") +
@@ -67,7 +91,13 @@ function getDayClassName({ color, isToday, isSelected }) {
   );
 }
 
-function getDayNumberClassName({ isSunday, hasDisplayedPropers }) {
+function getDayNumberClassName({
+  isSunday,
+  hasDisplayedPropers,
+}: {
+  isSunday: boolean;
+  hasDisplayedPropers: boolean;
+}): string | undefined {
   return (
     [
       isSunday ? "sunday-day" : null,
@@ -78,7 +108,13 @@ function getDayNumberClassName({ isSunday, hasDisplayedPropers }) {
   );
 }
 
-function getReadingSection(propers, festivalsPropers) {
+function getReadingSection(
+  propers: Proper[],
+  festivalsPropers: Proper[]
+): {
+  propers: Proper[];
+  id: "festivals" | "lectionary";
+} | null {
   if (propers.length === 0) {
     return null;
   }
@@ -89,7 +125,15 @@ function getReadingSection(propers, festivalsPropers) {
   };
 }
 
-function CalendarDay({ day, selectedDay, onSelectDay }) {
+function CalendarDay({
+  day,
+  selectedDay,
+  onSelectDay,
+}: {
+  day: CalendarDayWithPropers | null;
+  selectedDay: CalendarDayWithPropers | null;
+  onSelectDay: (day: CalendarDayWithPropers) => void;
+}) {
   const isToday = day?.date
     ? isSameDay(
         createLocalDate(
@@ -105,7 +149,7 @@ function CalendarDay({ day, selectedDay, onSelectDay }) {
       ? isSameDay(selectedDay.date, day.date)
       : false;
 
-  if (!day?.date) {
+  if (!day) {
     return (
       <td
         className={getDayClassName({
@@ -117,49 +161,57 @@ function CalendarDay({ day, selectedDay, onSelectDay }) {
     );
   }
 
+  const activeDay = day;
   const displayPropers = getDisplayPropers({
-    week: day.week,
-    lectionary: day.propers.lectionary,
-    festivals: day.propers.festivals,
+    week: activeDay.week,
+    lectionary: activeDay.propers.lectionary,
+    festivals: activeDay.propers.festivals,
   });
   const color =
     findColor(
       ...displayPropers,
-      day.sunday?.propers.lectionary
+      activeDay.sunday?.propers.lectionary
     )?.toLowerCase() ?? "none";
   const className = getDayClassName({ color, isToday, isSelected });
-  const isSunday = day.date.getDay() === 0;
+  const isSunday = activeDay.date.getDay() === 0;
   const dayNumberClassName = getDayNumberClassName({
     isSunday,
     hasDisplayedPropers: !isSunday && displayPropers.length > 0,
   });
-  const readingSections = displayPropers.map((propers) => ({
-    ...getReadingSection(propers, day.propers.festivals),
-    summary: findPropersByType(propers, [0, 19, 1, 2]),
-  }));
+  const readingSections = displayPropers
+    .map((propers) => {
+      const section = getReadingSection(propers, activeDay.propers.festivals);
+      return section
+        ? {
+            ...section,
+            summary: findPropersByType(propers, [0, 19, 1, 2]),
+          }
+        : null;
+    })
+    .filter((section) => section !== null);
   const commemorationTitle = findPropersByType(
-    day.propers.commemorations,
+    activeDay.propers.commemorations,
     [37]
   )[37]?.text;
-  const dailyPropers = findPropersByType(day.propers.daily, [38, 39]);
+  const dailyPropers = findPropersByType(activeDay.propers.daily, [38, 39]);
 
-  function handleKeyDown(event) {
+  function handleKeyDown(event: KeyboardEvent<HTMLTableCellElement>) {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      onSelectDay(day);
+      onSelectDay(activeDay);
     }
   }
 
   return (
     <td
       className={className}
-      onClick={() => onSelectDay(day)}
+      onClick={() => onSelectDay(activeDay)}
       onKeyDown={handleKeyDown}
       role="button"
       tabIndex={0}
     >
       <div>
-        <h3 className={dayNumberClassName}>{day.date.getDate()}</h3>
+        <h3 className={dayNumberClassName}>{activeDay.date.getDate()}</h3>
         <div className="day-readings">
           {readingSections.map(({ id, summary }) => {
             return (
@@ -181,7 +233,15 @@ function CalendarDay({ day, selectedDay, onSelectDay }) {
   );
 }
 
-function DayDetailPanel({ selectedDay, year, month }) {
+function DayDetailPanel({
+  selectedDay,
+  year,
+  month,
+}: {
+  selectedDay: CalendarDayWithPropers | null;
+  year: number;
+  month: number;
+}) {
   if (!selectedDay) {
     return <div className="day-detail-panel" />;
   }
@@ -197,17 +257,26 @@ function DayDetailPanel({ selectedDay, year, month }) {
     ?.text;
   const title = primaryTitle || sundayTitle;
 
-  const detailSections = [];
+  const detailSections: {
+    key: string;
+    label: string | null | undefined;
+    propers: Proper[];
+  }[] = [];
   const secondarySummary = findPropersByType(secondary, [0, 19, 38]);
-  const secondaryTitle = secondarySummary[0]?.text;
+  const secondaryTitle =
+    typeof secondarySummary[0]?.text === "string"
+      ? secondarySummary[0].text
+      : undefined;
   const primarySummary = findPropersByType(primary, [0, 19, 38]);
 
   if (hasReadings(primary)) {
     detailSections.push({
-      key:
+      key: String(
         primarySummary[0]?.text ||
-        primarySummary[19]?.text ||
-        primarySummary[38]?.text,
+          primarySummary[19]?.text ||
+          primarySummary[38]?.text ||
+          "primary"
+      ),
       label: null,
       propers: primary,
     });
@@ -215,10 +284,12 @@ function DayDetailPanel({ selectedDay, year, month }) {
 
   if (hasReadings(secondary)) {
     detailSections.push({
-      key:
+      key: String(
         secondaryTitle ||
-        secondarySummary[19]?.text ||
-        secondarySummary[38]?.text,
+          secondarySummary[19]?.text ||
+          secondarySummary[38]?.text ||
+          "secondary"
+      ),
       label: secondaryTitle,
       propers: secondary,
     });
@@ -231,7 +302,9 @@ function DayDetailPanel({ selectedDay, year, month }) {
         : (sunday?.propers.lectionary ?? []);
     const fallbackSummary = findPropersByType(fallbackPropers, [38, 19]);
     detailSections.push({
-      key: fallbackSummary[38]?.text || fallbackSummary[19]?.text || "fallback",
+      key: String(
+        fallbackSummary[38]?.text || fallbackSummary[19]?.text || "fallback"
+      ),
       label: null,
       propers: fallbackPropers,
     });
@@ -275,11 +348,18 @@ function DayDetailPanel({ selectedDay, year, month }) {
   );
 }
 
-export default function Calendar({ year: yearProp, month: monthProp }) {
-  const year = parseInt(yearProp, 10);
-  const month = parseInt(monthProp, 10);
+export default function Calendar({
+  year: yearProp,
+  month: monthProp,
+}: {
+  year: number | string;
+  month: number | string;
+}) {
+  const year = parseInt(String(yearProp), 10);
+  const month = parseInt(String(monthProp), 10);
   const monthKey = getMonthKey(year, month);
-  const [selectedDayState, setSelectedDayState] = useState(null);
+  const [selectedDayState, setSelectedDayState] =
+    useState<SelectedDayState | null>(null);
   const { loader } = useLectionary();
 
   const grid = useMemo(() => {
@@ -314,7 +394,7 @@ export default function Calendar({ year: yearProp, month: monthProp }) {
     };
   }, []);
 
-  function selectDay(day) {
+  function selectDay(day: CalendarDayWithPropers) {
     if (window.innerWidth <= 480) {
       setSelectedDayState({ monthKey, dayNumber: day.date.getDate() });
     } else {

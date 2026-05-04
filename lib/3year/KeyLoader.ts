@@ -1,6 +1,12 @@
 import { getLectionaryWeekday, toInternalDayjs } from "../date.js";
+import type { Proper, ProperDatasetMap, SeriesDatasetMap } from "../Loader.js";
 import { Series } from "./Series.js";
 import { ThreeYearWeek } from "./Week.js";
+
+type ThreeYearKeyLoaderData = {
+  series: SeriesDatasetMap;
+  [key: string]: Proper[] | SeriesDatasetMap;
+};
 
 /**
  * A KeyLoader for the three-year lectionary. Selects the correct series
@@ -18,11 +24,9 @@ import { ThreeYearWeek } from "./Week.js";
  * });
  */
 export class ThreeYearKeyLoader {
-  /** @type {import("../Loader.js").SeriesDatasetMap} */
-  #series;
+  #series: SeriesDatasetMap;
 
-  /** @type {import("../Loader.js").ProperDatasetMap} */
-  #shared;
+  #shared: ProperDatasetMap;
 
   /**
    * @param {{
@@ -32,9 +36,9 @@ export class ThreeYearKeyLoader {
    *   `series` maps liturgical series letters to their proper datasets.
    *   All other keys are shared datasets applied regardless of series.
    */
-  constructor({ series, ...shared }) {
+  constructor({ series, ...shared }: ThreeYearKeyLoaderData) {
     this.#series = series;
-    this.#shared = shared;
+    this.#shared = shared as ProperDatasetMap;
   }
 
   /**
@@ -44,7 +48,7 @@ export class ThreeYearKeyLoader {
    * @param {Date} date
    * @returns {import("../Loader.js").ProperDatasetMap}
    */
-  load(date) {
+  load(date: Date, _weekOfLectionary?: number | null): ProperDatasetMap {
     const internalDate = toInternalDayjs(date, "ThreeYearKeyLoader.load");
     const weekOfLectionary = new ThreeYearWeek(date).getWeek();
     const weekday = getLectionaryWeekday(internalDate);
@@ -53,7 +57,7 @@ export class ThreeYearKeyLoader {
      * @param {import("../Loader.js").Proper[]} entries
      * @returns {import("../Loader.js").Proper[]}
      */
-    const filter = (entries) =>
+    const filter = (entries: Proper[]): Proper[] =>
       entries
         .filter(
           (proper) =>
@@ -71,7 +75,7 @@ export class ThreeYearKeyLoader {
     const lectionary = this.#series[seriesKey] ?? [];
 
     /** @type {import("../Loader.js").ProperDatasetMap} */
-    const result = { lectionary: filter(lectionary) };
+    const result: ProperDatasetMap = { lectionary: filter(lectionary) };
     for (const [key, value] of Object.entries(this.#shared)) {
       result[key] = filter(value);
     }

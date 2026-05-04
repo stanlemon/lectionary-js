@@ -1,6 +1,5 @@
+import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
-
-/** @typedef {import("dayjs").Dayjs} Dayjs */
 
 const DAY_IN_MS = 24 * 60 * 60 * 1000;
 
@@ -8,7 +7,7 @@ const DAY_IN_MS = 24 * 60 * 60 * 1000;
  * @param {unknown} value
  * @returns {value is Dayjs}
  */
-export function isDayjsValue(value) {
+export function isDayjsValue(value: unknown): value is Dayjs {
   return dayjs.isDayjs(value);
 }
 
@@ -19,7 +18,7 @@ export function isDayjsValue(value) {
  * @param {string} apiName
  * @returns {Date}
  */
-export function assertPublicDate(value, apiName) {
+export function assertPublicDate(value: unknown, apiName: string): Date {
   if (isDayjsValue(value)) {
     throw new TypeError(
       `${apiName} expects a JavaScript Date, not a Day.js value`
@@ -39,7 +38,7 @@ export function assertPublicDate(value, apiName) {
  * @param {Date} value
  * @returns {Date}
  */
-export function cloneDate(value) {
+export function cloneDate(value: Date): Date {
   return new Date(value.getTime());
 }
 
@@ -50,7 +49,7 @@ export function cloneDate(value) {
  * @param {string} apiName
  * @returns {Dayjs}
  */
-export function toInternalDayjs(value, apiName) {
+export function toInternalDayjs(value: unknown, apiName: string): Dayjs {
   return dayjs(cloneDate(assertPublicDate(value, apiName))).startOf("day");
 }
 
@@ -60,7 +59,7 @@ export function toInternalDayjs(value, apiName) {
  * @param {Dayjs} value
  * @returns {Date}
  */
-export function toPublicDate(value) {
+export function toPublicDate(value: Dayjs): Date {
   return createLocalDate(value.year(), value.month() + 1, value.date());
 }
 
@@ -72,7 +71,11 @@ export function toPublicDate(value) {
  * @param {number | string} day
  * @returns {Date}
  */
-export function createLocalDate(year, month, day) {
+export function createLocalDate(
+  year: number | string,
+  month: number | string,
+  day: number | string
+): Date {
   return new Date(Number(year), Number(month) - 1, Number(day));
 }
 
@@ -84,7 +87,11 @@ export function createLocalDate(year, month, day) {
  * @param {number | string} day
  * @returns {Dayjs}
  */
-export function createLocalDayjs(year, month, day) {
+export function createLocalDayjs(
+  year: number | string,
+  month: number | string,
+  day: number | string
+): Dayjs {
   return dayjs(createLocalDate(year, month, day)).startOf("day");
 }
 
@@ -94,7 +101,7 @@ export function createLocalDayjs(year, month, day) {
  * @param {Date} value
  * @returns {string}
  */
-export function formatDateKey(value) {
+export function formatDateKey(value: Date): string {
   const date = assertPublicDate(value, "formatDateKey");
   return [
     date.getFullYear(),
@@ -110,7 +117,7 @@ export function formatDateKey(value) {
  * @param {Date} right
  * @returns {boolean}
  */
-export function isSameDay(left, right) {
+export function isSameDay(left: Date, right: Date): boolean {
   const first = assertPublicDate(left, "isSameDay");
   const second = assertPublicDate(right, "isSameDay");
 
@@ -129,7 +136,7 @@ export function isSameDay(left, right) {
  * @param {Dayjs} date
  * @returns {number}
  */
-export function getLectionaryWeekday(date) {
+export function getLectionaryWeekday(date: Dayjs): number {
   return date.day();
 }
 
@@ -142,7 +149,7 @@ export function getLectionaryWeekday(date) {
  * @param {Dayjs} date
  * @returns {number}
  */
-export function getLegacyWeekday(date) {
+export function getLegacyWeekday(date: Dayjs): number {
   const weekday = getLectionaryWeekday(date);
   return weekday === 0 ? 7 : weekday;
 }
@@ -154,7 +161,7 @@ export function getLegacyWeekday(date) {
  * @param {Dayjs} second
  * @returns {number}
  */
-export function getDayDifference(first, second) {
+export function getDayDifference(first: Dayjs, second: Dayjs): number {
   const firstUtc = Date.UTC(first.year(), first.month(), first.date());
   const secondUtc = Date.UTC(second.year(), second.month(), second.date());
   return (secondUtc - firstUtc) / DAY_IN_MS;
@@ -167,6 +174,6 @@ export function getDayDifference(first, second) {
  * @param {Dayjs} week2
  * @returns {number}
  */
-export function getWeekDifference(week1, week2) {
+export function getWeekDifference(week1: Dayjs, week2: Dayjs): number {
   return getDayDifference(week1, week2) / 7;
 }

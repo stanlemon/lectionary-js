@@ -1,4 +1,6 @@
+import type { Dayjs } from "dayjs";
 import { getLectionaryWeekday } from "./date.js";
+import type { Proper } from "./Loader.js";
 
 /**
  * Centralized date-matching rules for propers.
@@ -38,7 +40,7 @@ import { getLectionaryWeekday } from "./date.js";
  * @param {import("dayjs").Dayjs} date
  * @returns {number}
  */
-function getWeekday(date) {
+function getWeekday(date: Dayjs): number {
   return getLectionaryWeekday(date);
 }
 
@@ -61,7 +63,11 @@ function getWeekday(date) {
  * @param {number | null} weekOfLectionary
  * @returns {boolean}
  */
-export function matchesProperDate(proper, date, weekOfLectionary) {
+export function matchesProperDate(
+  proper: Proper,
+  date: Dayjs,
+  weekOfLectionary: number | null
+): boolean {
   const weekday = getWeekday(date);
 
   // Movable propers are keyed by liturgical week and weekday, so if those line

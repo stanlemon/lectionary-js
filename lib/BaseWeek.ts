@@ -7,13 +7,13 @@
  *
  * @interface
  */
-export class BaseWeek {
+export abstract class BaseWeek {
   /**
    * Return the Sunday that anchors the current date's liturgical week.
    *
    * @returns {Date}
    */
-  getSunday() {}
+  abstract getSunday(): Date;
 
   /**
    * Return the liturgical week number for the current date, or `null` when the
@@ -21,5 +21,5 @@ export class BaseWeek {
    *
    * @returns {number | null}
    */
-  getWeek() {}
+  abstract getWeek(): number | null;
 }

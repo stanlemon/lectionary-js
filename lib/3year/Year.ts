@@ -16,7 +16,7 @@ export class ThreeYear extends Year {
    *
    * @returns {Date}
    */
-  getTransfiguration() {
+  getTransfiguration(): Date {
     // Sunday before Ash Wednesday = Easter − 7 weeks (no pre-Lent season)
     const easter = toInternalDayjs(this.getEaster(), "ThreeYear.getEaster()");
     return toPublicDate(easter.subtract(7, "week"));

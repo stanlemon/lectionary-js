@@ -1,3 +1,5 @@
+import type { Dayjs } from "dayjs";
+import type { BaseWeek } from "../BaseWeek.js";
 import { toInternalDayjs, toPublicDate } from "../date.js";
 import ProperSundays from "../ProperSundays.js";
 import { getSunday, getWeekDifference } from "../weekHelpers.js";
@@ -8,17 +10,15 @@ import { ThreeYear } from "./Year.js";
  * Calculates the three-year lectionary week or Proper number for a date.
  */
 /** @implements {import("../BaseWeek.js").BaseWeek} */
-export class ThreeYearWeek {
-  /** @type {import("dayjs").Dayjs} */
-  #date;
+export class ThreeYearWeek implements BaseWeek {
+  #date: Dayjs;
 
-  /** @type {ThreeYear} */
-  #year;
+  #year: ThreeYear;
 
   /**
    * @param {Date} date
    */
-  constructor(date) {
+  constructor(date: Date) {
     this.#date = toInternalDayjs(date, "ThreeYearWeek");
     this.#year = YearFactory.get(this.#date.year(), ThreeYear);
   }
@@ -27,7 +27,7 @@ export class ThreeYearWeek {
    * Find the Sunday closest to the date we're calculating off. If that day is a Sunday, it just returns that date.
    * @returns {Date}
    */
-  getSunday() {
+  getSunday(): Date {
     return toPublicDate(getSunday(this.#date));
   }
 
@@ -38,7 +38,7 @@ export class ThreeYearWeek {
    *
    * @returns {number | null}
    */
-  getWeek() {
+  getWeek(): number | null {
     const year = this.#year;
     const advent = toInternalDayjs(year.getAdvent(), "ThreeYear.getAdvent()");
     const epiphany = toInternalDayjs(
