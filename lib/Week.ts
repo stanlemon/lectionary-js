@@ -76,9 +76,9 @@ export class Week implements BaseWeek {
       return 6 - getWeekDifference(sunday, epiphanySunday);
     } else if (
       sunday.valueOf() >= transfiguration.valueOf() &&
-      sunday.valueOf() <= endOfYear.valueOf()
+      sunday.valueOf() < endOfYear.valueOf()
     ) {
-      // After Transfiguration and before the end of the year (Pentecost)
+      // After Transfiguration and before the final three Sundays of the Church Year
       return 12 + getWeekDifference(transfiguration, sunday);
     } else {
       // The end of the Church Year to Last Sunday (eq. Third Last)

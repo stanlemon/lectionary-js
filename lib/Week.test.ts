@@ -35,6 +35,18 @@ describe("Week edge cases", () => {
 
     expect(formatDateKey(week.getSunday())).toBe("2021-12-05");
   });
+
+  it("uses the final three Sundays before Advent instead of continuing Trinity numbering", () => {
+    expect(new Week(new Date("11/09/2025")).getWeek()).toBe(
+      Sundays.THIRD_LAST_SUNDAY
+    );
+    expect(new Week(new Date("11/16/2025")).getWeek()).toBe(
+      Sundays.SECOND_LAST_SUNDAY
+    );
+    expect(new Week(new Date("11/23/2025")).getWeek()).toBe(
+      Sundays.LAST_SUNDAY
+    );
+  });
 });
 
 const SUNDAYS_BY_VALUE = {};
