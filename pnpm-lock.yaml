@@ -12,14 +12,14 @@ importers:
         specifier: ^1.11.20
         version: 1.11.20
       react:
-        specifier: ^19.2.5
-        version: 19.2.5
+        specifier: ^19.2.6
+        version: 19.2.6
       react-dom:
-        specifier: ^19.2.5
-        version: 19.2.5(react@19.2.5)
+        specifier: ^19.2.6
+        version: 19.2.6(react@19.2.6)
       wouter:
         specifier: ^3.9.0
-        version: 3.9.0(react@19.2.5)
+        version: 3.9.0(react@19.2.6)
     devDependencies:
       '@biomejs/biome':
         specifier: 2.4.14
@@ -29,7 +29,7 @@ importers:
         version: 6.9.1
       '@testing-library/react':
         specifier: 16.3.2
-        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@types/node':
         specifier: 25.6.0
         version: 25.6.0
@@ -719,16 +719,16 @@ packages:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
 
-  react-dom@19.2.5:
-    resolution: {integrity: sha512-J5bAZz+DXMMwW/wV3xzKke59Af6CHY7G4uYLN1OvBcKEsWOs4pQExj86BBKamxl/Ik5bx9whOrvBlSDfWzgSag==}
+  react-dom@19.2.6:
+    resolution: {integrity: sha512-0prMI+hvBbPjsWnxDLxlCGyM8PN6UuWjEUCYmZhO67xIV9Xasa/r/vDnq+Xyq4Lo27g8QSbO5YzARu0D1Sps3g==}
     peerDependencies:
-      react: ^19.2.5
+      react: ^19.2.6
 
   react-is@17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
 
-  react@19.2.5:
-    resolution: {integrity: sha512-llUJLzz1zTUBrskt2pwZgLq59AemifIftw4aB7JxOqf1HY2FDaGDxgwpAPVzHU1kdWabH7FauP4i1oEeer2WCA==}
+  react@19.2.6:
+    resolution: {integrity: sha512-sfWGGfavi0xr8Pg0sVsyHMAOziVYKgPLNrS7ig+ivMNb3wbCBw3KxtflsGBAwD3gYQlE/AEZsTLgToRrSCjb0Q==}
     engines: {node: '>=0.10.0'}
 
   redent@3.0.0:
@@ -1172,12 +1172,12 @@ snapshots:
       picocolors: 1.1.1
       redent: 3.0.0
 
-  '@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
+  '@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
       '@babel/runtime': 7.29.2
       '@testing-library/dom': 10.4.1
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
+      react: 19.2.6
+      react-dom: 19.2.6(react@19.2.6)
     optionalDependencies:
       '@types/react': 19.2.14
       '@types/react-dom': 19.2.3(@types/react@19.2.14)
@@ -1499,14 +1499,14 @@ snapshots:
 
   punycode@2.3.1: {}
 
-  react-dom@19.2.5(react@19.2.5):
+  react-dom@19.2.6(react@19.2.6):
     dependencies:
-      react: 19.2.5
+      react: 19.2.6
       scheduler: 0.27.0
 
   react-is@17.0.2: {}
 
-  react@19.2.5: {}
+  react@19.2.6: {}
 
   redent@3.0.0:
     dependencies:
@@ -1598,9 +1598,9 @@ snapshots:
 
   undici@7.25.0: {}
 
-  use-sync-external-store@1.6.0(react@19.2.5):
+  use-sync-external-store@1.6.0(react@19.2.6):
     dependencies:
-      react: 19.2.5
+      react: 19.2.6
 
   vite@8.0.10(@types/node@25.6.0):
     dependencies:
@@ -1663,12 +1663,12 @@ snapshots:
       siginfo: 2.0.0
       stackback: 0.0.2
 
-  wouter@3.9.0(react@19.2.5):
+  wouter@3.9.0(react@19.2.6):
     dependencies:
       mitt: 3.0.1
-      react: 19.2.5
+      react: 19.2.6
       regexparam: 3.0.0
-      use-sync-external-store: 1.6.0(react@19.2.5)
+      use-sync-external-store: 1.6.0(react@19.2.6)
 
   xml-name-validator@5.0.0: {}
 
