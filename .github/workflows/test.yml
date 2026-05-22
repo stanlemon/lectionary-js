@@ -16,20 +16,10 @@ jobs:
         with:
           node-version: "24.15.0"
 
-      - name: Enable pnpm
-        run: corepack enable
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: echo "store-path=$(pnpm store path --silent)" >> "$GITHUB_OUTPUT"
-
-      - name: Cache dependencies
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+      - name: Install pnpm
+        uses: pnpm/action-setup@0e279bb959325dab635dd2c09392533439d90093 # v6
         with:
-          path: ${{ steps.pnpm-cache.outputs.store-path }}
-          key: ${{ runner.OS }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.OS }}-pnpm-
+          cache: true
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
