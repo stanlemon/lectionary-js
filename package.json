@@ -1,6 +1,6 @@
 {
   "name": "@stanlemon/lectionary",
-  "version": "2.0.19",
+  "version": "2.0.20",
   "description": "A calculator for the Western Christian church calendar.",
   "keywords": [
     "christian",
@@ -37,7 +37,7 @@
   },
   "types": "./dist/lib/index.d.ts",
   "dependencies": {
-    "dayjs": "^1.11.20",
+    "dayjs": "^1.11.21",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "wouter": "^3.10.0"
