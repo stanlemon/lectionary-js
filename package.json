@@ -1,6 +1,6 @@
 {
   "name": "@stanlemon/lectionary",
-  "version": "2.0.43",
+  "version": "2.0.44",
   "description": "A calculator for the Western Christian church calendar.",
   "keywords": [
     "christian",
@@ -43,7 +43,7 @@
     "wouter": "^3.10.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.3",
+    "@biomejs/biome": "2.5.4",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.2",
     "@types/node": "25.9.5",
