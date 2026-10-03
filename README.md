@@ -37,7 +37,7 @@ The package name remains `@stanlemon/lectionary`, so imports still look like:
 import { Week } from "@stanlemon/lectionary";
 ```
 
-Node `24.15.0+` is the current supported runtime for this repository.
+Node `24.21.0+` is the current supported runtime for this repository.
 
 ## Usage
 
