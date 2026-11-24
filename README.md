@@ -109,7 +109,11 @@ Run tests:
 
 ```bash
 pnpm test
+pnpm test:coverage # unit/DOM tests with required coverage
+pnpm test:package  # production build and built-package smoke tests
 ```
+
+GitHub Actions runs lint, type checks, required coverage, and a production build/package check on pull requests, `master`, and Renovate branches. Coverage includes production TypeScript in `app/` and `lib/`, with floors of 92% statements, 87% branches, 88% functions, and 92% lines. The Node package tests import the built ESM exports and check representative Easter dates, fresh Date values, and the Advent series boundary. Cloudflare also builds production previews. No browser is required for these checks.
 
 Check formatting and linting:
 
@@ -141,7 +145,8 @@ Functional changes should include a clear description and pass:
 
 - `pnpm lint:format`
 - `pnpm typecheck`
-- `pnpm test`
+- `pnpm test:coverage`
+- `pnpm test:package`
 
 ## License
 

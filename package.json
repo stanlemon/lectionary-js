@@ -25,6 +25,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "prepare": "tsc -p tsconfig.build.json",
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:package": "pnpm build && node --test tests/PackageExportsTest.mjs",
     "lint": "biome check .",
     "lint:format": "biome check --write ."
   },

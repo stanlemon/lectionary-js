@@ -7,3 +7,6 @@ node_modules
 
 ## Compiled assets
 dist
+
+## Test reports
+coverage
