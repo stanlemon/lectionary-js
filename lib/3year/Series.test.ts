@@ -5,8 +5,8 @@ import { Series } from "./Series.js";
 
 describe("Series.getSeries", () => {
   it("returns A for dates in the Advent 2022 liturgical year", () => {
-    // Advent 2022 starts Dec 4 2022; runs through Advent 2023 eve
-    expect(new Series(new Date("12/04/2022")).getSeries()).toBe("A");
+    // Advent 2022 starts Nov 27 2022; runs through Advent 2023 eve
+    expect(new Series(new Date("11/27/2022")).getSeries()).toBe("A");
     expect(new Series(new Date("06/15/2023")).getSeries()).toBe("A");
   });
 

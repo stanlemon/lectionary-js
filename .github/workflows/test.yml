@@ -1,6 +1,12 @@
 name: Tests
 
-on: [push]
+on:
+  push:
+    branches: [master, 'renovate/**']
+  pull_request:
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -30,5 +36,8 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
-      - name: Run tests
-        run: pnpm test
+      - name: Run tests with required coverage
+        run: pnpm test:coverage
+
+      - name: Build and test package exports
+        run: pnpm test:package

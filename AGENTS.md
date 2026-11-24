@@ -21,6 +21,8 @@ pnpm start        # Vite dev server
 pnpm build        # Production build
 pnpm typecheck    # TypeScript type check
 pnpm test         # Run Vitest tests
+pnpm test:coverage # Run tests with required coverage
+pnpm test:package  # Build and check production package exports
 pnpm lint         # Biome check
 pnpm lint:format  # Biome check with --write
 ```
@@ -41,7 +43,7 @@ pnpm test -- --watch
 
 Coverage report:
 ```bash
-pnpm test -- --coverage
+pnpm test:coverage
 ```
 
 ## JavaScript Conventions
@@ -91,6 +93,14 @@ Build tooling uses Vite (`vite.config.ts`) and TypeScript (`tsconfig.json`, `tsc
 ## Testing
 
 Tests live alongside source files (`*.test.ts` / `*.test.tsx`).
+`tests/PackageExportsTest.mjs` uses Node to import the built package through
+its declared exports after a production build. It checks representative Date
+and Advent-series contracts without launching a browser.
+
+GitHub Actions runs required coverage and the production package check on
+pull requests, `master`, and Renovate branches. Coverage includes production
+`app/` and `lib/` TypeScript, with floors of 92% statements, 87% branches,
+88% functions, and 92% lines.
 
 ### Structure
 
